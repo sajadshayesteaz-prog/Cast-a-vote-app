@@ -1841,11 +1841,23 @@ function progressPct(h){
 function keptCount(h){ var m=S.logs[h.id]||{}, n=0; for(var d in m) if(GOOD[m[d].s]) n++; return n; }
 function implanted(h){ return habitAge(h)>=FADE_DAYS && keptCount(h)>=FADE_DAYS; }
 /* the measures a habit can chart: its metrics, plus time when the timer is on */
+/* a focus block logs minutes against a habit that may never have been set up
+   as a timed one; the time is real either way, so it earns its chart */
+function hasTime(h){
+  var m=S.logs[h.id];
+  if(!m) return false;
+  for(var d in m){
+    if(!m.hasOwnProperty(d)) continue;
+    if((+m[d].secs||0)>0 || (+m[d].mins||0)>0) return true;
+  }
+  return false;
+}
 function chartables(h){
   var out=h.metrics.map(function(m){
     return { key:m.id, label:m.label, unit:m.unit||"", kind:"metric", m:m };
   });
-  if(h.useTimer||h.minutesTarget) out.push({ key:"__time", label:T("Time","زمان"), unit:T("min","دقیقه"), kind:"time" });
+  if(h.useTimer||h.minutesTarget||hasTime(h))
+    out.push({ key:"__time", label:T("Time","زمان"), unit:T("min","دقیقه"), kind:"time" });
   return out;
 }
 function chosenChart(h){
@@ -2365,8 +2377,8 @@ function openAfterStart(){
     + T("Keep going","ادامه می‌دهم")+"</button>"
     + '<button class="btn cool wide" data-stafter="stop" style="margin-top:10px">'+ic("check")
     + T("Stop here","همین‌جا بس است")+"</button>"
-    + '<p class="foot">'+T("Both count the same. Stopping here logs the "+mins+" minutes and leaves the habit ungraded.",
-        "هر دو یکی حساب می‌شوند. «بس است» همان "+mins+" دقیقه را ثبت می‌کند و به عادت نمره نمی‌دهد.")+"</p></div>";
+    + '<p class="foot">'+T("Both count the same. Either way the "+mins+" minutes are logged and today is stamped done.",
+        "هر دو یکی حساب می‌شوند. در هر صورت آن "+mins+" دقیقه ثبت می‌شود و امروزِ این عادت تیک می‌خورد.")+"</p></div>";
   openSheet(T(mins+" minutes in", mins+" دقیقه گذشت"),h);
 }
 
@@ -2384,9 +2396,12 @@ function afterStart(kind){
   }
   var hid=tm.habitId, secs=Math.round(el/1000);
   writeEntry(hid,today(),{secs:secsOf(hid,today())+secs,mins:undefined});
+  /* the work happened, so the day gets its stamp and its vote — the same one
+     the timer's own Complete button leaves */
+  setStatus(hid,today(),"done");
   if(tm.focus) recordStart(mins,"stopped"); else if(tm.startRef) bumpStart(tm.startRef,mins);
   S.timer=null; touch(); closeSheet(); renderAll();
-  toast(T("Start recorded. That was the hard part.","شروع ثبت شد. سختش همین بود."));
+  toast(T("Start recorded. That was the hard part.","ثبت شد — هم شروع، هم تیکِ امروز."));
 }
 
 /* ─────────── TODAY ─────────── */
@@ -2464,6 +2479,10 @@ function todayCard(x){
       + (lf===0 ? T(x.minutesTarget+" min done", x.minutesTarget+" دقیقه، تمام")
                 : (dn? T(fmtDur(lf)+" left", fmtDur(lf)+" مانده") : T(x.minutesTarget+" min", x.minutesTarget+" دقیقه")))
       + "</span>");
+  } else {
+    /* no target to count down from, but time was still spent today */
+    var sp=secsOf(x.id,d);
+    if(sp) chips.push('<span class="chip goal">'+T(fmtDur(sp)+" today", "امروز "+fmtDur(sp))+"</span>");
   }
 
   var open=detailsOpen(x);
