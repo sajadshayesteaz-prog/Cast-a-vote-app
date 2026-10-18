@@ -31,9 +31,11 @@
 </style>
 <style>
 :root{
-  --ground:#F2F8F5; --surface:#FFFFFF; --surface-2:#E9F2ED; --surface-3:#F6FBF8;
+  --ground:#F2F8F5; --page:#DFEBE5; --lipn:#CFE0D8; --rim:transparent;
+  --pat:24; --glass:26; --glass-panel:62; --blur:2;
+  --m1:#AEC9BD; --m2:#86AB99; --m3:#5F8B78; --grain:.5; --emb-hi:rgba(255,255,255,.92); --emb-lo:rgba(8,33,26,.16); --wash-a:10%; --wash-b:42%; --edge-primary:#02543C; --surface:#FFFFFF; --surface-2:#E9F2ED; --surface-3:#F6FBF8;
   --line:#D5E6DD; --line-soft:#E4F0EA;
-  --ink:#08211A; --ink-2:#365248; --muted:#6B8880; --on-accent:#FFFFFF;
+  --ink:#08211A; --ink-2:#365248; --muted:#4F6C63; --on-accent:#FFFFFF;
 
   --green:#10B981; --green-deep:#047857; --green-bright:#34D399; --green-pop:#6EE7B7;
   --teal:#0D9488; --petrol:#115E59;
@@ -67,7 +69,8 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#04140F; --surface:#0B1F19; --surface-2:#142E26; --surface-3:#0F261F;
+    --ground:#04140F; --page:#03100C; --lipn:#153029; --rim:rgba(230,245,238,.10);
+    --m1:#D9EFE6; --m2:#9FCDBA; --m3:#6BA68F; --grain:.34; --emb-hi:rgba(230,245,238,.13); --emb-lo:rgba(0,0,0,.72); --wash-a:10%; --wash-b:42%; --edge-primary:#046B4E; --surface:#0B1F19; --surface-2:#142E26; --surface-3:#0F261F;
     --line:#1E3B32; --line-soft:#173028;
     --ink:#E6F5EE; --ink-2:#AFCCC1; --muted:#6F9287; --on-accent:#04140F;
     --green:#34D399; --green-deep:#10B981; --green-bright:#6EE7B7; --green-pop:#A7F3D0;
@@ -93,7 +96,8 @@
   }
 }
 :root[data-theme="dark"]{
-  --ground:#04140F; --surface:#0B1F19; --surface-2:#142E26; --surface-3:#0F261F;
+  --ground:#04140F; --page:#03100C; --lipn:#153029; --rim:rgba(230,245,238,.10);
+    --m1:#D9EFE6; --m2:#9FCDBA; --m3:#6BA68F; --grain:.34; --emb-hi:rgba(230,245,238,.13); --emb-lo:rgba(0,0,0,.72); --wash-a:10%; --wash-b:42%; --edge-primary:#046B4E; --surface:#0B1F19; --surface-2:#142E26; --surface-3:#0F261F;
   --line:#1E3B32; --line-soft:#173028;
   --ink:#E6F5EE; --ink-2:#AFCCC1; --muted:#6F9287; --on-accent:#04140F;
   --green:#34D399; --green-deep:#10B981; --green-bright:#6EE7B7; --green-pop:#A7F3D0;
@@ -120,7 +124,7 @@
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-ui);font-size:15px;
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--f-ui);font-size:15px;
   line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
 button,input,textarea,select{font:inherit;color:inherit}
 :focus-visible{outline:2.5px solid var(--green);outline-offset:2px;border-radius:8px}
@@ -134,61 +138,104 @@ button,input,textarea,select{font:inherit;color:inherit}
 .sc-ic svg.lu,.tac-ic svg.lu,.loop-s svg.lu{stroke-width:1.85}
 #defs{position:absolute;width:0;height:0;overflow:hidden}
 
-/* ── living background ── */
-/* the blur sits here, over the whole layer: one pass instead of one per blob */
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
-  background:var(--ground);filter:blur(34px)}
-.bg i{position:absolute;display:block;border-radius:50%;opacity:.95;will-change:transform,filter}
-/* each blob holds its colour flat to a fifth of its radius before falling off,
-   which is what stops a big blur from washing the whole thing out. Two clocks
-   run on each: one for where it is, one for what colour it is, on lengths that
-   do not divide into each other — so the pair never comes back round together. */
-.bg i:nth-child(1){width:80vw;height:80vw;left:-24vw;top:-20vw;
-  background:radial-gradient(circle,var(--green) 0%,var(--green) 22%,transparent 72%);
-  animation:drift1 54s ease-in-out infinite, tint1 71s ease-in-out infinite}
-.bg i:nth-child(2){width:70vw;height:70vw;right:-22vw;top:10vh;
-  background:radial-gradient(circle,var(--turq) 0%,var(--turq) 20%,transparent 72%);
-  animation:drift2 63s ease-in-out infinite, tint2 83s ease-in-out infinite}
-.bg i:nth-child(3){width:66vw;height:66vw;left:0;bottom:-18vh;
-  background:radial-gradient(circle,var(--indigo) 0%,var(--indigo) 20%,transparent 72%);
-  animation:drift3 58s ease-in-out infinite, tint3 77s ease-in-out infinite}
-.bg i:nth-child(4){width:48vw;height:48vw;right:0;bottom:2vh;
-  background:radial-gradient(circle,var(--yellow) 0%,var(--yellow) 18%,transparent 70%);
-  animation:drift4 69s ease-in-out infinite, tint4 59s ease-in-out infinite}
-.bg i:nth-child(5){width:56vw;height:56vw;left:22vw;top:32vh;
-  background:radial-gradient(circle,var(--lapis) 0%,var(--lapis) 16%,transparent 70%);
-  animation:drift2 47s ease-in-out infinite reverse, tint5 67s ease-in-out infinite}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bg i{opacity:.62}}
-:root[data-theme="dark"] .bg i{opacity:.62}
-/* three stops rather than two: a blob that only goes out and back reads as a
-   pendulum, and the eye locks on to a pendulum */
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}
-  34%{transform:translate(11vw,8vh) scale(1.22)}
-  67%{transform:translate(4vw,16vh) scale(.9)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.04)}
-  36%{transform:translate(-12vw,10vh) scale(.88)}
-  71%{transform:translate(-5vw,-7vh) scale(1.18)}}
-@keyframes drift3{0%,100%{transform:translate(0,0) scale(.95)}
-  31%{transform:translate(9vw,-12vh) scale(1.24)}
-  64%{transform:translate(-6vw,-4vh) scale(1.02)}}
-@keyframes drift4{0%,100%{transform:translate(0,0) scale(1.1)}
-  40%{transform:translate(-8vw,-13vh) scale(.86)}
-  73%{transform:translate(7vw,-5vh) scale(1.16)}}
-/* the colour turn: small enough to land on a neighbour in the palette, never
-   past it. Saturation breathes with it so the shift does not read as a filter */
-@keyframes tint1{0%,100%{filter:hue-rotate(0deg) saturate(1)}
-  50%{filter:hue-rotate(16deg) saturate(1.16)}}
-@keyframes tint2{0%,100%{filter:hue-rotate(0deg) saturate(1.08)}
-  50%{filter:hue-rotate(-14deg) saturate(.92)}}
-@keyframes tint3{0%,100%{filter:hue-rotate(0deg) saturate(1)}
-  50%{filter:hue-rotate(18deg) saturate(1.14)}}
-@keyframes tint4{0%,100%{filter:hue-rotate(0deg) saturate(1.05)}
-  50%{filter:hue-rotate(-12deg) saturate(1.2)}}
-@keyframes tint5{0%,100%{filter:hue-rotate(0deg) saturate(.96)}
-  50%{filter:hue-rotate(15deg) saturate(1.18)}}
+/* ── self-tests ── */
+.sthead{position:sticky;top:0;z-index:6;background:var(--page);padding:10px 0 13px;
+  box-shadow:0 12px 14px -14px rgba(0,0,0,.4)}
+.stlegend{display:flex;flex-wrap:wrap;gap:5px 13px;margin-top:10px}
+.stlegend span{font-size:11.5px;line-height:1.4;color:var(--ink-2);white-space:nowrap}
+.stlegend b{font-family:var(--f-mono);font-size:10px;color:var(--teal);margin-inline-end:4px}
+.stintro{font-size:12.5px;line-height:1.7;color:var(--muted);margin:14px 0 0}
+.ststem{font-size:14px;font-weight:700;color:var(--ink);margin:12px 0 0}
+.stlist{margin-top:12px}
+.stbar{height:7px;border-radius:999px;background:var(--grid-empty);overflow:hidden;margin:0 0 6px}
+.stbar i{display:block;height:100%;border-radius:999px;background:var(--grad-primary);transition:width .2s}
+.stcount{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.stem{font-size:13px;color:var(--muted);margin:0 0 4px}
+.stitem{font-size:19px;line-height:1.55;font-weight:700;color:var(--ink);margin:0 0 18px;text-wrap:balance}
+/* the answer buttons: always lowest first along the reading direction, always
+   carrying their own words. A bare number is what let the scale flip once. */
+.stopts{display:flex;flex-direction:column;gap:9px}
+.stopt{display:flex;align-items:center;gap:11px;width:100%;text-align:start;
+  border:0;border-radius:15px;padding:13px 15px;cursor:pointer;font-family:var(--f-ui);font-size:14.5px;
+  background:var(--surface-2);color:var(--ink-2);box-shadow:0 3px 0 var(--lipn);
+  transition:transform .11s ease,box-shadow .11s ease,background .15s}
+.stopt:active{transform:translateY(3px);box-shadow:0 0 0 var(--lipn)}
+.stopt .k{flex:none;width:26px;height:26px;border-radius:9px;display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:12px;background:var(--surface);color:var(--muted)}
+.stopt[aria-pressed="true"]{background:var(--grad-primary);color:#fff;box-shadow:0 3px 0 var(--edge-primary)}
+.stopt[aria-pressed="true"] .k{background:rgba(255,255,255,.22);color:#fff}
+.stscale{border-radius:var(--r-sm);padding:13px 15px;background:var(--surface-2);
+  box-shadow:inset 0 0 0 1.5px var(--line-soft);margin-bottom:14px}
+.stscale b{display:block;font-size:12.5px;margin-bottom:7px;color:var(--ink)}
+.stscale .ends{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--ink-2)}
+.strow{padding:15px 2px;border-bottom:1px solid var(--line-soft);scroll-margin-top:150px}
+.strow:last-child{border-bottom:0}
+.strow .q{font-size:14.5px;line-height:1.6;margin:0 0 11px;color:var(--ink)}
+.strow .q i{font-style:normal;font-family:var(--f-mono);font-size:11px;color:var(--muted);
+  margin-inline-end:8px}
+/* a row the finish check named: amber, not red — nothing is wrong, it is just unanswered */
+.strow.miss{background:color-mix(in srgb,var(--amber) 13%,transparent);border-radius:13px;
+  padding-inline:11px;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--amber) 34%,transparent)}
+.stmini{display:flex;gap:7px}
+.stmini button{flex:1 1 0;border:0;border-radius:12px;padding:12px 0;cursor:pointer;
+  font-family:var(--f-mono);font-size:14px;background:var(--surface-2);color:var(--ink-2);
+  box-shadow:0 3px 0 var(--lipn);transition:transform .1s ease,box-shadow .1s ease}
+.stmini button:active{transform:translateY(3px);box-shadow:0 0 0 var(--lipn)}
+.stmini button[aria-pressed="true"]{background:var(--grad-primary);color:#fff;box-shadow:0 3px 0 var(--edge-primary)}
+/* the words you picked, under the row: scanning back up you read language,
+   not digits, which is what catches a scale read the wrong way round */
+.stpick{font-size:12px;line-height:1.4;color:var(--teal);margin:9px 0 0;min-height:1.2em}
+.stmiss{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.stmiss button{border:0;border-radius:9px;padding:6px 10px;cursor:pointer;font-family:var(--f-mono);
+  font-size:11.5px;background:var(--wash-amber,var(--surface-2));color:var(--ink-2);box-shadow:0 2px 0 var(--lipn)}
+.stcaveat{font-size:11.5px;line-height:1.6;color:var(--muted);margin:14px 0 0}
+.stcount.cite{line-height:1.7;margin-top:8px;text-align:start;overflow-wrap:anywhere}
+.linkish{border:0;background:none;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;
+  color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.stmeter{position:relative;height:10px;border-radius:999px;background:var(--grid-empty);overflow:visible;margin:8px 0 4px}
+.stmeter.sm{height:7px;margin:5px 0 11px}
+.stmeter i{display:block;height:100%;border-radius:999px;background:var(--grad-primary)}
+.stmeter u{position:absolute;top:-3px;width:2px;height:16px;border-radius:2px;text-decoration:none}
+.stmeter.sm u{top:-2px;height:11px}
+.stmeter u.mid{background:color-mix(in srgb,var(--ink) 28%,transparent)}
+.stmeter u.norm{background:var(--amber);width:3px}
+.strow2{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.strow2 h3{margin:0}
+.stv{font-family:var(--f-fun);font-size:25px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.stv.sm{font-size:15px;color:var(--ink-2)}
+.stfac{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:11px;font-size:13px;color:var(--ink-2)}
+.stneg{font-style:normal;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;
+  color:var(--amber);margin-inline-start:5px}
+.stnote{border-radius:var(--r-sm);padding:13px 15px;margin-bottom:13px;
+  background:color-mix(in srgb,var(--amber) 12%,var(--surface));
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--amber) 38%,transparent)}
+.stnote b{display:block;font-size:13px;margin-bottom:5px;color:var(--ink)}
+.stnote p{margin:0;font-size:12.5px;line-height:1.65;color:var(--ink-2)}
+.sttr{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:12px}
+.sttr .d{font-size:12.5px;color:var(--muted)}
+.sttr .v{font-family:var(--f-fun);font-size:17px;font-weight:600;color:var(--ink)}
+.sttr .v em{font-style:normal;font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-inline-start:5px}
+
+/* ── the page ground ── */
+/* --page is a step deeper than --surface, so a card reads as something
+   resting on the page rather than a lighter patch of it. Over that flat
+   colour, one drawing: the same shamseh the app icon is built from.
+
+   It is fixed, so the cards travel across it, and two gradients run down the
+   VIEWPORT rather than the document — the top of the screen is always one
+   plain colour and the bottom always carries the most contrast, wherever you
+   happen to be in the list. Nothing animates: a moving layer behind a
+   backdrop-filter costs a re-filter every frame, and this does not need it. */
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bg svg{position:absolute;inset:0;width:100%;height:100%}
+/* paper grain, carrying the same fade so the top stays genuinely plain. It is
+   here to give a small blur radius something fine to smear. */
+.bg .grain{position:absolute;inset:0;opacity:var(--grain);mix-blend-mode:overlay;
+  background-image:var(--grain-img);background-size:180px 180px;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 18%,#000 100%);
+  mask-image:linear-gradient(to bottom,transparent 18%,#000 100%)}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  .bg i{animation:none!important}
 }
 
 .app{max-width:460px;margin:0 auto;min-height:100dvh;position:relative}
@@ -199,7 +246,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 /* ── masthead ── */
 .mast{padding:26px 0 16px}
 .mast h1{font-family:var(--f-disp);font-weight:700;font-size:34px;line-height:1.02;margin:0;
-  letter-spacing:-.03em;text-wrap:balance}
+  letter-spacing:-.03em;text-wrap:balance;
+  text-shadow:0 -1px 0 var(--emb-hi),0 2px 2px var(--emb-lo)}
+/* the gradient-filled span has transparent glyphs; a shadow behind them would
+   show through as a smudge instead of an edge */
+.mast h1 .g{text-shadow:none}
 .mast h1 .g{background:var(--grad-primary);-webkit-background-clip:text;background-clip:text;color:transparent}
 .eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted);margin:0 0 8px}
@@ -237,17 +288,40 @@ button,input,textarea,select{font:inherit;color:inherit}
 .alert p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.55}
 
 /* ── habit card ── */
-.card{background:linear-gradient(165deg,
-    color-mix(in srgb, var(--hc, var(--green)) 10%, var(--surface)) 0%,
-    color-mix(in srgb, var(--hc, var(--green)) 42%, var(--surface)) 100%);
-  border-radius:var(--r);margin-bottom:12px;box-shadow:var(--shadow-s);
-  border:1px solid color-mix(in srgb, var(--hc, var(--green)) 36%, var(--line-soft));overflow:hidden}
+/* Two layers, not one. The old fill mixed the habit colour into an opaque
+   surface; thinning that to 26% would have taken the colour out along with
+   the opacity. So the tint is its own layer at full strength over a
+   translucent surface — the colour comes out stronger than it was, and the
+   ground still shows through. */
+.card{background:
+    linear-gradient(165deg,
+      color-mix(in srgb, var(--hc, var(--green)) var(--wash-a), transparent) 0%,
+      color-mix(in srgb, var(--hc, var(--green)) var(--wash-b), transparent) 100%),
+    color-mix(in srgb, var(--surface) calc(var(--glass) * 1%), transparent);
+  -webkit-backdrop-filter:blur(calc(var(--blur) * 1px)) saturate(1.7);
+  backdrop-filter:blur(calc(var(--blur) * 1px)) saturate(1.7);
+  border-radius:var(--r);margin-bottom:16px;
+  box-shadow:inset 0 1.5px 0 var(--rim),
+    0 2px 0 color-mix(in srgb, var(--hc, var(--green)) 58%, var(--lipn)),
+    0 5px 0 color-mix(in srgb, var(--hc, var(--green)) 86%, var(--lipn)),
+    var(--shadow-s);
+  transition:transform .11s ease,box-shadow .11s ease;
+  border:1px solid color-mix(in srgb, var(--hc, var(--green)) 54%, var(--line-soft));overflow:hidden}
+/* the guard: :active also fires on an ancestor, so a tap on the tick would
+   otherwise take the whole card down with it */
+.card:active:not(:has(button:active,a:active,input:active,textarea:active,select:active)){
+  transform:translateY(3px);
+  box-shadow:inset 0 1.5px 0 var(--rim),
+    0 1px 0 color-mix(in srgb, var(--hc, var(--green)) 58%, var(--lipn)),
+    0 2px 0 color-mix(in srgb, var(--hc, var(--green)) 86%, var(--lipn)),
+    var(--shadow-s)}
 .card-main{display:flex;gap:14px;padding:15px 16px 13px;align-items:flex-start}
 
 .stamp{flex:none;width:50px;height:50px;border-radius:17px;border:2.5px solid var(--line);
   background:var(--surface-2);display:grid;place-items:center;cursor:pointer;position:relative;
-  transition:transform .13s cubic-bezier(.3,1.6,.6,1),box-shadow .2s,border-color .2s,background .2s;padding:0}
-.stamp:active{transform:scale(.88)}
+  box-shadow:0 3px 0 var(--lipn);
+  transition:transform .11s ease,box-shadow .11s ease,border-color .2s,background .2s;padding:0}
+.stamp:active{transform:translateY(3px);box-shadow:0 0 0 var(--lipn)}
 .stamp svg{width:24px;height:24px;position:relative;z-index:1}
 .stamp .ic{stroke:var(--muted);stroke-width:3;opacity:0}
 .stamp[data-s] .ic{opacity:1}
@@ -342,13 +416,17 @@ button,input,textarea,select{font:inherit;color:inherit}
 
 /* ── compact habit card ── */
 .mini{background:linear-gradient(165deg,
-    color-mix(in srgb, var(--hc, var(--green)) 10%, var(--surface)) 0%,
-    color-mix(in srgb, var(--hc, var(--green)) 40%, var(--surface)) 100%);
+    color-mix(in srgb, var(--hc, var(--green)) var(--wash-a), var(--surface)) 0%,
+    color-mix(in srgb, var(--hc, var(--green)) var(--wash-b), var(--surface)) 100%);
   border-radius:var(--r-sm);border:1px solid color-mix(in srgb, var(--hc, var(--green)) 34%, var(--line-soft));
-  box-shadow:var(--shadow-s);margin-bottom:9px;overflow:hidden}
+  box-shadow:inset 0 1.5px 0 var(--rim),
+    0 2px 0 color-mix(in srgb, var(--hc, var(--green)) 56%, var(--lipn)),
+    0 4px 0 color-mix(in srgb, var(--hc, var(--green)) 84%, var(--lipn)),
+    var(--shadow-s);
+  margin-bottom:13px;overflow:hidden}
 .panel.hab{background:linear-gradient(165deg,
-    color-mix(in srgb, var(--hc, var(--green)) 9%, var(--surface)) 0%,
-    color-mix(in srgb, var(--hc, var(--green)) 38%, var(--surface)) 100%);
+    color-mix(in srgb, var(--hc, var(--green)) var(--wash-a), var(--surface)) 0%,
+    color-mix(in srgb, var(--hc, var(--green)) var(--wash-b), var(--surface)) 100%);
   border-color:color-mix(in srgb, var(--hc, var(--green)) 34%, var(--line-soft))}
 .panel.hab .chartwrap{background:color-mix(in srgb, var(--surface) 72%, transparent)}
 
@@ -390,15 +468,24 @@ button,input,textarea,select{font:inherit;color:inherit}
 
 /* ── buttons ── */
 .btn{border:0;background:var(--surface);border-radius:999px;padding:11px 19px;font-size:14px;font-weight:700;
-  cursor:pointer;box-shadow:var(--shadow-s);transition:transform .13s,box-shadow .2s;
+  cursor:pointer;box-shadow:0 3px 0 var(--lipn),var(--shadow-s);
+  transition:transform .11s ease,box-shadow .11s ease;
   display:inline-flex;align-items:center;gap:8px;justify-content:center;font-family:var(--f-ui)}
-.btn:active{transform:scale(.97)}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--lipn),var(--shadow-s)}
 .btn svg{width:16px;height:16px;fill:none}
-.btn.primary{background:var(--grad-primary);color:#fff;box-shadow:var(--shadow-glow)}
+.btn.primary{background:var(--grad-primary);color:#fff;
+  box-shadow:0 4px 0 var(--edge-primary),var(--shadow-glow)}
+.btn.primary:active{transform:translateY(4px);
+  box-shadow:0 1px 0 var(--edge-primary),var(--shadow-glow)}
 .btn.cool{background:var(--grad-cool);color:#fff}
-.btn.ghost{background:var(--surface-2);box-shadow:none;color:var(--ink-2)}
-.btn.line{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink-2)}
-.btn.danger{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red);color:var(--red-deep)}
+.btn.ghost{background:var(--surface-2);box-shadow:0 3px 0 var(--lipn);color:var(--ink-2)}
+.btn.ghost:active{box-shadow:0 0 0 var(--lipn)}
+.btn.line{background:transparent;
+  box-shadow:0 3px 0 var(--lipn),inset 0 0 0 1.5px var(--line);color:var(--ink-2)}
+.btn.line:active{box-shadow:0 0 0 var(--lipn),inset 0 0 0 1.5px var(--line)}
+.btn.danger{background:transparent;
+  box-shadow:0 3px 0 var(--lipn),inset 0 0 0 1.5px var(--red);color:var(--red-deep)}
+.btn.danger:active{box-shadow:0 0 0 var(--lipn),inset 0 0 0 1.5px var(--red)}
 .btn.wide{width:100%}
 .btn.sm{padding:8px 14px;font-size:12.5px}
 
@@ -416,7 +503,10 @@ button,input,textarea,select{font:inherit;color:inherit}
 .intent i.blank{font-style:normal;font-weight:600;color:var(--muted);
   border-bottom:2px dotted var(--line);padding-bottom:1px}
 .fcard{margin-bottom:14px}
-.fcard .btn.primary{background:var(--hg,var(--grad-primary))}
+.fcard .btn.primary{background:var(--hg,var(--grad-primary));
+  box-shadow:0 4px 0 color-mix(in srgb, var(--hc, var(--green)) 58%, #04140F),var(--shadow-glow)}
+.fcard .btn.primary:active{
+  box-shadow:0 1px 0 color-mix(in srgb, var(--hc, var(--green)) 58%, #04140F),var(--shadow-glow)}
 .fcard .big-go{padding:16px 22px;font-size:16.5px;gap:10px}
 .fcard .big-go svg{width:21px;height:21px}
 .frow{display:flex;gap:8px;flex-wrap:wrap}
@@ -497,13 +587,42 @@ button,input,textarea,select{font:inherit;color:inherit}
 .tab.on svg{stroke:url(#tabGrad)}
 
 /* ── sheet ── */
-.veil{position:fixed;inset:0;background:rgba(2,14,10,.58);z-index:50;display:none;align-items:flex-end;
-  justify-content:center;backdrop-filter:blur(3px)}
+/* no blur here: this layer is BEHIND the sheet, and blurring the page at this
+   point leaves the sheet's own filter nothing left to do */
+.veil{position:fixed;inset:0;background:rgba(2,14,10,.22);z-index:50;display:none;align-items:flex-end;
+  justify-content:center;overflow:hidden}
+/* The washes that used to live here are gone. They were only ever a stand-in
+   for a page with no structure in it, and the page has structure now — the
+   sheet blurs the real ground, which is the right thing for it to blur. */
 .veil.on{display:flex}
-.sheet{background:var(--ground);width:100%;max-width:460px;max-height:93dvh;overflow-y:auto;
-  border-radius:28px 28px 0 0;animation:rise .27s cubic-bezier(.2,.9,.3,1)}
+.sheet{background:linear-gradient(to bottom,
+    color-mix(in srgb,var(--ground) 56%,transparent) 0,
+    color-mix(in srgb,var(--ground) 88%,transparent) 160px);
+  /* 16px: comfortably under the motif's medallion, which survives and is
+     what makes this read as glass, and comfortably over a glyph stroke, which
+     does not — so the list behind the pane is colour, not words. 26px, the old
+     value, averaged the medallion away as well, which is how the sheet came to
+     look flat in the first place. */
+  -webkit-backdrop-filter:blur(16px) saturate(1.9);backdrop-filter:blur(16px) saturate(1.9);
+  width:100%;max-width:460px;max-height:93dvh;overflow-y:auto;
+  border-radius:28px 28px 0 0;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.75),
+    inset 0 22px 30px -28px rgba(255,255,255,.9),
+    0 -14px 44px -16px rgba(0,0,0,.42);
+  animation:rise .27s cubic-bezier(.2,.9,.3,1)}
+/* a browser without backdrop-filter gets the solid sheet back rather than a
+   transparent one nobody can read */
+@supports not (backdrop-filter:blur(1px)){
+  .sheet{background:var(--ground)}
+  .sheet-top{background:var(--ground)}
+  .panel{background:var(--surface)}
+  .card{background:linear-gradient(165deg,
+    color-mix(in srgb, var(--hc, var(--green)) var(--wash-a), var(--surface)) 0%,
+    color-mix(in srgb, var(--hc, var(--green)) var(--wash-b), var(--surface)) 100%)}
+}
 @keyframes rise{from{transform:translateY(28px);opacity:.3}to{transform:none;opacity:1}}
-.sheet-top{position:sticky;top:0;background:var(--ground);padding:16px 18px 13px;display:flex;
+.sheet-top{position:sticky;top:0;background:color-mix(in srgb,var(--ground) 46%,transparent);
+  padding:16px 18px 13px;display:flex;
   align-items:center;justify-content:space-between;gap:10px;z-index:3;border-bottom:1px solid var(--line-soft)}
 .sheet-top h3{font-family:var(--f-fun);font-size:21px;font-weight:600;margin:0;line-height:1.2;letter-spacing:-.01em}
 .sheet-in{padding:16px 18px 30px}
@@ -596,7 +715,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 .card .ichip:hover,.panel.hab .ichip:hover{background:color-mix(in srgb, var(--hc) 26%, var(--surface))}
 .card .ichip[aria-pressed="true"],.panel.hab .ichip[aria-pressed="true"]{background:var(--hg);color:#fff}
 .card .stamp[data-s="done"],.card .stamp[data-s="clean"]{background:var(--hg);
-  box-shadow:0 7px 18px -6px color-mix(in srgb, var(--hc) 65%, transparent)}
+  box-shadow:0 3px 0 color-mix(in srgb, var(--hc) 58%, #04140F),
+    0 7px 18px -6px color-mix(in srgb, var(--hc) 65%, transparent)}
+.card .stamp[data-s="done"]:active,.card .stamp[data-s="clean"]:active{
+  box-shadow:0 0 0 color-mix(in srgb, var(--hc) 58%, #04140F),
+    0 7px 18px -6px color-mix(in srgb, var(--hc) 65%, transparent)}
 .card .stamp[data-s="two"]{border-color:var(--hc);background:color-mix(in srgb, var(--hc) 15%, var(--surface))}
 .card .stamp[data-s="two"] .ic{stroke:var(--ht)}
 .card .stamp .cnt{color:var(--ht)}
@@ -738,8 +861,24 @@ button,input,textarea,select{font:inherit;color:inherit}
 .stat.g3{background:linear-gradient(140deg,#0D9488 0%,#22D3EE 100%)}
 .stat.g4{background:linear-gradient(140deg,#0891B2 0%,#6EE7B7 100%)}
 
-.panel{background:var(--surface);border-radius:var(--r);padding:16px;box-shadow:var(--shadow-s);
-  margin-bottom:11px;border:1px solid var(--line-soft)}
+/* a panel is for reading, not for show, so it keeps more of itself than a
+   card does — enough ground shows through to belong, not enough to fight a
+   paragraph */
+.panel{background:color-mix(in srgb, var(--surface) calc(var(--glass-panel) * 1%), transparent);
+  -webkit-backdrop-filter:blur(calc(var(--blur) * 1px)) saturate(1.5);
+  backdrop-filter:blur(calc(var(--blur) * 1px)) saturate(1.5);
+  border-radius:var(--r);padding:16px;
+  box-shadow:inset 0 1.5px 0 var(--rim),0 4px 0 var(--lipn),var(--shadow-s);
+  margin-bottom:15px;border:1px solid var(--line-soft)}
+/* The sheet is the glass; whatever rests on it is paper. Two translucent
+   layers stacked just makes both of them illegible. */
+.sheet .panel{background:var(--surface);
+  -webkit-backdrop-filter:none;backdrop-filter:none}
+/* a habit panel borrows the card's colour for its lip */
+.panel.hab{box-shadow:inset 0 1.5px 0 var(--rim),
+  0 2px 0 color-mix(in srgb, var(--hc, var(--green)) 58%, var(--lipn)),
+  0 5px 0 color-mix(in srgb, var(--hc, var(--green)) 86%, var(--lipn)),
+  var(--shadow-s)}
 .panel-h{display:flex;align-items:center;gap:13px;margin-bottom:11px}
 .panel h3{font-family:var(--f-disp);font-size:17px;font-weight:700;margin:0;line-height:1.22;
   letter-spacing:-.02em;flex:1;min-width:0;overflow-wrap:anywhere}
@@ -900,9 +1039,10 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
    Only the tokens change — every component already reads them. The skin is
    its own attribute, so it can be worn by an English page too. */
 :root[data-skin="fa"]{
-  --ground:#F7F1E3; --surface:#FFFCF5; --surface-2:#F0E7D2; --surface-3:#FAF5EA;
+  --ground:#F7F1E3; --page:#E6DAC0; --lipn:#D5C2A0; --rim:transparent;
+  --m1:#CFB587; --m2:#AE8A4E; --m3:#86612F; --grain:.5; --emb-hi:rgba(255,255,255,.92); --emb-lo:rgba(60,42,20,.18); --wash-a:22%; --wash-b:60%; --edge-primary:#123A6E; --surface:#FFFCF5; --surface-2:#F0E7D2; --surface-3:#FAF5EA;
   --line:#DFD0B2; --line-soft:#EBE0C9;
-  --ink:#1B2233; --ink-2:#4A4536; --muted:#8A7E64; --on-accent:#FFFCF5;
+  --ink:#1B2233; --ink-2:#4A4536; --muted:#605641; --on-accent:#FFFCF5;
 
   --green:#1E7A5E; --green-deep:#12553F; --green-bright:#3FA07C; --green-pop:#7FC9A8;
   --teal:#17858B; --petrol:#0E5B63;
@@ -939,9 +1079,10 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
 /* lapis night: the same glaze after sunset */
 @media (prefers-color-scheme:dark){
   :root[data-skin="fa"]:not([data-theme="light"]){
-    --ground:#0B1020; --surface:#141B30; --surface-2:#1E2743; --surface-3:#182034;
+    --ground:#0B1020; --page:#070B16; --lipn:#202C4A; --rim:rgba(243,232,210,.10);
+    --m1:#F4EAD4; --m2:#D7BB86; --m3:#AD8B4C; --grain:.34; --emb-hi:rgba(243,232,210,.13); --emb-lo:rgba(0,0,0,.72); --wash-a:16%; --wash-b:52%; --edge-primary:#1E2A6B; --surface:#141B30; --surface-2:#1E2743; --surface-3:#182034;
     --line:#2B3757; --line-soft:#222C48;
-    --ink:#F3E8D2; --ink-2:#C9BFA6; --muted:#8A8370; --on-accent:#0B1020;
+    --ink:#F3E8D2; --ink-2:#C9BFA6; --muted:#9A927C; --on-accent:#0B1020;
     --green:#3FA07C; --green-deep:#1E7A5E; --green-bright:#6FC5A2; --green-pop:#A2DCC3;
     --teal:#2A9CA3; --petrol:#17858B;
     --turq:#4FC9BC; --turq-bright:#7BDDD2;
@@ -965,9 +1106,10 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
   }
 }
 :root[data-skin="fa"][data-theme="dark"]{
-  --ground:#0B1020; --surface:#141B30; --surface-2:#1E2743; --surface-3:#182034;
+  --ground:#0B1020; --page:#070B16; --lipn:#202C4A; --rim:rgba(243,232,210,.10);
+    --m1:#F4EAD4; --m2:#D7BB86; --m3:#AD8B4C; --grain:.34; --emb-hi:rgba(243,232,210,.13); --emb-lo:rgba(0,0,0,.72); --wash-a:16%; --wash-b:52%; --edge-primary:#1E2A6B; --surface:#141B30; --surface-2:#1E2743; --surface-3:#182034;
   --line:#2B3757; --line-soft:#222C48;
-  --ink:#F3E8D2; --ink-2:#C9BFA6; --muted:#8A8370; --on-accent:#0B1020;
+  --ink:#F3E8D2; --ink-2:#C9BFA6; --muted:#9A927C; --on-accent:#0B1020;
   --green:#3FA07C; --green-deep:#1E7A5E; --green-bright:#6FC5A2; --green-pop:#A2DCC3;
   --teal:#2A9CA3; --petrol:#17858B;
   --turq:#4FC9BC; --turq-bright:#7BDDD2;
@@ -1050,7 +1192,6 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
 .jdate{font-family:var(--f-mono);font-size:11px;color:var(--green-deep);margin-top:5px}
 </style>
 
-<div class="bg"><i></i><i></i><i></i><i></i><i></i></div>
 
 <svg id="defs" aria-hidden="true"><defs>
 <linearGradient id="tabGrad" x1="0" y1="0" x2="1" y2="1">
@@ -1064,6 +1205,37 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
 </linearGradient>
 </defs></svg>
 
+<div class="bg" aria-hidden="true">
+  <svg id="bgmotif">
+    <defs>
+      <!-- the motif's colour: top to bottom, tilted a little off vertical -->
+      <linearGradient id="bgmg" x1="0" y1="0" x2=".34" y2="1">
+        <stop offset="0" stop-color="var(--m1)"/>
+        <stop offset=".52" stop-color="var(--m2)"/>
+        <stop offset="1" stop-color="var(--m3)"/>
+      </linearGradient>
+      <!-- the motif's presence: black hides, white shows. Flat black down to
+           a third of the screen, so the top is one colour and not merely a
+           faint version of the pattern. -->
+      <linearGradient id="bgfg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#000"/>
+        <stop offset=".30" stop-color="#000"/>
+        <stop offset=".64" stop-color="#5A5A5A"/>
+        <stop offset="1" stop-color="#fff"/>
+      </linearGradient>
+      <mask id="bgfade"><rect width="100%" height="100%" fill="url(#bgfg)"/></mask>
+      <pattern id="bgtile" width="132" height="132" patternUnits="userSpaceOnUse">
+        <g id="bgtileg" fill="none" stroke="#fff"></g>
+      </pattern>
+      <mask id="bgcut">
+        <g mask="url(#bgfade)"><rect width="100%" height="100%" fill="url(#bgtile)"/></g>
+      </mask>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#bgmg)" mask="url(#bgcut)"
+          style="opacity:calc(var(--pat) / 100)"/>
+  </svg>
+  <i class="grain"></i>
+</div>
 <div class="app">
   <main id="sc-today" class="screen on"></main>
   <main id="sc-start" class="screen"></main>
@@ -1071,6 +1243,7 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
   <main id="sc-card" class="screen"></main>
   <main id="sc-progress" class="screen"></main>
   <main id="sc-guide" class="screen"></main>
+  <main id="sc-selftest" class="screen"></main>
   <main id="sc-settings" class="screen"></main>
 </div>
 
@@ -1117,6 +1290,9 @@ function faDigits(root){
   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null), hits=[], n;
   while((n=w.nextNode())){
     if(n.parentNode&&NO_DIG[n.parentNode.nodeName]) continue;
+    /* a DOI, a URL or a volume number is not a quantity: [data-latin] keeps
+       its digits as they were written */
+    if(n.parentNode&&n.parentNode.closest&&n.parentNode.closest("[data-latin]")) continue;
     if(/[0-9]/.test(n.nodeValue)) hits.push(n);
   }
   hits.forEach(function(x){ x.nodeValue=faNum(x.nodeValue); });
@@ -1379,6 +1555,246 @@ function habVars(h){ var c=habCol(h); return "--hc:"+c[0]+";--hl:"+c[1]+";--hg:"
 function habIcon(h){ return (h&&h.icon&&I[h.icon]) ? h.icon : (h&&h.kind==="break"?"ban":"bolt"); }
 function ic(n,cls){ return '<svg viewBox="0 0 24 24" aria-hidden="true" class="lu'+(cls?" "+cls:"")+'">'+(I[n]||I.bolt)+"</svg>"; }
 
+/* ─────────── self-test instruments ───────────
+   Item wording is DATA, not copy. It is never edited, re-translated or
+   reordered here: the Persian is the user's own unvalidated translation and
+   the English is verbatim from the sources named in ST_SRC. Responses are
+   1..5 where 1 is always the lowest end of whatever that instrument's scale
+   measures, in every instrument and both languages — that invariant is what
+   the whole anti-reversal design rests on. */
+var ST={
+ bfi2:{key:"bfi2",n:60,
+  name:{en:"Big Five Inventory-2 (BFI-2)",fa:"پرسش‌نامه‌ی پنج عامل بزرگ ۲"},
+  stem:{en:"I am someone who…",fa:"من کسی هستم که…"},
+  intro:{en:"Here are a number of characteristics that may or may not apply to you. For example, do you agree that you are someone who likes to spend time with others? Please indicate the extent to which you agree or disagree with each statement.",
+         fa:"در ادامه ویژگی‌هایی آمده که ممکن است درباره‌ی تو صدق کند یا نکند. بگو با هر عبارت چقدر موافق یا مخالفی."},
+  scale:{en:["Disagree strongly","Disagree a little","Neutral; no opinion","Agree a little","Agree strongly"],fa:["کاملاً مخالفم","کمی مخالفم","نه موافق نه مخالف","کمی موافقم","کاملاً موافقم"]},
+  reverse:[3, 4, 5, 8, 9, 11, 12, 16, 17, 22, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 42, 44, 45, 47, 48, 49, 50, 51, 55, 58],
+  /* the wording these three items carried on the baseline attempt */
+  prevFa:{19:"گاهی پرتنش و عصبی است",47:"گاهی سرد و بی‌اعتنا است",59:"زودرنج است و زود احساساتی می‌شود"},
+  domains:[
+   {key:"E",en:"Extraversion",fa:"برون‌گرایی",items:[1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56],
+    facets:[{key:"E1",en:"Sociability",fa:"معاشرتی بودن",items:[1, 16, 31, 46]},
+            {key:"E2",en:"Assertiveness",fa:"قاطعیت",items:[6, 21, 36, 51]},
+            {key:"E3",en:"Energy Level",fa:"سطح انرژی",items:[11, 26, 41, 56]}]},
+   {key:"A",en:"Agreeableness",fa:"توافق‌پذیری",items:[2, 7, 12, 17, 22, 27, 32, 37, 42, 47, 52, 57],
+    facets:[{key:"A1",en:"Compassion",fa:"دلسوزی",items:[2, 17, 32, 47]},
+            {key:"A2",en:"Respectfulness",fa:"احترام",items:[7, 22, 37, 52]},
+            {key:"A3",en:"Trust",fa:"اعتماد",items:[12, 27, 42, 57]}]},
+   {key:"C",en:"Conscientiousness",fa:"وجدان‌مندی",items:[3, 8, 13, 18, 23, 28, 33, 38, 43, 48, 53, 58],
+    facets:[{key:"C1",en:"Organization",fa:"نظم",items:[3, 18, 33, 48]},
+            {key:"C2",en:"Productiveness",fa:"بهره‌وری",items:[8, 23, 38, 53]},
+            {key:"C3",en:"Responsibility",fa:"مسئولیت‌پذیری",items:[13, 28, 43, 58]}]},
+   {key:"N",en:"Negative Emotionality",fa:"هیجان‌پذیری منفی (روان‌رنجوری)",items:[4, 9, 14, 19, 24, 29, 34, 39, 44, 49, 54, 59],
+    facets:[{key:"N1",en:"Anxiety",fa:"اضطراب",items:[4, 19, 34, 49]},
+            {key:"N2",en:"Depression",fa:"افسردگی",items:[9, 24, 39, 54]},
+            {key:"N3",en:"Emotional Volatility",fa:"بی‌ثباتی هیجانی",items:[14, 29, 44, 59]}]},
+   {key:"O",en:"Open-Mindedness",fa:"گشودگی",items:[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60],
+    facets:[{key:"O1",en:"Intellectual Curiosity",fa:"کنجکاوی فکری",items:[10, 25, 40, 55]},
+            {key:"O2",en:"Aesthetic Sensitivity",fa:"حساسیت زیبایی‌شناختی",items:[5, 20, 35, 50]},
+            {key:"O3",en:"Creative Imagination",fa:"تخیل خلاق",items:[15, 30, 45, 60]}]}],
+  items:[{fa:"اجتماعی و معاشرتی است",en:"Is outgoing, sociable."},
+    {fa:"دلسوز و مهربان است",en:"Is compassionate, has a soft heart."},
+    {fa:"معمولاً بی‌نظم است",en:"Tends to be disorganized."},
+    {fa:"آرام است و استرس را خوب مدیریت می‌کند",en:"Is relaxed, handles stress well."},
+    {fa:"علایق هنری کمی دارد",en:"Has few artistic interests."},
+    {fa:"شخصیتی قاطع و جسور دارد",en:"Has an assertive personality."},
+    {fa:"به دیگران احترام می‌گذارد",en:"Is respectful, treats others with respect."},
+    {fa:"تمایل به تنبلی دارد",en:"Tends to be lazy."},
+    {fa:"بعد از یک شکست هم خوش‌بین می‌ماند",en:"Stays optimistic after experiencing a setback."},
+    {fa:"به چیزهای بسیار متنوعی کنجکاو است",en:"Is curious about many different things."},
+    {fa:"به‌ندرت احساس هیجان یا اشتیاق می‌کند",en:"Rarely feels excited or eager."},
+    {fa:"معمولاً از دیگران ایراد می‌گیرد",en:"Tends to find fault with others."},
+    {fa:"قابل‌اتکا و باثبات است",en:"Is dependable, steady."},
+    {fa:"دمدمی‌مزاج است و نوسان خلق دارد",en:"Is moody, has up and down mood swings."},
+    {fa:"مبتکر است و راه‌های هوشمندانه برای انجام کارها پیدا می‌کند",en:"Is inventive, finds clever ways to do things."},
+    {fa:"معمولاً ساکت است",en:"Tends to be quiet."},
+    {fa:"با دیگران همدردی کمی دارد",en:"Feels little sympathy for others."},
+    {fa:"نظام‌مند است و دوست دارد همه‌چیز مرتب باشد",en:"Is systematic, likes to keep things in order."},
+    {fa:"ممکن است پرتنش باشد",en:"Can be tense."},
+    {fa:"شیفته‌ی هنر، موسیقی یا ادبیات است",en:"Is fascinated by art, music, or literature."},
+    {fa:"مسلط است و نقش رهبر را به عهده می‌گیرد",en:"Is dominant, acts as a leader."},
+    {fa:"با دیگران بحث و دعوا راه می‌اندازد",en:"Starts arguments with others."},
+    {fa:"در شروع کردن کارها مشکل دارد",en:"Has difficulty getting started on tasks."},
+    {fa:"احساس امنیت می‌کند و با خودش راحت است",en:"Feels secure, comfortable with self."},
+    {fa:"از بحث‌های فکری و فلسفی دوری می‌کند",en:"Avoids intellectual, philosophical discussions."},
+    {fa:"از بیشتر آدم‌ها کم‌تحرک‌تر است",en:"Is less active than other people."},
+    {fa:"طبیعتی بخشنده دارد",en:"Has a forgiving nature."},
+    {fa:"گاهی کمی بی‌دقت است",en:"Can be somewhat careless."},
+    {fa:"از نظر هیجانی باثبات است و زود آشفته نمی‌شود",en:"Is emotionally stable, not easily upset."},
+    {fa:"خلاقیت کمی دارد",en:"Has little creativity."},
+    {fa:"گاهی خجالتی و درون‌گراست",en:"Is sometimes shy, introverted."},
+    {fa:"به دیگران کمک می‌کند و خودخواه نیست",en:"Is helpful and unselfish with others."},
+    {fa:"وسایلش را تمیز و مرتب نگه می‌دارد",en:"Keeps things neat and tidy."},
+    {fa:"زیاد نگران می‌شود",en:"Worries a lot."},
+    {fa:"برای هنر و زیبایی ارزش قائل است",en:"Values art and beauty."},
+    {fa:"برایش سخت است روی دیگران اثر بگذارد",en:"Finds it hard to influence people."},
+    {fa:"گاهی با دیگران بی‌ادبی می‌کند",en:"Is sometimes rude to others."},
+    {fa:"کارآمد است و کارها را به سرانجام می‌رساند",en:"Is efficient, gets things done."},
+    {fa:"اغلب احساس غم می‌کند",en:"Often feels sad."},
+    {fa:"پیچیده است و عمیق فکر می‌کند",en:"Is complex, a deep thinker."},
+    {fa:"پرانرژی است",en:"Is full of energy."},
+    {fa:"به نیت دیگران بدگمان است",en:"Is suspicious of others' intentions."},
+    {fa:"قابل‌اعتماد است و همیشه می‌شود رویش حساب کرد",en:"Is reliable, can always be counted on."},
+    {fa:"احساساتش را تحت کنترل نگه می‌دارد",en:"Keeps their emotions under control."},
+    {fa:"در تصور کردن چیزها مشکل دارد",en:"Has difficulty imagining things."},
+    {fa:"پرحرف است",en:"Is talkative."},
+    {fa:"ممکن است سرد و بی‌اعتنا باشد",en:"Can be cold and uncaring."},
+    {fa:"به‌هم‌ریختگی به جا می‌گذارد و جمع‌وجور نمی‌کند",en:"Leaves a mess, doesn't clean up."},
+    {fa:"به‌ندرت احساس اضطراب یا ترس می‌کند",en:"Rarely feels anxious or afraid."},
+    {fa:"شعر و نمایش را خسته‌کننده می‌داند",en:"Thinks poetry and plays are boring."},
+    {fa:"ترجیح می‌دهد دیگران رهبری را به عهده بگیرند",en:"Prefers to have others take charge."},
+    {fa:"مؤدب است و با دیگران با ملاحظه رفتار می‌کند",en:"Is polite, courteous to others."},
+    {fa:"پیگیر است و تا تمام شدن کار ادامه می‌دهد",en:"Is persistent, works until the task is finished."},
+    {fa:"معمولاً احساس افسردگی و دلگرفتگی دارد",en:"Tends to feel depressed, blue."},
+    {fa:"علاقه‌ی کمی به ایده‌های انتزاعی دارد",en:"Has little interest in abstract ideas."},
+    {fa:"شور و اشتیاق زیادی نشان می‌دهد",en:"Shows a lot of enthusiasm."},
+    {fa:"درباره‌ی آدم‌ها خوش‌گمان است",en:"Assumes the best about people."},
+    {fa:"گاهی غیرمسئولانه رفتار می‌کند",en:"Sometimes behaves irresponsibly."},
+    {fa:"تندمزاج است و زود احساساتی می‌شود",en:"Is temperamental, gets emotional easily."},
+    {fa:"اصیل و نوآور است و ایده‌های تازه می‌آورد",en:"Is original, comes up with new ideas."}]},
+ scs:{key:"scs",n:26,
+  name:{en:"Self-Compassion Scale (SCS)",fa:"مقیاس شفقت به خود"},
+  intro:{en:"HOW I TYPICALLY ACT TOWARDS MYSELF IN DIFFICULT TIMES. Please read each statement carefully before answering.",
+         fa:"معمولاً در موقعیت‌های سخت چطور با خودم رفتار می‌کنم. پیش از پاسخ، هر عبارت را با دقت بخوان."},
+  scale:{en:["Almost never","Rarely","Sometimes","Often","Almost always"],fa:["تقریباً هرگز","به‌ندرت","گاهی","اغلب","تقریباً همیشه"]},
+  reverse:[],
+  /* Neff's own bands, the only labelled instrument of the three */
+  bands:[[2.49,"low"],[3.5,"mid"],[5,"high"]],
+  subs:[{key:"SK",en:"Self-Kindness",fa:"مهربانی با خود",items:[5, 12, 19, 23, 26],neg:false},
+        {key:"SJ",en:"Self-Judgment",fa:"قضاوت خود",items:[1, 8, 11, 16, 21],neg:true},
+        {key:"CH",en:"Common Humanity",fa:"اشتراکات انسانی",items:[3, 7, 10, 15],neg:false},
+        {key:"I",en:"Isolation",fa:"انزوا",items:[4, 13, 18, 25],neg:true},
+        {key:"M",en:"Mindfulness",fa:"ذهن‌آگاهی",items:[9, 14, 17, 22],neg:false},
+        {key:"OI",en:"Over-Identification",fa:"همانندسازی افراطی",items:[2, 6, 20, 24],neg:true}],
+  items:[{fa:"نسبت به نقص‌ها و کمبودهای خودم سخت‌گیر و قضاوت‌گرم.",en:"I'm disapproving and judgmental about my own flaws and inadequacies."},
+    {fa:"وقتی حالم بد است، ذهنم روی هر چیزی که خراب است گیر می‌کند و دائم به آن فکر می‌کنم.",en:"When I'm feeling down I tend to obsess and fixate on everything that's wrong."},
+    {fa:"وقتی اوضاعم بد پیش می‌رود، سختی‌ها را بخشی از زندگی می‌بینم که همه از آن می‌گذرند.",en:"When things are going badly for me, I see the difficulties as part of life that everyone goes through."},
+    {fa:"وقتی به کمبودهایم فکر می‌کنم، بیشتر احساس می‌کنم از بقیه‌ی دنیا جدا و بریده‌ام.",en:"When I think about my inadequacies, it tends to make me feel more separate and cut off from the rest of the world."},
+    {fa:"وقتی درد عاطفی دارم، سعی می‌کنم با خودم مهربان باشم.",en:"I try to be loving towards myself when I'm feeling emotional pain."},
+    {fa:"وقتی در کار مهمی شکست می‌خورم، احساس ناکافی بودن تمام وجودم را می‌گیرد.",en:"When I fail at something important to me I become consumed by feelings of inadequacy."},
+    {fa:"وقتی حالم خیلی خراب است، به خودم یادآوری می‌کنم که خیلی‌ها در دنیا همین حس را دارند.",en:"When I'm down, I remind myself that there are lots of other people in the world feeling like I am."},
+    {fa:"وقتی اوضاع واقعاً سخت است، با خودم سخت‌گیر می‌شوم.",en:"When times are really difficult, I tend to be tough on myself."},
+    {fa:"وقتی چیزی ناراحتم می‌کند، سعی می‌کنم احساساتم را متعادل نگه دارم.",en:"When something upsets me I try to keep my emotions in balance."},
+    {fa:"وقتی به نوعی احساس ناکافی بودن می‌کنم، به خودم یادآوری می‌کنم که بیشتر آدم‌ها چنین حسی را تجربه می‌کنند.",en:"When I feel inadequate in some way, I try to remind myself that feelings of inadequacy are shared by most people."},
+    {fa:"نسبت به جنبه‌هایی از شخصیتم که دوستشان ندارم، کم‌تحمل و بی‌حوصله‌ام.",en:"I'm intolerant and impatient towards those aspects of my personality I don't like."},
+    {fa:"وقتی دوره‌ی خیلی سختی را می‌گذرانم، مراقبت و محبتی را که لازم دارم به خودم می‌دهم.",en:"When I'm going through a very hard time, I give myself the caring and tenderness I need."},
+    {fa:"وقتی حالم بد است، احساس می‌کنم بیشتر آدم‌ها احتمالاً از من شادترند.",en:"When I'm feeling down, I tend to feel like most other people are probably happier than I am."},
+    {fa:"وقتی اتفاق دردناکی می‌افتد، سعی می‌کنم نگاه متعادلی به موقعیت داشته باشم.",en:"When something painful happens I try to take a balanced view of the situation."},
+    {fa:"سعی می‌کنم کاستی‌هایم را بخشی از وضعیت انسان بودن ببینم.",en:"I try to see my failings as part of the human condition"},
+    {fa:"وقتی جنبه‌هایی از خودم را می‌بینم که دوستشان ندارم، خودم را می‌کوبم.",en:"When I see aspects of myself that I don't like, I get down on myself."},
+    {fa:"وقتی در کار مهمی شکست می‌خورم، سعی می‌کنم تناسب و اندازه‌ی ماجرا را حفظ کنم.",en:"When I fail at something important to me I try to keep things in perspective."},
+    {fa:"وقتی واقعاً در تقلا هستم، احساس می‌کنم بقیه حتماً راحت‌تر از من دارند می‌گذرانند.",en:"When I'm really struggling, I tend to feel like other people must be having an easier time of it."},
+    {fa:"وقتی رنج می‌کشم، با خودم مهربانم.",en:"I'm kind to myself when I'm experiencing suffering."},
+    {fa:"وقتی چیزی ناراحتم می‌کند، احساساتم مرا با خودشان می‌برند.",en:"When something upsets me I get carried away with my feelings."},
+    {fa:"وقتی رنج می‌کشم، ممکن است با خودم کمی سنگدل و سرد باشم.",en:"I can be a bit cold-hearted towards myself when I'm experiencing suffering."},
+    {fa:"وقتی حالم بد است، سعی می‌کنم با کنجکاوی و گشودگی به احساساتم نگاه کنم.",en:"When I'm feeling down I try to approach my feelings with curiosity and openness."},
+    {fa:"نسبت به نقص‌ها و کمبودهای خودم تحمل دارم.",en:"I'm tolerant of my own flaws and inadequacies."},
+    {fa:"وقتی اتفاق دردناکی می‌افتد، ماجرا را بیش از اندازه بزرگ می‌کنم.",en:"When something painful happens I tend to blow the incident out of proportion."},
+    {fa:"وقتی در کار مهمی شکست می‌خورم، در شکستم احساس تنهایی می‌کنم.",en:"When I fail at something that's important to me, I tend to feel alone in my failure."},
+    {fa:"سعی می‌کنم نسبت به جنبه‌هایی از شخصیتم که دوستشان ندارم، درک و صبوری داشته باشم.",en:"I try to be understanding and patient towards those aspects of my personality I don't like."}]},
+ pps:{key:"pps",n:12,
+  name:{en:"Pure Procrastination Scale (PPS)",fa:"مقیاس اهمال‌کاری خالص"},
+  intro:{en:"",fa:""},
+  scale:{en:["Very seldom / Not true of me","Seldom true of me","Sometimes true of me","Often true of me","Very often true / True of me"],fa:["به‌ندرت یا اصلاً درباره‌ام صدق نمی‌کند","گاهی","تا حدی","اغلب","خیلی وقت‌ها یا کاملاً درباره‌ام صدق می‌کند"]},
+  reverse:[],
+  items:[{fa:"تصمیم‌گرفتن را آن‌قدر عقب می‌اندازم که دیگر دیر شده است.",en:"I delay making decisions until it's too late"},
+    {fa:"حتی بعد از اینکه تصمیم می‌گیرم، عمل کردن به آن را عقب می‌اندازم.",en:"Even after I make a decision I delay acting upon it"},
+    {fa:"پیش از رسیدن به تصمیم نهایی، وقت زیادی را صرف چیزهای جزئی و بی‌اهمیت می‌کنم.",en:"I waste a lot of time on trivial matters before getting to the final decisions"},
+    {fa:"وقتی برای یک ضرب‌الاجل آماده می‌شوم، اغلب با انجام کارهای دیگر وقت تلف می‌کنم.",en:"In preparation for some deadlines, I often waste time by doing other things"},
+    {fa:"حتی کارهایی که فقط لازم است بنشینم و انجامشان بدهم، معمولاً تا چند روز انجام نمی‌شوند.",en:"Even jobs that require little else except sitting down and doing them, I find that they seldom get done for days"},
+    {fa:"اغلب می‌بینم دارم کاری را انجام می‌دهم که قصد داشتم چند روز قبل انجامش بدهم.",en:"I often find myself performing tasks that I had intended to do days before"},
+    {fa:"مدام می‌گویم «فردا انجامش می‌دهم».",en:"I am continually saying 'I'll do it tomorrow'"},
+    {fa:"معمولاً پیش از شروع کاری که باید انجام دهم، تأخیر می‌کنم.",en:"I generally delay before starting on work I have to do"},
+    {fa:"می‌بینم که وقتم دارد تمام می‌شود.",en:"I find myself running out of time"},
+    {fa:"کارها را سر وقت انجام نمی‌دهم.",en:"I don't get things done on time"},
+    {fa:"در رعایت ضرب‌الاجل‌ها چندان خوب نیستم.",en:"I am not very good at meeting deadlines"},
+    {fa:"عقب انداختن کارها تا لحظه‌ی آخر در گذشته برایم هزینه‌ی مالی داشته است.",en:"Putting things off till the last minute has cost me money in the past"}]}
+};
+
+/* US means only. The file's standard deviations are placeholders — twenty
+   scales share three values, and they are so wide that a perfect 5.00 on
+   Conscientiousness would sit at the 80th percentile, which cannot be true.
+   So no percentile is computed from them: the mean is drawn as a marker and
+   nothing more is claimed. */
+var ST_NORMS={src:"C. J. Soto, Psychological Science 30(5):711-727, 2019, doi:10.1177/0956797619831612; descriptives file bfi2-descriptives.xlsx (Colby Personality Lab), US representative adults, N=3071.",warn:"US norms, not Iranian. Show as 'compared with a US adult sample' only.",mean:{"Extraversion":3.216,"Agreeableness":3.817,"Conscientiousness":3.886,"Negative Emotionality":2.715,"Open-Mindedness":3.649,"E Sociability":2.987,"E Assertiveness":3.282,"E Energy Level":3.381,"A Compassion":3.891,"A Respectfulness":4.147,"A Trust":3.415,"C Organization":3.885,"C Productiveness":3.848,"C Responsibility":3.924,"N Anxiety":3.052,"N Depression":2.477,"N Emotional Volatility":2.617,"O Intellectual Curiosity":3.698,"O Aesthetic Sensitivity":3.493,"O Creative Imagination":3.756}};
+var ST_SRC={
+ bfi2:{cite:"C. J. Soto and O. P. John, J. Pers. Soc. Psychol., vol. 113, no. 1, pp. 117-143, 2017, doi:10.1037/pspp0000096",
+       extra:"BFI-2 items © 2015 Oliver P. John and Christopher J. Soto. Free for non-commercial research/personal use.",
+       from:"Verbatim from the official BFI-2 self-report form (bfi2-form.pdf, Colby Personality Lab), supplied by the user 2026-10-18."},
+ scs:{cite:"K. D. Neff, Self and Identity, vol. 2, no. 3, pp. 223-250, 2003, doi:10.1080/15298860309027",
+      extra:"Neff permits use for any purpose with citation of Neff (2003). Translations are permitted but should be validated; the Persian text here is NOT validated.",
+      from:"Verbatim from K. Neff, 'Self-Compassion Scale' information sheet, https://self-compassion.org/wp-content/uploads/2021/03/SCS-information.pdf (checked 2026-10-18)."},
+ pps:{cite:"P. Steel, Pers. Individ. Differ., vol. 48, no. 8, pp. 926-934, 2010, doi:10.1016/j.paid.2010.02.025",
+      extra:"",
+      from:"Items verbatim from Rozental et al., BMC Psychology 2(1):54, 2014, doi:10.1186/s40359-014-0054-z, Table 2 (https://pmc.ncbi.nlm.nih.gov/articles/PMC4269972). Scale labels from a secondary source (psytests.org) - not confirmed in a primary publication."}};
+
+/* The first attempt, carried in so the history does not start empty. It was
+   originally entered with the scale read backwards; the numbers here are
+   already corrected. */
+var ST_BASE={date:"2026-10-14",note:"First attempt. Originally entered with the scale reversed by mistake; values below are already corrected (6 - x). Items 19, 47, 59 were answered with the earlier Persian wording (see fa_previous).",r:{bfi2:[4, 5, 2, 4, 1, 3, 5, 4, 4, 5, 1, 3, 4, 4, 4, 4, 3, 4, 4, 5, 2, 2, 5, 5, 2, 1, 3, 4, 4, 1, 4, 5, 4, 4, 5, 3, 3, 3, 2, 4, 5, 4, 4, 3, 1, 2, 4, 1, 1, 1, 4, 5, 5, 2, 1, 5, 4, 2, 4, 4],scs:[4, 2, 5, 1, 4, 5, 4, 3, 4, 1, 4, 2, 3, 4, 5, 5, 4, 4, 2, 5, 3, 4, 5, 2, 5, 4],pps:[4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]}};
+/* ── scoring ──
+   One rule for all three: a response is 1..5, a reverse-keyed item becomes
+   6 - x, and a scale is the mean of its items. The only wrinkle is the SCS
+   total, which averages the six SUBSCALE means after flipping the three
+   negative ones — not the items. */
+function stRev(inst,n,v){ return inst.reverse.indexOf(n)>=0 ? 6-v : v; }
+function stMean(a){ var t=0,i; for(i=0;i<a.length;i++) t+=a[i]; return a.length? t/a.length : 0; }
+function st2(x){ return Math.round(x*100)/100; }
+function stComplete(key,r){
+  var inst=ST[key];
+  if(!inst||!Array.isArray(r)||r.length!==inst.n) return false;
+  for(var i=0;i<r.length;i++){ var v=r[i]; if(!(v>=1&&v<=5)) return false; }
+  return true;
+}
+function stMissing(key,r){
+  var inst=ST[key], out=[], i;
+  if(!inst||!Array.isArray(r)) return out;
+  for(i=0;i<inst.n;i++){ var v=r[i]; if(!(v>=1&&v<=5)) out.push(i+1); }
+  return out;
+}
+function stScore(key,r){
+  var inst=ST[key];
+  if(!stComplete(key,r)) return null;
+  if(key==="pps"){
+    var sum=0,i; for(i=0;i<r.length;i++) sum+=r[i];
+    return { sum:sum, mean:st2(sum/r.length) };
+  }
+  var val=function(n){ return stRev(inst,n,r[n-1]); };
+  if(key==="bfi2"){
+    var dom={}, fac={};
+    inst.domains.forEach(function(d){
+      dom[d.key]=st2(stMean(d.items.map(val)));
+      d.facets.forEach(function(f){ fac[f.key]=st2(stMean(f.items.map(val))); });
+    });
+    return { domains:dom, facets:fac };
+  }
+  var subs={}, adj=[];
+  inst.subs.forEach(function(sb){
+    var m=stMean(sb.items.map(function(n){ return r[n-1]; }));
+    subs[sb.key]=st2(m);
+    adj.push(sb.neg ? 6-m : m);
+  });
+  return { subs:subs, total:st2(stMean(adj)) };
+}
+/* every headline number of an attempt, as {key,label,value}, so the trend
+   view and the drift check can walk any instrument the same way */
+function stHeadline(a){
+  var inst=ST[a.instrument], out=[];
+  if(!inst||!a.scores) return out;
+  if(a.instrument==="bfi2") inst.domains.forEach(function(d){
+    out.push({ key:d.key, label:T(d.en,d.fa), v:a.scores.domains[d.key] }); });
+  else if(a.instrument==="scs") out.push({ key:"total",
+    label:T("Total self-compassion","شفقت به خودِ کلی"), v:a.scores.total });
+  else out.push({ key:"mean", label:T("Mean","میانگین"), v:a.scores.mean });
+  return out;
+}
+function stAttempts(key){
+  return S.selfTests.filter(function(a){ return a.instrument===key; })
+    .sort(function(x,y){ return x.date<y.date?-1:(x.date>y.date?1:0); });
+}
+function stLatest(key){ var a=stAttempts(key); return a.length? a[a.length-1] : null; }
+
 /* ─────────── state ─────────── */
 var KEY="atomic.votes.v4", OLD=["atomic.votes.v3","atomic.votes.v2","atomic.votes.v1"];
 var S=null;
@@ -1388,6 +1804,8 @@ function blank(){
            identities:[], draft:null, timer:null,
            /* the Start module: one focus at a time, and the record it leaves behind */
            focus:null, commitments:[], starts:[], laterList:[], delays:[],
+           /* Self-tests: completed attempts, plus one unfinished one to resume */
+           selfTests:[], testDraft:null,
            settings:{theme:"system",lang:"en",skin:"auto"} };
 }
 /* Identities are shared: one identity can be voted for by many habits,
@@ -1595,6 +2013,48 @@ function migrate(o){
   delete b.settings.startMins; delete b.settings.graceMin; delete b.settings.onTimeMin;
   if(b.settings.delayCheck!==false) b.settings.delayCheck=true;
   if(typeof b.settings.lastNag!=="string") b.settings.lastNag="";
+
+  /* ── Self-tests. A backup from before this version has no selfTests key and
+     simply starts with the baseline seeded below; everything else is read
+     back defensively, because a half-written attempt must never be scored. ── */
+  b.selfTests=(Array.isArray(o.selfTests)?o.selfTests:[]).map(function(a){
+    if(!a||!ST[a.instrument]||!a.date) return null;
+    var r=(Array.isArray(a.responses)?a.responses:[]).map(function(v){
+      var n=+v; return (n>=1&&n<=5) ? Math.round(n) : null;
+    });
+    if(!stComplete(a.instrument,r)) return null;
+    return { id:a.id||uid(), instrument:a.instrument, date:String(a.date), t:+a.t||0,
+      responses:r, scores:stScore(a.instrument,r), note:String(a.note||"") };
+  }).filter(Boolean);
+
+  b.testDraft=null;
+  if(o.testDraft&&ST[o.testDraft.instrument]){
+    var dn=ST[o.testDraft.instrument].n;
+    var dr=(Array.isArray(o.testDraft.responses)?o.testDraft.responses:[]).slice(0,dn);
+    while(dr.length<dn) dr.push(null);
+    b.testDraft={ instrument:o.testDraft.instrument, responses:dr.map(function(v){
+        var n=+v; return (n>=1&&n<=5) ? Math.round(n) : null; }),
+      idx:Math.max(0,Math.min(dn-1,+o.testDraft.idx||0)),
+      started:+o.testDraft.started||Date.now(),
+      checked:o.testDraft.checked===true };
+  }
+
+  /* the retest interval is a setting of this app, not a rule of the instruments */
+  var rw=+b.settings.retestWeeks;
+  b.settings.retestWeeks=(isFinite(rw)&&rw>=1&&rw<=52)?Math.round(rw):4;
+  if(b.settings.stNorms!==true) b.settings.stNorms=false;
+
+  /* the first attempt is carried in once; after that, deleting it sticks */
+  if(b.settings.stSeeded!==true){
+    b.settings.stSeeded=true;
+    ["bfi2","scs","pps"].forEach(function(k){
+      var r=ST_BASE.r[k];
+      if(!stComplete(k,r)) return;
+      if(b.selfTests.some(function(a){ return a.instrument===k&&a.date===ST_BASE.date; })) return;
+      b.selfTests.push({ id:uid(), instrument:k, date:ST_BASE.date, t:0,
+        responses:r.slice(), scores:stScore(k,r), note:"baseline" });
+    });
+  }
   return b;
 }
 function loadLocal(){
@@ -1927,6 +2387,445 @@ function fullDetail(h){
           .filter(function(x){ return x[2].length; });
 }
 
+/* ─────────── self-tests ───────────
+   One screen's worth of state lives outside S: which view of the tab is open.
+   Answers themselves go straight into S.testDraft on every tap. */
+var stView={mode:"home",key:null,id:null};
+function stCaveat(){
+  return T("Unvalidated Persian translation, no Iranian norms. For self-reflection, not diagnosis.",
+           "ترجمه‌ی فارسی اعتبارسنجی‌نشده است و هنجارِ ایرانی ندارد. این‌ها برای خودشناسی‌اند، نه تشخیص.");
+}
+function stName(key){ var i=ST[key]; return i? T(i.name.en,i.name.fa) : key; }
+function stLabels(key){ var i=ST[key]; return LANG==="fa" ? i.scale.fa : i.scale.en; }
+function stNextDue(key){
+  var a=stLatest(key);
+  if(!a) return null;
+  return shift(a.date, (S.settings.retestWeeks||4)*7);
+}
+function stSummary(a){
+  if(!a) return "";
+  var h=stHeadline(a);
+  if(a.instrument==="pps") return T("sum ","جمع ")+N(a.scores.sum)+" / 60";
+  return h.map(function(x){ return esc(x.label)+" "+N(x.v); }).join(" · ");
+}
+/* Neff's bands are the only labels any of the three instruments carries.
+   Each case is a whole phrase: a bare word plus a suffix reads as English
+   wearing Persian clothes. */
+function stBand(v){
+  if(v<2.5) return T("in Neff's lower band","در دامنه‌ی پایینِ نف");
+  if(v<=3.5) return T("in Neff's middle band","در دامنه‌ی میانیِ نف");
+  return T("in Neff's upper band","در دامنه‌ی بالای نف");
+}
+/* BFI-2 gets a position relative to the scale's own midpoint — never a norm */
+function stSide(v){
+  if(v<2.75) return T("below the scale midpoint","پایین‌تر از میانه‌ی طیف");
+  if(v<=3.25) return T("around the scale midpoint","نزدیکِ میانه‌ی طیف");
+  return T("above the scale midpoint","بالاتر از میانه‌ی طیف");
+}
+
+function renderSelfTest(){
+  var el=$("#sc-selftest");
+  if(stView.mode==="run")    return setHTML(el, stRunHTML());
+  if(stView.mode==="result") return setHTML(el, stResultHTML());
+  if(stView.mode==="trend")  return setHTML(el, stTrendHTML());
+  setHTML(el, stHomeHTML());
+}
+
+function stHomeHTML(){
+  var h='<div class="mast"><p class="eyebrow">'+T("Where you stand","جایی که ایستاده‌ای")+'</p>'
+    + T('<h1>Self-<span class="g">tests</span></h1>','<h1><span class="g">خود</span>سنجی</h1>')+"</div>";
+
+  if(S.testDraft){
+    var dk=S.testDraft.instrument, done=S.testDraft.responses.filter(function(v){ return v; }).length;
+    h+='<div class="panel"><h3>'+T("Unfinished test","آزمونِ نیمه‌کاره")+"</h3>"
+      + '<p class="law-d" style="font-size:13px;line-height:1.6">'+esc(stName(dk))+" — "
+      + N(done)+" / "+N(ST[dk].n)+"</p>"
+      + '<div class="row" style="margin-top:12px">'
+      + '<button class="btn primary sm" data-stgo="'+dk+'">'+T("Carry on","ادامه بده")+"</button>"
+      + '<button class="btn ghost sm" data-stdrop="1">'+T("Throw it away","دورش بینداز")+"</button></div></div>";
+  }
+
+  ["bfi2","scs","pps"].forEach(function(k){
+    var a=stLatest(k), due=stNextDue(k), n=stAttempts(k).length;
+    h+='<div class="panel"><h3>'+esc(stName(k))+"</h3>";
+    if(a){
+      h+='<p class="law-d" style="font-size:13px;line-height:1.7">'+stSummary(a)+"</p>"
+       + '<p class="stcount" style="margin-top:6px">'+T("last ","آخرین: ")+esc(fullJalali(a.date))
+       + " · "+N(n)+T(n===1?" attempt":" attempts"," بار")+"</p>";
+    } else {
+      h+='<p class="law-d" style="font-size:13px">'+T("Not taken yet","هنوز نداده‌ای")+"</p>";
+    }
+    h+='<div class="row" style="margin-top:13px;flex-wrap:wrap">'
+      + '<button class="btn primary sm" data-stgo="'+k+'">'
+      + (a?T("Take it again","دوباره بده"):T("Start","شروع"))+"</button>";
+    if(a) h+='<button class="btn line sm" data-stres="'+k+'">'+T("Result","نتیجه")+"</button>";
+    if(n>1) h+='<button class="btn ghost sm" data-sttr="'+k+'">'+T("Trend","روند")+"</button>";
+    h+="</div>";
+    if(due){
+      var left=daysBetween(today(),due);
+      h+='<p class="stcount" style="margin-top:10px">'
+        + (left>0 ? T("next suggested in "+left+" days","یادآوری بعدی تا "+left+" روز دیگر")
+                  : T("the interval has passed","فاصله‌ی تعیین‌شده گذشته است"))+"</p>";
+    }
+    h+="</div>";
+  });
+
+  h+='<p class="stcaveat">'+esc(stCaveat())+"</p>"
+   + '<p class="stcaveat">'+T("The retest interval is a setting of this app, not a rule of these instruments. Change it in Settings.",
+       "فاصله‌ی آزمونِ دوباره تنظیمِ همین برنامه است، نه قاعده‌ای از خودِ این آزمون‌ها. در تنظیمات عوضش کن.")+"</p>";
+  return h;
+}
+
+/* ── the runner ── */
+function stStart(key){
+  if(!ST[key]) return;
+  if(!S.testDraft || S.testDraft.instrument!==key){
+    if(S.testDraft && S.testDraft.instrument!==key){
+      /* one test at a time: an unfinished other test would be silently lost */
+      return askConfirm(T("Switch test?","آزمون عوض شود؟"),
+        T("The unfinished "+stName(S.testDraft.instrument)+" will be thrown away.",
+          "آزمونِ نیمه‌کاره‌ی «"+stName(S.testDraft.instrument)+"» دور ریخته می‌شود."),
+        T("Switch","عوض کن"), function(){ stNewDraft(key); });
+    }
+    stNewDraft(key);
+    return;
+  }
+  stView={mode:"run",key:key,id:null}; renderSelfTest();
+}
+function stNewDraft(key){
+  var r=[]; for(var i=0;i<ST[key].n;i++) r.push(null);
+  S.testDraft={ instrument:key, responses:r, idx:0, started:Date.now(), checked:false };
+  touch();
+  stView={mode:"run",key:key,id:null}; closeSheet(); renderSelfTest();
+}
+function stRunHTML(){
+  var d=S.testDraft;
+  if(!d) return stHomeHTML();
+  var inst=ST[d.instrument], labels=stLabels(d.instrument);
+  var done=d.responses.filter(function(v){ return v; }).length;
+
+  var h='<div class="mast"><p class="eyebrow">'+esc(stName(d.instrument))+"</p>"
+    + "<h1>"+T("Answering","در حالِ پاسخ")+"</h1></div>";
+
+  /* sticky: the whole point is that the mapping never leaves the screen */
+  h+='<div class="sthead"><div class="stbar"><i id="stbar" style="width:'
+    + Math.round(done/inst.n*100)+'%"></i></div>'
+    + '<p class="stcount" id="stcnt">'+N(done)+" / "+N(inst.n)+"</p>"
+    + '<div class="stlegend">'+labels.map(function(lb,k){
+        return "<span><b>"+N(k+1)+"</b>"+esc(lb)+"</span>"; }).join("")+"</div></div>";
+
+  var stem=inst.stem?T(inst.stem.en,inst.stem.fa):"";
+  var intro=inst.intro?T(inst.intro.en,inst.intro.fa):"";
+  if(intro) h+='<p class="stintro">'+esc(intro)+"</p>";
+  if(stem) h+='<p class="ststem">'+esc(stem)+"</p>";
+
+  h+='<div class="panel stlist">';
+  inst.items.forEach(function(it,i){
+    var v=d.responses[i];
+    h+='<div class="strow" data-strow="'+i+'"><p class="q"><i>'+N(i+1)+"</i>"
+      + (inst.stem && i===0 ? "" : "")
+      + esc(stItemText(d.instrument,i))+"</p>"
+      + '<div class="stmini">'+labels.map(function(lb,k){
+          return '<button type="button" data-stset="'+i+"|"+(k+1)+'" aria-pressed="'
+            + (v===k+1?"true":"false")+'" aria-label="'+esc(N(k+1)+" — "+lb)+'">'
+            + N(k+1)+"</button>";
+        }).join("")+"</div>"
+      + '<p class="stpick">'+(v?esc(labels[v-1]):"")+"</p></div>";
+  });
+  h+="</div>";
+
+  h+='<div class="row" style="margin-top:16px;flex-wrap:wrap">'
+    + '<button class="btn primary sm" data-stdone="1">'+T("Finish and score","تمام و نمره‌گذاری")+"</button>"
+    + '<button class="btn ghost sm" data-sthome="1">'+T("Later","بعداً")+"</button></div>"
+    + '<p class="stcaveat">'+T("Your answers are saved as you go.","جواب‌ها همین‌طور که پیش می‌روی ذخیره می‌شوند.")+"</p>";
+  return h;
+}
+function stItemText(key,i){
+  var it=ST[key].items[i];
+  return LANG==="fa" ? it.fa : (it.en||it.fa);
+}
+function stSet(i,v){
+  var d=S.testDraft; if(!d) return;
+  var inst=ST[d.instrument];
+  if(i<0||i>=inst.n||!(v>=1&&v<=5)) return;
+  d.responses[i]=v;
+  touch();
+  /* repaint the one row and the counter: re-rendering sixty items on every
+     tap would throw the scroll position away mid-list */
+  stPaintRow(i); stPaintHead();
+  var done=d.responses.filter(function(x){ return x; }).length;
+  if(done===3 && !d.checked){ d.checked=true; touch(); stAskCheck(i,v); }
+}
+function stPaintRow(i){
+  var d=S.testDraft, row=$('[data-strow="'+i+'"]');
+  if(!row||!d) return;
+  var labels=stLabels(d.instrument), v=d.responses[i];
+  $$("button",row).forEach(function(b){
+    b.setAttribute("aria-pressed", (+b.dataset.stset.split("|")[1]===v) ? "true" : "false");
+  });
+  row.classList.remove("miss");
+  var p=$(".stpick",row);
+  if(p) p.textContent = v ? labels[v-1] : "";
+}
+function stPaintHead(){
+  var d=S.testDraft; if(!d) return;
+  var inst=ST[d.instrument], done=d.responses.filter(function(x){ return x; }).length;
+  var bar=$("#stbar"), cnt=$("#stcnt");
+  if(bar) bar.style.width=Math.round(done/inst.n*100)+"%";
+  if(cnt) cnt.textContent=N(done)+" / "+N(inst.n);
+}
+function stGoTo(i){
+  var row=$('[data-strow="'+i+'"]');
+  if(!row) return;
+  row.classList.add("miss");
+  row.scrollIntoView({block:"center",behavior:"smooth"});
+}
+function stAskCheck(i,v){
+  var d=S.testDraft, labels=stLabels(d.instrument);
+  openSheet(T("A quick check","یک بررسیِ کوتاه"),
+    '<p class="law-d" style="font-size:14px;line-height:1.75">'
+    + T("You chose ","گزینه‌ی ")+'<b>'+esc(labels[v-1])+'</b>'
+    + T(" for "," را برای ")+'<b>'+esc("«"+stItemText(d.instrument,i)+"»")+"</b>"
+    + T(". Is that what you meant?",' زدی. منظورت همین بود؟')+"</p>"
+    + '<p class="law-d" style="font-size:12.5px;color:var(--muted);margin-top:10px">'
+    + N(1)+" = "+esc(labels[0])+" · "+N(5)+" = "+esc(labels[4])+"</p>"
+    + '<div class="row" style="margin-top:18px">'
+    + '<button class="btn primary sm" data-close="1" style="flex:1">'+T("Yes","بله")+"</button>"
+    + '<button class="btn line sm" data-stfix="1">'+T("Fix it","اصلاحش کن")+"</button></div>");
+}
+function stFinish(){
+  var d=S.testDraft; if(!d) return;
+  var miss=stMissing(d.instrument,d.responses);
+  if(miss.length){
+    miss.forEach(function(n){ var r=$('[data-strow="'+(n-1)+'"]'); if(r) r.classList.add("miss"); });
+    openSheet(T("Still missing","هنوز جا مانده"),
+      '<p class="law-d" style="font-size:13.5px;line-height:1.7">'
+      + T(miss.length+" items have no answer yet. Only a complete test is scored.",
+          N(miss.length)+" گویه هنوز جواب ندارد. فقط آزمونِ کامل نمره می‌گیرد.")+"</p>"
+      + '<div class="stmiss">'+miss.slice(0,40).map(function(n){
+          return '<button type="button" data-stjump="'+(n-1)+'">'+N(n)+"</button>"; }).join("")+"</div>");
+    return;
+  }
+  var a={ id:uid(), instrument:d.instrument, date:today(), t:Date.now(),
+          responses:d.responses.slice(), scores:stScore(d.instrument,d.responses), note:"" };
+  S.selfTests.push(a);
+  S.testDraft=null;
+  touch();
+  stView={mode:"result",key:a.instrument,id:a.id};
+  renderSelfTest();
+  toast(T("Scored","نمره‌گذاری شد"));
+}
+/* ── drawing a score ──
+   Every scale here runs 1..5, so one bar serves all of them: the fill is the
+   distance above 1, the ticks are the midpoint and, when asked for, the US
+   mean. No percentile is drawn: see ST_NORMS on why the spread is not usable. */
+function stPct(v){ return Math.max(0,Math.min(100,(v-1)/4*100)); }
+function stBar(v,norm,small){
+  var h='<div class="stmeter'+(small?" sm":"")+'">'
+    + '<i style="width:'+stPct(v).toFixed(1)+'%"></i>'
+    + '<u class="mid" style="inset-inline-start:'+stPct(3).toFixed(1)+'%"></u>';
+  if(norm!=null) h+='<u class="norm" style="inset-inline-start:'+stPct(norm).toFixed(1)+'%"></u>';
+  return h+"</div>";
+}
+function stNorm(name){
+  if(!S.settings.stNorms) return null;
+  var v=ST_NORMS.mean[name];
+  return (v==null)?null:v;
+}
+function stPrev(a){
+  var list=stAttempts(a.instrument), i=-1, k;
+  for(k=0;k<list.length;k++) if(list[k].id===a.id) i=k;
+  return i>0 ? list[i-1] : null;
+}
+/* a move this large on a five-point scale is likelier to be a misread scale
+   than a changed person, so the note asks about the scale and nothing else */
+function stDrift(a){
+  var p=stPrev(a); if(!p) return null;
+  var now=stHeadline(a), was=stHeadline(p), out=[];
+  now.forEach(function(x,i){
+    if(!was[i]) return;
+    if(Math.abs(x.v-was[i].v)>1.5) out.push(x.label);
+  });
+  return out.length? out : null;
+}
+function stAttemptById(id){
+  for(var i=0;i<S.selfTests.length;i++) if(S.selfTests[i].id===id) return S.selfTests[i];
+  return null;
+}
+
+function stResultHTML(){
+  var a=stAttemptById(stView.id) || stLatest(stView.key);
+  if(!a) return stHomeHTML();
+  var inst=ST[a.instrument];
+  var h='<div class="mast"><p class="eyebrow">'+esc(fullJalali(a.date))+"</p>"
+    + "<h1>"+esc(stName(a.instrument))+"</h1></div>";
+
+  if(a.note==="baseline") h+='<p class="stcaveat" style="margin-top:0">'
+    + T("First attempt, corrected after a scale mix-up.","اولین تلاش؛ پس از اشتباهِ جهتِ مقیاس اصلاح شد.")+"</p>";
+
+  var drift=stDrift(a);
+  if(drift) h+='<div class="stnote"><b>'+T("Worth a second look","یک نگاهِ دوباره بد نیست")+"</b>"
+    + "<p>"+T("These moved more than 1.5 points since last time: ","این‌ها نسبت به دفعه‌ی قبل بیش از ۱٫۵ نمره جابه‌جا شده‌اند: ")
+    + esc(drift.join("، "))+". "
+    + T("That is usually a sign the scale was read the other way round. Check which end was 1.",
+        "معمولاً یعنی طیف برعکس خوانده شده. ببین کدام سر ۱ بوده.")+"</p></div>";
+
+  if(a.instrument==="bfi2"){
+    h+='<div class="row" style="margin:4px 0 12px"><button class="btn line sm" data-stnorm="1">'
+      + (S.settings.stNorms?T("Hide the US marker","نشانه‌ی آمریکایی را پنهان کن")
+                           :T("Compare with a US sample","مقایسه با نمونه‌ی آمریکایی"))+"</button></div>";
+    inst.domains.forEach(function(d){
+      var v=a.scores.domains[d.key];
+      h+='<div class="panel"><div class="strow2"><h3>'+esc(T(d.en,d.fa))+"</h3>"
+        + '<span class="stv">'+N(v)+'</span></div>'
+        + stBar(v,stNorm(d.en))
+        + '<p class="stcount">'+esc(stSide(v))+"</p>";
+      d.facets.forEach(function(f){
+        var fv=a.scores.facets[f.key];
+        h+='<div class="stfac"><span>'+esc(T(f.en,f.fa))+"</span>"
+          + '<span class="stv sm">'+N(fv)+"</span></div>"
+          + stBar(fv,stNorm(d.key+" "+f.en),true);
+      });
+      h+="</div>";
+    });
+    if(S.settings.stNorms) h+='<p class="stcaveat">'
+      + T("The marker is the mean of a US adult sample, not an Iranian norm. Only the mean is shown: the spread in the source file is not usable.",
+          "آن نشانه میانگینِ نمونه‌ای از بزرگسالانِ آمریکایی است، نه هنجارِ ایرانی. فقط میانگین نشان داده می‌شود، چون پراکندگیِ موجود در فایل قابل استفاده نیست.")+"</p>";
+  }
+  else if(a.instrument==="scs"){
+    var tot=a.scores.total;
+    h+='<div class="panel"><div class="strow2"><h3>'+T("Total","کل")+"</h3>"
+      + '<span class="stv">'+N(tot)+"</span></div>"+stBar(tot,null)
+      + '<p class="stcount">'+esc(stBand(tot))+"</p></div>";
+    h+='<div class="panel"><h3>'+T("Subscales","زیرمقیاس‌ها")+"</h3>"
+      + '<p class="stcount" style="margin-bottom:10px">'
+      + T("Raw means. The three marked ones are reversed before they enter the total.",
+          "میانگینِ خام. آن سه تای علامت‌دار پیش از ورود به نمره‌ی کل معکوس می‌شوند.")+"</p>";
+    inst.subs.forEach(function(sb){
+      var v=a.scores.subs[sb.key];
+      h+='<div class="stfac"><span>'+esc(T(sb.en,sb.fa))
+        + (sb.neg?' <em class="stneg">'+T("reversed","معکوس")+"</em>":"")+"</span>"
+        + '<span class="stv sm">'+N(v)+"</span></div>"+stBar(v,null,true);
+    });
+    h+="</div>";
+  }
+  else{
+    h+='<div class="panel"><div class="strow2"><h3>'+T("Sum","جمع")+"</h3>"
+      + '<span class="stv">'+N(a.scores.sum)+" / "+N(60)+"</span></div>"
+      + '<div class="strow2" style="margin-top:14px"><h3>'+T("Mean","میانگین")+"</h3>"
+      + '<span class="stv">'+N(a.scores.mean)+"</span></div>"
+      + stBar(a.scores.mean,null)
+      + '<p class="stcount">'+T("The mark on the bar is the scale midpoint, 3.","نشانه‌ی روی میله، میانه‌ی طیف است: ۳.")+"</p>"
+      + '<p class="stcount" style="margin-top:6px">'
+      + T("This instrument has no published cut-off, so no label is given.",
+          "این آزمون نقطه‌ی برشِ منتشرشده ندارد، پس برچسبی هم نمی‌گیرد.")+"</p></div>";
+  }
+
+  h+='<div class="row" style="margin-top:4px;flex-wrap:wrap">'
+    + '<button class="btn line sm" data-stcopy="'+a.id+'">'+T("Copy results as text","کپیِ نتیجه به‌صورت متن")+"</button>"
+    + '<button class="btn ghost sm" data-sthome="1">'+T("Back","بازگشت")+"</button></div>"
+    + '<p class="stcaveat">'+esc(stCaveat())+"</p>";
+  return h;
+}
+
+function stTrendHTML(){
+  var key=stView.key, list=stAttempts(key);
+  var h='<div class="mast"><p class="eyebrow">'+esc(stName(key))+"</p>"
+    + "<h1>"+T("Trend","روند")+"</h1></div>";
+  if(list.length<2) return h+'<div class="panel"><p class="law-d">'
+    + T("Two attempts are needed before there is a trend.","برای دیدنِ روند، دستِ‌کم دو بار لازم است.")
+    + '</p></div><div class="row"><button class="btn ghost sm" data-sthome="1">'+T("Back","بازگشت")+"</button></div>";
+
+  var keys=stHeadline(list[0]).map(function(x){ return x.key; });
+  var labels={}; stHeadline(list[0]).forEach(function(x){ labels[x.key]=x.label; });
+  keys.forEach(function(k){
+    h+='<div class="panel"><h3>'+esc(labels[k])+"</h3>";
+    list.forEach(function(a,i){
+      var hv=stHeadline(a), v=null;
+      hv.forEach(function(x){ if(x.key===k) v=x.v; });
+      if(v==null) return;
+      var prev=null;
+      if(i>0){ stHeadline(list[i-1]).forEach(function(x){ if(x.key===k) prev=x.v; }); }
+      var dd=(prev==null)?"":(v>prev?"+":"")+st2(v-prev);
+      h+='<div class="sttr"><span class="d">'+esc(fullJalali(a.date))+"</span>"
+        + (key==="pps"&&k==="mean" ? "" : "")
+        + '<span class="v">'+N(v)+(dd!==""?' <em>'+N(dd)+"</em>":"")+"</span></div>"
+        + stBar(v,null,true);
+    });
+    h+="</div>";
+  });
+  h+='<div class="row"><button class="btn ghost sm" data-sthome="1">'+T("Back","بازگشت")+"</button></div>"
+   + '<p class="stcaveat">'+esc(stCaveat())+"</p>";
+  return h;
+}
+
+/* the same shape the user pastes into a chat, so it has to carry the raw
+   responses as well as the scores */
+function stAsText(a){
+  var inst=ST[a.instrument], L=[];
+  L.push(stName(a.instrument)+" — "+a.date);
+  if(a.instrument==="bfi2"){
+    inst.domains.forEach(function(d){
+      L.push(T(d.en,d.fa)+": "+a.scores.domains[d.key]);
+      d.facets.forEach(function(f){ L.push("  "+T(f.en,f.fa)+": "+a.scores.facets[f.key]); });
+    });
+  } else if(a.instrument==="scs"){
+    L.push(T("Total","کل")+": "+a.scores.total);
+    inst.subs.forEach(function(sb){
+      L.push("  "+T(sb.en,sb.fa)+(sb.neg?" ("+T("reversed","معکوس")+")":"")+": "+a.scores.subs[sb.key]);
+    });
+  } else {
+    L.push(T("Sum","جمع")+": "+a.scores.sum+" / 60");
+    L.push(T("Mean","میانگین")+": "+a.scores.mean);
+  }
+  L.push("");
+  L.push(T("Raw responses (1..5, in item order):","پاسخ‌های خام (۱ تا ۵، به ترتیبِ گویه):"));
+  L.push(a.responses.join(", "));
+  L.push("");
+  L.push(stCaveat());
+  return L.join("\n");
+}
+function stCopy(id){
+  var a=stAttemptById(id); if(!a) return;
+  var text=stAsText(a);
+  var done=function(){ toast(T("Copied","کپی شد")); };
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText)
+      return navigator.clipboard.writeText(text).then(done, function(){ stCopyFallback(text); });
+  }catch(e){}
+  stCopyFallback(text);
+}
+function stCopyFallback(text){
+  /* the artifact frame can refuse the clipboard; showing the text is the
+     honest fallback, since the point is to paste it somewhere */
+  openSheet(T("Your results","نتیجه‌ی تو"),
+    '<p class="law-d" style="font-size:12.5px;margin-bottom:9px">'
+    + T("Select and copy.","انتخاب کن و کپی بگیر.")+"</p>"
+    + '<textarea readonly rows="14" style="width:100%;font-family:var(--f-mono);font-size:11.5px">'
+    + esc(text)+"</textarea>");
+}
+
+/* where each instrument came from: the paper, the text we actually used, and
+   the licence line the BFI-2 asks to travel with it */
+function stGuideBlock(){
+  var h='<hr class="rule"><div class="sec" style="margin-top:0"><h2>'
+    + T("About these tests","درباره‌ی این آزمون‌ها")+"</h2></div>"
+    + '<p class="law-d" style="font-size:13px;line-height:1.75;margin-bottom:14px">'
+    + T("Three instruments sit in the Self-tests tab. Two of them are decades old and widely used; the Persian wording is a personal translation and has never been validated, and none of the three has an Iranian norm. Read the numbers as notes to yourself.",
+        "سه آزمون در تبِ خودسنجی هست. دوتاشان ده‌هاست که به کار می‌روند؛ ولی متنِ فارسی ترجمه‌ای شخصی است که هرگز اعتبارسنجی نشده، و هیچ‌کدام هنجارِ ایرانی ندارند. این عددها را یادداشت‌هایی برای خودت بخوان، نه بیشتر.")+"</p>";
+  ["bfi2","scs","pps"].forEach(function(k){
+    var s=ST_SRC[k];
+    h+='<div class="panel"><h3>'+esc(stName(k))+"</h3>"
+      + '<p class="stcount cite" data-latin dir="ltr">'+esc(s.cite)+"</p>"
+      + '<p class="stcount" style="line-height:1.7;margin-top:8px">'
+      + T("Wording taken from:","متنِ گویه‌ها از اینجا:")
+      + '</p><p class="stcount cite" data-latin dir="ltr">'+esc(s.from)+"</p>"
+      + (s.extra ? '<p class="stcount cite" data-latin dir="ltr">'+esc(s.extra)+"</p>" : "")
+      + "</div>";
+  });
+  return h;
+}
+
 /* ─────────── chrome ─────────── */
 var toastTimer=null;
 function toast(msg){
@@ -1957,7 +2856,9 @@ var TABS=[{id:"today",label:"Today",fa:"امروز",icon:"today"},
   {id:"start",label:"Start",fa:"شروع",icon:"sunrise"},
   {id:"habits",label:"Habits",fa:"عادت‌ها",icon:"habits"},
   {id:"card",label:"Scorecard",fa:"کارنامه",icon:"card"},{id:"progress",label:"Progress",fa:"پیشرفت",icon:"progress"},
-  {id:"guide",label:"Guide",fa:"راهنما",icon:"guide"},{id:"settings",label:"Settings",fa:"تنظیمات",icon:"gear"}];
+  {id:"guide",label:"Guide",fa:"راهنما",icon:"guide"},
+  {id:"selftest",label:"Self-tests",fa:"خودسنجی",icon:"ruler"},
+  {id:"settings",label:"Settings",fa:"تنظیمات",icon:"gear"}];
 var view="today";
 function renderTabs(){
   setHTML($("#tabs"), TABS.map(function(t){
@@ -2319,6 +3220,10 @@ function openDelay(){
       }).join("")+"</div></div>"
     + field("dstep",T("My next tiny step","کوچک‌ترین قدمِ بعدی"),
         T("open the file, nothing else","فقط فایل را باز کنم، همین و بس"),"",true,"")
+    + (stLatest("scs") ? '<p class="law-d" style="font-size:12.5px;line-height:1.65;margin-top:14px">'
+        + T("If it helps to have it in front of you, your self-compassion result is here.",
+            "اگر دیدنش کمک می‌کند، نتیجه‌ی شفقت به خودت همین‌جاست.")
+        + ' <button type="button" class="linkish" data-stscs="1">'+T("Open it","بازش کن")+"</button></p>" : "")
     + '<div class="row" style="margin-top:18px">'
     + '<button class="btn cool" data-stdsave="1" style="flex:1">'+T("Write it down","بنویسش")+"</button>"
     + '<button class="btn ghost" data-close="1">'+T("Not now","الان نه")+"</button></div>";
@@ -3686,8 +4591,31 @@ function startReportHTML(){
     + '</span><span class="d">'+e.dlMet+" / "+e.dlDue+"</span></div>";
   if(e.dl.length) rows+='<div class="ckline"><span class="t">'+T("Days you put it off","روزهایی که عقب انداختی")
     + '</span><span class="d">'+e.dl.length+"</span></div>";
+  /* the one number among the three tests that this module is trying to move */
+  var pl=stLatest("pps"), pf=stAttempts("pps")[0];
+  if(pl){
+    var pd=(pf&&pf.id!==pl.id) ? pl.scores.sum-pf.scores.sum : null;
+    rows+='<div class="ckline"><span class="t">'+T("Procrastination scale","مقیاسِ اهمال‌کاری")
+      + '</span><span class="d">'+N(pl.scores.sum)+" / "+N(60)
+      + (pd===null ? "" : " · "+(pd>0?"+":"")+N(pd)+T(" since the first"," نسبت به اولین بار"))
+      + "</span></div>";
+  }
   if(rows) h+='<div class="panel" style="margin-top:12px"><h3>'+T("What the fortnight says","این دو هفته چه می‌گوید")+"</h3>"+rows+"</div>";
   return h;
+}
+/* the top face of an extruded bar: white at low alpha, so it reads as lit on
+   any habit colour and in either theme without naming a second colour */
+function barCap(ctx,bx,by,bw,bh,r){
+  var cap=Math.min(12,bh*0.34);
+  if(cap<3) return;
+  ctx.save();
+  ctx.globalAlpha=0.42; ctx.fillStyle="#ffffff";
+  ctx.beginPath();
+  ctx.moveTo(bx,by+cap); ctx.lineTo(bx,by+r);
+  ctx.quadraticCurveTo(bx,by,bx+r,by);
+  ctx.lineTo(bx+bw-r,by); ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+r);
+  ctx.lineTo(bx+bw,by+cap); ctx.closePath(); ctx.fill();
+  ctx.restore();
 }
 function drawStartChart(){
   var cv=$("#startchart"); if(!cv) return;
@@ -3732,6 +4660,7 @@ function drawStartChart(){
     ctx.quadraticCurveTo(bx,top,bx+r,top);
     ctx.lineTo(bx+bw-r,top); ctx.quadraticCurveTo(bx+bw,top,bx+bw,top+r);
     ctx.lineTo(bx+bw,top+bh); ctx.closePath(); ctx.fill();
+    barCap(ctx,bx,top,bw,bh,r);
   });
 }
 
@@ -3809,6 +4738,7 @@ function drawHabitCharts(){
         ctx.quadraticCurveTo(bx,by,bx+r,by);
         ctx.lineTo(bx+bw-r,by); ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+r);
         ctx.lineTo(bx+bw,by+bh); ctx.closePath(); ctx.fill();
+        barCap(ctx,bx,by,bw,bh,r);
       });
     } else {
       var g2=ctx.createLinearGradient(pad.l,0,w-pad.r,0);
@@ -4026,6 +4956,7 @@ function renderGuide(){
     + GUIDE_BREAK.map(function(L){ return guideLaw(L,true); }).join("")
     + '<hr class="rule">'+ideasBlock()
     + '<hr class="rule">'+delayBlock()
+    + stGuideBlock()
     + '<p class="foot" style="margin-top:24px">'
     + T("Framework from <em>Atomic Habits</em> by James Clear (2018). This app is a personal practice tool, not the book &mdash; the wording and every example here are ours.",
         "چارچوب برگرفته از <em>عادت‌های اتمی</em> نوشتهٔ جیمز کلیر (۲۰۱۸). این اپ یک ابزارِ تمرینِ شخصی است، نه خودِ کتاب &mdash; نگارش و تمامِ مثال‌های اینجا از ماست.")+"</p>";
@@ -4338,6 +5269,14 @@ function renderSettings(){
     + tip(1,'<p class="foot left" style="margin-top:10px">'+T("Live two-way sync with Google Calendar is not possible from a self-contained file &mdash; it needs OAuth credentials and a server. Re-export whenever your habits change.",
         "همگام‌سازیِ زندهٔ دوطرفه با گوگل‌کلندر از دلِ یک فایلِ تک‌نفره ممکن نیست &mdash; اعتبارنامهٔ OAuth و یک سرور می‌خواهد. هر وقت عادت‌هایت عوض شد، دوباره خروجی بگیر.")+"</p>")+"</div>";
 
+  h+='<div class="panel"><h3>'+T("Self-tests","خودسنجی")+"</h3>"
+    + '<p class="d">'+T("How long to wait before the app suggests sitting a test again. This interval is a setting of this app, not a rule of the instruments themselves.",
+        "چقدر صبر کند تا دوباره پیشنهادِ دادنِ آزمون بدهد. این فاصله تنظیمِ همین برنامه است، نه قاعده‌ای از خودِ آزمون‌ها.")+"</p>"
+    + '<div class="f" style="margin-top:10px"><label for="f-rtw">'
+    + T("Suggest again after (weeks)","پیشنهادِ دوباره پس از (هفته)")+"</label>"
+    + '<input id="f-rtw" type="number" min="1" max="52" step="1" data-rtw="1" value="'
+    + (S.settings.retestWeeks||4)+'"></div></div>';
+
   h+='<div class="panel"><h3>'+T("Your data","داده‌های تو")+"</h3>"
     + tip(1,'<p class="d">'+T("Everything lives on this device. If you are signed in to Claude, a private copy syncs so you can pick this up on another device.",
         "همه‌چیز روی همین دستگاه می‌ماند. اگر به Claude وارد شده باشی، یک نسخهٔ خصوصی همگام می‌شود تا بتوانی روی دستگاهِ دیگری ادامه بدهی.")+"</p>")
@@ -4432,11 +5371,21 @@ function renderAll(){
   else if(view==="card") renderCard();
   else if(view==="progress") renderProgress();
   else if(view==="guide") renderGuide();
+  else if(view==="selftest") renderSelfTest();
   else if(view==="settings") renderSettings();
   if(S.timer) startTick(); else clearInterval(tmrTick);
 }
 
 /* ─────────── events ─────────── */
+document.addEventListener("change",function(e){
+  var t=e.target;
+  if(t&&t.hasAttribute&&t.hasAttribute("data-rtw")){
+    var n=Math.round(+t.value);
+    if(!isFinite(n)||n<1||n>52){ t.value=S.settings.retestWeeks||4; return; }
+    S.settings.retestWeeks=n; touch();
+    toast(T("Saved","ذخیره شد"));
+  }
+});
 document.addEventListener("pointerdown",function(e){
   var g=e.target.closest("[data-grip]");
   if(g) gripDown(e,g.dataset.grip);
@@ -4463,6 +5412,25 @@ document.addEventListener("click",function(e){
   }
   if(d.timer) return openTimer(d.timer);
   if(t.hasAttribute("data-save")) return saveEditor(d.save);
+  if(d.stgo) return stStart(d.stgo);
+  if(d.stset){ var sp=d.stset.split("|"); return stSet(+sp[0],+sp[1]); }
+  if(d.stdone) return stFinish();
+  if(d.sthome){ stView={mode:"home",key:null,id:null}; return renderSelfTest(); }
+  if(d.stres){ var la=stLatest(d.stres); if(la){ stView={mode:"result",key:d.stres,id:la.id}; renderSelfTest(); } return; }
+  if(d.sttr){ stView={mode:"trend",key:d.sttr,id:null}; return renderSelfTest(); }
+  if(d.stjump){ closeSheet(); stGoTo(+d.stjump); return; }
+  if(d.stfix){ closeSheet(); stGoTo(0); return; }
+  if(d.stscs){
+    var sa=stLatest("scs");
+    closeSheet();
+    if(sa){ stView={mode:"result",key:"scs",id:sa.id}; go("selftest"); }
+    return;
+  }
+  if(d.stnorm){ S.settings.stNorms=!S.settings.stNorms; touch(); return renderSelfTest(); }
+  if(d.stcopy) return stCopy(d.stcopy);
+  if(d.stdrop) return askConfirm(T("Throw it away?","دورش بیندازم؟"),
+      T("The unfinished answers will be deleted.","جواب‌های نیمه‌کاره پاک می‌شوند."),
+      T("Delete","پاک کن"), function(){ S.testDraft=null; touch(); closeSheet(); renderSelfTest(); });
   if(d.export) return saveFile("atomic-habits-"+today()+".json", JSON.stringify(S,null,2), "application/json");
   if(d.import) return $("#importFile").click();
   if(d.icsout){
@@ -4933,6 +5901,66 @@ function registerSW(){
   }catch(e){}
 }
 
+/* ────────── the ground's shamseh ──────────
+   Four moves, the same four the icon makes: concentric rings, a radial
+   division confined to a band (spokes running the whole way out read as a
+   wheel), a ring of small bosses, and an eight-point star at the centre.
+
+   It is painted WHITE into a mask, so one drawing serves all four palettes and
+   every bit of colour comes from the gradient underneath. Line weight is not
+   cosmetic here: a stroke much thinner than the blur in front of it is not
+   softened by the glass, it is averaged out of existence. */
+function gP(n){ return Math.round(n*10)/10; }
+function gCirc(cx,cy,r){ return "<circle cx='"+gP(cx)+"' cy='"+gP(cy)+"' r='"+gP(r)+"'/>"; }
+function gRay(cx,cy,a,r0,r1){
+  return "<path d='M"+gP(cx+Math.cos(a)*r0)+" "+gP(cy+Math.sin(a)*r0)
+       + "L"+gP(cx+Math.cos(a)*r1)+" "+gP(cy+Math.sin(a)*r1)+"'/>";
+}
+function gStar(cx,cy,ro,ri){
+  var p=[],i,a,r;
+  for(i=0;i<16;i++){
+    a=i/16*Math.PI*2 - Math.PI/2;
+    r=(i%2)?ri:ro;
+    p.push(gP(cx+Math.cos(a)*r)+","+gP(cy+Math.sin(a)*r));
+  }
+  return "<polygon points='"+p.join(" ")+"'/>";
+}
+/* one medallion in two weights: the rim carries the shape from across the
+   room, the inner work only shows up close */
+function gShamseh(cx,cy,R){
+  var light="", i, a, step=Math.PI*2/16;
+  for(i=1;i<=3;i++) light += gCirc(cx,cy,R*i/4);
+  for(i=0;i<16;i++) light += gRay(cx,cy,i*step, R*0.75, R);
+  for(i=0;i<8;i++)  light += gRay(cx,cy,(i+0.5)*step*2, R*0.25, R*0.5);
+  for(i=0;i<8;i++){
+    a=(i+0.5)*step*2;
+    light += gCirc(cx+Math.cos(a)*R*0.875, cy+Math.sin(a)*R*0.875, R*0.057);
+  }
+  light += gStar(cx,cy,R*0.197,R*0.086);
+  return { heavy:gCirc(cx,cy,R), light:light };
+}
+function drawGround(){
+  try{
+    var g=document.getElementById("bgtileg");
+    if(!g) return;
+    /* a quarter medallion at each corner is what makes this a field rather
+       than a polka dot */
+    var m=gShamseh(66,66,56), h=m.heavy, l=m.light;
+    [[0,0],[132,0],[0,132],[132,132]].forEach(function(pt){
+      var c=gShamseh(pt[0],pt[1],26); h+=c.heavy; l+=c.light;
+    });
+    g.innerHTML = "<g stroke-width='3.4'>"+h+"</g><g stroke-width='2.2'>"+l+"</g>";
+
+    var noise = "<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'>"
+      + "<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85'"
+      + " numOctaves='3' stitchTiles='stitch'/>"
+      + "<feColorMatrix type='saturate' values='0'/></filter>"
+      + "<rect width='180' height='180' filter='url(#n)' opacity='.55'/></svg>";
+    document.documentElement.style.setProperty("--grain-img",
+      'url("data:image/svg+xml;utf8,' + encodeURIComponent(noise) + '")');
+  }catch(e){}
+}
+
 /* boot */
 S=loadLocal();
 if(pruneIdentities()) persist();
@@ -4940,6 +5968,7 @@ applyLang();
 applyTheme();
 installManifest();
 registerSW();
+drawGround();
 renderTabs();
 renderAll();
 initCloud();

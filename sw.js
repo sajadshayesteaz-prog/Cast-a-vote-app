@@ -10,7 +10,7 @@
    time they are fetched — which happens on the first online open anyway — so a
    renamed or added asset can never leave the install half-written. */
 
-var CACHE = "cast-a-vote-v16";
+var CACHE = "cast-a-vote-v18";
 var CORE  = ["./", "./index.html"];
 
 self.addEventListener("install", function (e) {
