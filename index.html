@@ -509,7 +509,7 @@ button,input,textarea,select{font:inherit;color:inherit}
 /* accordion sections in the editor */
 .law.acc{padding:0;overflow:hidden}
 .acc-h{width:100%;background:none;border:0;padding:14px 15px;display:flex;align-items:center;gap:11px;
-  cursor:pointer;text-align:left;font-family:var(--f-ui)}
+  cursor:pointer;text-align:start;font-family:var(--f-ui)}
 .acc-h .chev{margin-left:auto;flex:none;color:var(--muted);transition:transform .22s}
 .acc-h .chev svg{width:15px;height:15px;display:block}
 .law.acc[data-open="true"] .acc-h .chev{transform:rotate(180deg)}
@@ -2994,7 +2994,7 @@ function stGuideBlock(){
   var closed = !(S.settings.guideOpen&&S.settings.guideOpen.__src);
   var h='<hr class="rule"><section class="guide-law" style="'+lawVars("obvious")+'">'
     + '<button class="gl-head" data-tguide="__src" aria-expanded="'+(!closed)+'"'
-      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:start;font-family:inherit">'
     + '<span class="gl-ic">'+ic("guide")+"</span>"
     + '<span class="gl-tt"><span class="n">'+T("The small print","پانوشت")+"</span>"
     + "<h3>"+T("Sources and notices","منابع و اعلان‌ها")+"</h3>"
@@ -3123,7 +3123,7 @@ function nCard(key,icon,n,title,q,body,pal){
   var open=!!(S.settings.nineOpen&&S.settings.nineOpen[key]);
   return '<section class="guide-law" style="'+lawVars(pal||"easy")+'">'
     + '<button class="gl-head" data-nacc="'+key+'" aria-expanded="'+open+'"'
-      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:start;font-family:inherit">'
     + '<span class="gl-ic">'+ic(icon)+"</span>"
     + '<span class="gl-tt"><span class="n">'+n+"</span><h3>"+title+"</h3>"
     + '<p class="q">'+q+"</p></span>"
@@ -5807,7 +5807,7 @@ function ideasBlock(){
   var closed=!(S.settings.guideOpen&&S.settings.guideOpen.__ideas);
   return '<section class="guide-law" style="'+lawVars("easy")+'">'
     + '<button class="gl-head" data-tguide="__ideas" aria-expanded="'+(!closed)+'"'
-      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:start;font-family:inherit">'
     + '<span class="gl-ic" style="background:linear-gradient(140deg,'
       + (SKIN==="fa"?"#2B3A8F 0%,#4FC9BC 100%":"#4338CA 0%,#22D3EE 100%")+')">'+ic("brain")+"</span>"
     + '<span class="gl-tt"><span class="n">'+T("The thinking","پشتِ صحنه")+'</span><h3>'+T("Ideas behind the laws","ایده‌های پشتِ قانون‌ها")+"</h3>"
@@ -5865,7 +5865,7 @@ function delayBlock(){
   var closed = !(S.settings.guideOpen&&S.settings.guideOpen.__delay);
   var h='<section class="guide-law" style="'+lawVars("easy")+'">'
     + '<button class="gl-head" data-tguide="__delay" aria-expanded="'+(!closed)+'"'
-      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:start;font-family:inherit">'
     + '<span class="gl-ic">'+ic("sunrise")+"</span>"
     + '<span class="gl-tt"><span class="n">'+T("The Start tab","تبِ شروع")+"</span>"
     + "<h3>"+T("Procrastination","اهمال‌کاری")+"</h3>"
@@ -5920,7 +5920,7 @@ function guideLaw(L,inv){
   var closed = !(S.settings.guideOpen&&S.settings.guideOpen[L.k]);
   return '<section class="guide-law'+(inv?" inv":"")+'" style="'+lawVars(L.k)+'">'
     + '<button class="gl-head" data-tguide="'+L.k+'" aria-expanded="'+(!closed)+'"'
-      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:start;font-family:inherit">'
     + '<span class="gl-ic">'+ic(LAWIC[L.k])+"</span>"
     + '<span class="gl-tt"><span class="n">'+T(L.n,L.nf)+'</span><h3>'+T(L.t,L.tf)+'</h3><p class="q">'+T(L.q,L.qf)
       + (closed?" &middot; "+T(L.tac.length+" tactic"+(L.tac.length===1?"":"s"), L.tac.length+" تاکتیک"):"")+"</p></span>"
