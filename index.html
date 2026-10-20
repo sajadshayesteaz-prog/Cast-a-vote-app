@@ -138,6 +138,82 @@ button,input,textarea,select{font:inherit;color:inherit}
 .sc-ic svg.lu,.tac-ic svg.lu,.loop-s svg.lu{stroke-width:1.85}
 #defs{position:absolute;width:0;height:0;overflow:hidden}
 
+/* ── the nine habits ── */
+.npill{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px}
+.npill-i{background:var(--surface);border-radius:15px;padding:13px 10px;text-align:center;
+  border:1px solid var(--line-soft);box-shadow:inset 0 1.5px 0 var(--rim),0 3px 0 var(--lipn)}
+.npill-i span{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 7px;
+  border-radius:11px;background:var(--lg);color:#fff}
+.npill-i span svg{width:18px;height:18px}
+.npill-i b{display:block;font-size:13.5px;color:var(--ink)}
+.npill-i i{display:block;font-style:normal;font-size:10.5px;line-height:1.4;color:var(--muted);margin-top:3px}
+.nevid{display:flex;gap:10px;align-items:flex-start;background:var(--surface-2);
+  border-radius:14px;padding:12px 13px;margin:0 0 14px}
+.nevid svg{width:17px;height:17px;flex:none;color:var(--teal);margin-top:2px}
+.nevid p{margin:0;font-size:12.5px;line-height:1.75;color:var(--ink-2)}
+/* the pair of numbers that only means anything together */
+.nbig{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 13px}
+.nbig>div{background:var(--surface-2);border-radius:14px;padding:12px;text-align:center}
+.nbig b{display:block;font-family:var(--f-disp);font-size:27px;line-height:1.1;color:var(--ink)}
+.nbig b i{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-inline-start:3px}
+.nbig span{display:block;font-size:11px;color:var(--muted);margin-top:4px}
+.nlist{margin-top:13px}
+.nrow{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.nrow:last-child{border-bottom:0}
+.nrow .t{flex:1;min-width:0;font-size:13.5px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nrow .d{font-size:11px;color:var(--muted);flex:none}
+.nfix{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.nbatch,.ncut{display:flex;align-items:center;gap:11px;background:var(--surface-2);
+  border-radius:14px;padding:12px 13px;margin-bottom:12px}
+.nbatch>svg,.ncut>svg{width:19px;height:19px;flex:none;color:var(--teal)}
+.nbatch>div,.ncut>div{flex:1;min-width:0}
+.nbatch b,.ncut b{display:block;font-size:13.5px;color:var(--ink)}
+.nbatch span,.ncut span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.ncut.past{background:color-mix(in srgb,var(--amber) 16%,transparent)}
+.ncut.past>svg{color:var(--amber)}
+.nadd{display:flex;gap:8px;align-items:center}
+.nadd .in{flex:1}
+/* one item, four doors */
+.n4d{background:var(--surface-2);border-radius:14px;padding:12px;margin-bottom:9px}
+.n4d p{margin:0 0 9px;font-size:13.5px;line-height:1.6;color:var(--ink)}
+.n4d .r{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.n4d .btn.del{color:var(--red-deep)}
+.nnote{background:var(--surface-2);border-radius:14px;padding:12px;margin-bottom:9px}
+.nnote .h{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink)}
+.nnote .d{margin:5px 0 0;font-size:11px;color:var(--muted)}
+.nnote .r{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.nquant{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nquant .btn{justify-content:flex-start;gap:8px}
+.nquant .mg{font-style:normal;font-family:var(--f-mono);font-size:10.5px;color:var(--muted);margin-inline-start:auto}
+/* the decay curve: an SVG so it takes the palette with it */
+.ncurve{margin:4px 0 2px}
+.ncurve svg{width:100%;height:78px;display:block}
+.ncurve .fill{fill:color-mix(in srgb,var(--amber) 22%,transparent);stroke:none}
+.ncurve .line{fill:none;stroke:var(--amber);stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.ncurve .now{stroke:var(--teal);stroke-width:1.5;stroke-dasharray:3 3;vector-effect:non-scaling-stroke}
+.ncurve .bed{stroke:var(--indigo);stroke-width:2;vector-effect:non-scaling-stroke}
+.ncurve .ax{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:3px}
+.nwrow{display:flex;gap:9px;align-items:center}
+.nwrow .btn{flex:1}
+/* the running block */
+.nwave{border-radius:17px;padding:16px;text-align:center;
+  background:color-mix(in srgb,var(--teal) 15%,transparent);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--teal) 34%,transparent)}
+.nwave.recover{background:color-mix(in srgb,var(--indigo) 14%,transparent);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--indigo) 32%,transparent)}
+.nwave .ph{margin:0;font-size:12px;color:var(--muted)}
+.nwave .cd{margin:4px 0 11px;font-family:var(--f-mono);font-size:40px;line-height:1;color:var(--ink)}
+.nwave .bar{height:7px;border-radius:999px;background:var(--grid-empty);overflow:hidden}
+.nwave .bar i{display:block;height:100%;background:var(--grad-primary);transition:width .9s linear}
+.nwave .rule{margin:11px 0 0;font-size:12px;line-height:1.7;color:var(--ink-2)}
+.nwave .r{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.nnight{margin-top:4px}
+.nnrow{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.nnrow .ic{display:grid;place-items:center;width:34px;height:34px;flex:none;border-radius:11px;
+  background:var(--surface-2);color:var(--teal);margin-top:19px}
+.nnrow .ic svg{width:17px;height:17px}
+.nnrow>div{flex:1;min-width:0}
+
 /* ── self-tests ── */
 .sthead{position:sticky;top:0;z-index:6;background:var(--page);padding:10px 0 13px;
   box-shadow:0 12px 14px -14px rgba(0,0,0,.4)}
@@ -513,6 +589,19 @@ button,input,textarea,select{font:inherit;color:inherit}
 .frow .btn{flex:1 1 auto}
 .fcard .frow{margin-top:9px}
 /* the deadline block: one row per checkpoint, tappable */
+/* the Start tab's "already done" bar — the same shape as the start button
+   it replaces, so the card does not jump when the tick lands */
+.donebar{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--r);
+  background:color-mix(in srgb,var(--green) 18%,transparent);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--green) 40%,transparent),
+    0 3px 0 color-mix(in srgb,var(--green) 52%,var(--lipn))}
+.donebar svg{width:22px;height:22px;flex:none;color:var(--green-deep)}
+.donebar b{display:block;font-size:15px;color:var(--ink)}
+.donebar span{display:block;font-size:12px;color:var(--ink-2);margin-top:2px}
+.donebar.late{background:color-mix(in srgb,var(--amber) 17%,transparent);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--amber) 42%,transparent),
+    0 3px 0 color-mix(in srgb,var(--amber) 54%,var(--lipn))}
+.donebar.late svg{color:var(--amber)}
 .ckline{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-soft)}
 .ckline:first-of-type{border-top:0}
 .ckline .d{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
@@ -1244,6 +1333,7 @@ hr.rule{border:0;border-top:1px solid var(--line);margin:24px 0}
   <main id="sc-progress" class="screen"></main>
   <main id="sc-guide" class="screen"></main>
   <main id="sc-selftest" class="screen"></main>
+  <main id="sc-nine" class="screen"></main>
   <main id="sc-settings" class="screen"></main>
 </div>
 
@@ -1729,10 +1819,6 @@ var ST_SRC={
       extra:"",
       from:"Items verbatim from Rozental et al., BMC Psychology 2(1):54, 2014, doi:10.1186/s40359-014-0054-z, Table 2 (https://pmc.ncbi.nlm.nih.gov/articles/PMC4269972). Scale labels from a secondary source (psytests.org) - not confirmed in a primary publication."}};
 
-/* The first attempt, carried in so the history does not start empty. It was
-   originally entered with the scale read backwards; the numbers here are
-   already corrected. */
-var ST_BASE={date:"2026-10-14",note:"First attempt. Originally entered with the scale reversed by mistake; values below are already corrected (6 - x). Items 19, 47, 59 were answered with the earlier Persian wording (see fa_previous).",r:{bfi2:[4, 5, 2, 4, 1, 3, 5, 4, 4, 5, 1, 3, 4, 4, 4, 4, 3, 4, 4, 5, 2, 2, 5, 5, 2, 1, 3, 4, 4, 1, 4, 5, 4, 4, 5, 3, 3, 3, 2, 4, 5, 4, 4, 3, 1, 2, 4, 1, 1, 1, 4, 5, 5, 2, 1, 5, 4, 2, 4, 4],scs:[4, 2, 5, 1, 4, 5, 4, 3, 4, 1, 4, 2, 3, 4, 5, 5, 4, 4, 2, 5, 3, 4, 5, 2, 5, 4],pps:[4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]}};
 /* ── scoring ──
    One rule for all three: a response is 1..5, a reverse-keyed item becomes
    6 - x, and a scale is the mean of its items. The only wrinkle is the SCS
@@ -1806,6 +1892,9 @@ function blank(){
            focus:null, commitments:[], starts:[], laterList:[], delays:[],
            /* Self-tests: completed attempts, plus one unfinished one to resume */
            selfTests:[], testDraft:null,
+           /* The nine habits. Six tools keep a record; `wave` is the one live
+              thing here, the block currently running. */
+           nine:{ slips:[], inbox:[], thinks:[], caff:[], waves:[], nights:[], wave:null },
            settings:{theme:"system",lang:"en",skin:"auto"} };
 }
 /* Identities are shared: one identity can be voted for by many habits,
@@ -1980,7 +2069,8 @@ function migrate(o){
     if(!s||!s.date) return null;
     return { id:s.id||uid(), date:String(s.date), t:+s.t||0, focusId:s.focusId||null,
       habitId:s.habitId||null, planned:String(s.planned||""), onTime:s.onTime!==false,
-      mins:Math.max(0,+s.mins||0), after:(s.after==="going"?"going":"stopped") };
+      mins:Math.max(0,+s.mins||0), after:(s.after==="going"?"going":"stopped"),
+      via:(s.via==="check"?"check":null) };
   }).filter(Boolean);
   if(b.starts.length>1000) b.starts.length=1000;
   b.laterList=(Array.isArray(o.laterList)?o.laterList:[]).map(function(l){
@@ -2044,16 +2134,70 @@ function migrate(o){
   b.settings.retestWeeks=(isFinite(rw)&&rw>=1&&rw<=52)?Math.round(rw):4;
   if(b.settings.stNorms!==true) b.settings.stNorms=false;
 
-  /* the first attempt is carried in once; after that, deleting it sticks */
-  if(b.settings.stSeeded!==true){
-    b.settings.stSeeded=true;
-    ["bfi2","scs","pps"].forEach(function(k){
-      var r=ST_BASE.r[k];
-      if(!stComplete(k,r)) return;
-      if(b.selfTests.some(function(a){ return a.instrument===k&&a.date===ST_BASE.date; })) return;
-      b.selfTests.push({ id:uid(), instrument:k, date:ST_BASE.date, t:0,
-        responses:r.slice(), scores:stScore(k,r), note:"baseline" });
-    });
+  /* ── the nine habits ──
+     Six small collections and one live block. Each is clamped the same way
+     everything else here is: a bad row is dropped rather than trusted. */
+  var on=(o&&typeof o.nine==="object"&&o.nine)?o.nine:{};
+  function arr(v){ return Array.isArray(v)?v:[]; }
+  b.nine.slips=arr(on.slips).map(function(z){
+    if(!z||!z.date) return null;
+    return { id:z.id||uid(), date:String(z.date), t:+z.t||0,
+      what:String(z.what||""), fix:String(z.fix||"") };
+  }).filter(Boolean).slice(0,600);
+  b.nine.inbox=arr(on.inbox).map(function(z){
+    if(!z||!z.text) return null;
+    return { id:z.id||uid(), date:String(z.date||today()), t:+z.t||0,
+      text:String(z.text), d:(FOURD[z.d]?z.d:null), dt:+z.dt||0 };
+  }).filter(Boolean).slice(0,400);
+  b.nine.thinks=arr(on.thinks).map(function(z){
+    if(!z) return null;
+    var k=String(z.know||""), a=String(z.assume||""), nx=String(z.next||"");
+    if(!k&&!a&&!nx) return null;
+    return { id:z.id||uid(), date:String(z.date||today()), t:+z.t||0, know:k, assume:a, next:nx };
+  }).filter(Boolean).slice(0,300);
+  b.nine.caff=arr(on.caff).map(function(z){
+    if(!z||!(+z.mg>0)) return null;
+    return { id:z.id||uid(), date:String(z.date||today()), t:+z.t||0,
+      mg:Math.min(900,Math.round(+z.mg)), label:String(z.label||"") };
+  }).filter(Boolean).slice(0,900);
+  b.nine.waves=arr(on.waves).map(function(z){
+    if(!z||!z.date) return null;
+    return { id:z.id||uid(), date:String(z.date), t:+z.t||0,
+      kind:(z.kind==="recover"?"recover":"focus"), mins:Math.max(0,Math.round(+z.mins||0)) };
+  }).filter(Boolean).slice(0,900);
+  b.nine.nights=arr(on.nights).map(function(z){
+    if(!z||!z.date) return null;
+    var a=String(z.awe||""), g=String(z.grat||""), f=String(z.forgive||"");
+    if(!a&&!g&&!f) return null;
+    return { date:String(z.date), t:+z.t||0, awe:a, grat:g, forgive:f };
+  }).filter(Boolean).slice(0,400);
+  if(on.wave&&on.wave.startedAt){
+    b.nine.wave={ phase:(on.wave.phase==="recover"?"recover":"focus"),
+      startedAt:+on.wave.startedAt||0, mins:Math.max(1,Math.round(+on.wave.mins||90)) };
+    /* a block left running across a restart is stale after twice its own
+       length — resuming it would log minutes nobody sat through */
+    if(Date.now()-b.nine.wave.startedAt > b.nine.wave.mins*120000) b.nine.wave=null;
+  }
+  b.settings.bedtime=/^\d{2}:\d{2}$/.test(String(o&&o.settings&&o.settings.bedtime))
+    ? o.settings.bedtime : "23:00";
+  b.settings.cutH=(function(v){ v=Math.round(+v); return (v>=0&&v<=12)?v:6; })(o&&o.settings&&o.settings.cutH);
+  b.settings.blockMin=(function(v){ v=Math.round(+v); return (v>=20&&v<=180)?v:90; })(o&&o.settings&&o.settings.blockMin);
+  b.settings.recovMin=(function(v){ v=Math.round(+v); return (v>=5&&v<=60)?v:20; })(o&&o.settings&&o.settings.recovMin);
+  b.settings.batch=(function(v){
+    v=(Array.isArray(v)?v:[]).filter(function(x){ return /^\d{2}:\d{2}$/.test(String(x)); });
+    return v.length?v.slice(0,4):["09:00","13:00","16:30"];
+  })(o&&o.settings&&o.settings.batch);
+  if(o&&o.settings&&typeof o.settings.nineOpen==="object"&&o.settings.nineOpen)
+    b.settings.nineOpen=o.settings.nineOpen;
+
+  /* An earlier build carried a first attempt in so the history would not
+     start empty. It is personal and it is no longer wanted, so it is taken
+     back out — here rather than only at the source, because a phone that
+     already stored it would otherwise keep it forever. Only the seeded rows
+     go: an attempt you answered yourself never carries this note. */
+  if(b.settings.stSeeded===true){
+    b.selfTests=b.selfTests.filter(function(a){ return a.note!=="baseline"; });
+    delete b.settings.stSeeded;
   }
   return b;
 }
@@ -2161,12 +2305,44 @@ function fmtDur(s){
 var MIN_LOG_MS=120000;   /* nothing is logged until two full minutes */
 function writeEntry(hid,date,patch){
   if(!S.logs[hid]) S.logs[hid]={};
-  if(patch===null){ delete S.logs[hid][date]; touch(); return; }
+  if(patch===null){ delete S.logs[hid][date]; dropTickStart(hid,date); touch(); return; }
   var e=S.logs[hid][date]||{n:0};
   Object.keys(patch).forEach(function(k){ e[k]=patch[k]; });
   e.t=Date.now();
   S.logs[hid][date]=e;
+  if(GOOD[e.s]) tickStart(hid,date); else dropTickStart(hid,date);
   touch();
+}
+/* ── a tick on the habit card is a start too ──
+   The one thing on the Start tab can be ticked off its own card on Today,
+   and when it is, the Start tab should not go on asking. So the tick writes
+   a start of its own — no stopwatch behind it, so no minutes — and reads
+   the clock AT THE MOMENT OF THE TAP to decide whether it was inside the
+   window. That is the only honest reading: looking at the screen an hour
+   later must not turn an on-time day into a late one.
+
+   Only today, and only the one thing: ticking a past day says nothing about
+   what time it happened, and a habit that is not on the Start tab has no
+   window to be late for. */
+function tickStart(hid,date){
+  var f=focusLive();
+  if(!f||f.habitId!==hid||date!==today()) return;
+  if(S.starts.some(function(s){ return s.date===date&&s.habitId===hid; })) return;
+  S.starts.unshift({ id:uid(), date:date, t:Date.now(), focusId:f.id, habitId:hid,
+    planned:f.time||"", onTime:onTimeNow(f), mins:0, after:"stopped", via:"check" });
+  if(S.starts.length>1000) S.starts.length=1000;
+}
+/* a tick taken back takes its own record with it — and never one that a
+   real timed session left behind */
+function dropTickStart(hid,date){
+  S.starts=S.starts.filter(function(s){
+    return !(s.via==="check"&&s.date===date&&s.habitId===hid);
+  });
+}
+function tickStartOf(hid){
+  var d=today(), out=null;
+  S.starts.forEach(function(s){ if(!out&&s.date===d&&s.habitId===hid) out=s; });
+  return out;
 }
 function setStatus(hid,date,s){
   var h=habit(hid);
@@ -2807,23 +2983,637 @@ function stCopyFallback(text){
 
 /* where each instrument came from: the paper, the text we actually used, and
    the licence line the BFI-2 asks to travel with it */
+function srcLine(label,text){
+  return '<p class="stcount" style="margin:9px 0 2px">'+label+"</p>"
+    + '<p class="stcount cite" data-latin dir="ltr">'+esc(text)+"</p>";
+}
+/* Everything the app leans on, in one place, plus the things a reader has a
+   right to know before trusting a number it prints. Citations carry
+   [data-latin] so the Persian digit pass leaves a DOI alone. */
 function stGuideBlock(){
-  var h='<hr class="rule"><div class="sec" style="margin-top:0"><h2>'
-    + T("About these tests","درباره‌ی این آزمون‌ها")+"</h2></div>"
+  var closed = !(S.settings.guideOpen&&S.settings.guideOpen.__src);
+  var h='<hr class="rule"><section class="guide-law" style="'+lawVars("obvious")+'">'
+    + '<button class="gl-head" data-tguide="__src" aria-expanded="'+(!closed)+'"'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+    + '<span class="gl-ic">'+ic("guide")+"</span>"
+    + '<span class="gl-tt"><span class="n">'+T("The small print","پانوشت")+"</span>"
+    + "<h3>"+T("Sources and notices","منابع و اعلان‌ها")+"</h3>"
+    + '<p class="q">'+T("Where everything here came from, and what this app is not",
+        "هر چیزی که اینجاست از کجا آمده، و این اپ چه چیزی نیست")+"</p></span>"
+    + '<span class="chev" style="margin-left:auto;flex:none;color:var(--muted);'
+      + (closed?"":"transform:rotate(180deg);")+'">'+CHEV+"</span></button>";
+  if(closed) return h+"</section>";
+
+  /* ── what this is ── */
+  h+='<div class="panel"><h3>'+T("What this app is","این اپ چه چیزی است")+"</h3>"
+    + '<p class="law-d" style="margin:0">'
+    + T("A personal practice tool. It keeps a record of what you decided to do and whether you did it, and it hands you a few frameworks for making the next repetition easier. It is not a medical, psychological or diagnostic instrument, it does not treat anything, and nothing it prints is advice from a clinician.",
+        "یک ابزارِ تمرینِ شخصی. نگه می‌دارد که چه چیزی را قرار گذاشتی و چقدرش را انجام دادی، و چند چارچوب دستت می‌دهد تا تکرارِ بعدی آسان‌تر شود. ابزارِ پزشکی، روان‌شناختی یا تشخیصی نیست، چیزی را درمان نمی‌کند، و هیچ‌کدام از عددهایش نظرِ یک درمانگر نیست.")+"</p></div>";
+
+  /* ── your data ── */
+  h+='<div class="panel"><h3>'+T("Your data","داده‌هایِ تو")+"</h3>"
+    + '<p class="law-d" style="margin:0 0 9px">'
+    + T("Everything you type stays in this browser&rsquo;s own storage on this device. Nothing is sent anywhere unless you sign in to sync, and the answers you give in the Self-tests tab are never shared with anyone the artifact is shared with.",
+        "هر چیزی که می‌نویسی در حافظهٔ همین مرورگر روی همین دستگاه می‌ماند. تا وقتی برای همگام‌سازی وارد نشده‌ای چیزی جایی فرستاده نمی‌شود، و جواب‌هایِ تبِ خودسنجی هرگز به دستِ کسی که این اپ با او هم‌رسان شده نمی‌رسد.")+"</p>"
+    + '<p class="law-d" style="margin:0">'
+    + T("Clearing this browser&rsquo;s site data erases all of it. The export button in Settings writes the whole record to one file, and import reads it back — that file is the backup.",
+        "پاک‌کردنِ دادهٔ سایتِ مرورگر، همه‌اش را پاک می‌کند. دکمهٔ خروجی در تنظیمات تمامِ پرونده را در یک فایل می‌نویسد و ورودی همان را برمی‌گرداند — پشتیبانِ تو همان فایل است.")+"</p></div>";
+
+  /* ── the framework ── */
+  h+='<div class="panel"><h3>'+T("The framework","چارچوب")+"</h3>"
+    + '<p class="law-d" style="margin:0 0 4px">'
+    + T("The four laws, the habit loop, the two-minute rule, habit stacking and the scorecard all come from one book. The wording and every example in this app are ours, not the book&rsquo;s.",
+        "چهار قانون، چرخهٔ عادت، قانونِ دو دقیقه‌ای، زنجیره‌کردنِ عادت‌ها و کارنامه همه از یک کتاب آمده‌اند. نگارش و تمامِ مثال‌هایِ این اپ از ماست، نه از کتاب.")+"</p>"
+    + srcLine(T("Book:","کتاب:"),
+        "Clear, J. (2018). Atomic Habits. Avery.")+"</div>";
+
+  /* ── the instruments ── */
+  h+='<div class="sec"><h2>'+T("The self-tests","آزمون‌هایِ خودسنجی")+"</h2></div>"
     + '<p class="law-d" style="font-size:13px;line-height:1.75;margin-bottom:14px">'
-    + T("Three instruments sit in the Self-tests tab. Two of them are decades old and widely used; the Persian wording is a personal translation and has never been validated, and none of the three has an Iranian norm. Read the numbers as notes to yourself.",
-        "سه آزمون در تبِ خودسنجی هست. دوتاشان ده‌هاست که به کار می‌روند؛ ولی متنِ فارسی ترجمه‌ای شخصی است که هرگز اعتبارسنجی نشده، و هیچ‌کدام هنجارِ ایرانی ندارند. این عددها را یادداشت‌هایی برای خودت بخوان، نه بیشتر.")+"</p>";
+    + T("Three instruments sit in the Self-tests tab. They are decades old and widely used in research; the Persian wording is a personal translation and has never been validated, and none of the three has an Iranian norm. A score here is a note to yourself, not a measurement and not a diagnosis.",
+        "سه آزمون در تبِ خودسنجی هست. ده‌هاست که در پژوهش به کار می‌روند؛ ولی متنِ فارسی ترجمه‌ای شخصی است که هرگز اعتبارسنجی نشده، و هیچ‌کدام هنجارِ ایرانی ندارند. عددی که اینجا می‌بینی یادداشتی است برای خودت — نه اندازه‌گیری، نه تشخیص.")+"</p>";
   ["bfi2","scs","pps"].forEach(function(k){
     var s=ST_SRC[k];
     h+='<div class="panel"><h3>'+esc(stName(k))+"</h3>"
       + '<p class="stcount cite" data-latin dir="ltr">'+esc(s.cite)+"</p>"
-      + '<p class="stcount" style="line-height:1.7;margin-top:8px">'
-      + T("Wording taken from:","متنِ گویه‌ها از اینجا:")
-      + '</p><p class="stcount cite" data-latin dir="ltr">'+esc(s.from)+"</p>"
+      + srcLine(T("Wording taken from:","متنِ گویه‌ها از اینجا:"), s.from)
       + (s.extra ? '<p class="stcount cite" data-latin dir="ltr">'+esc(s.extra)+"</p>" : "")
       + "</div>";
   });
-  return h;
+
+  /* ── the rest ── */
+  h+='<div class="sec"><h2>'+T("Everything else","بقیهٔ چیزها")+"</h2></div>"
+    + '<div class="panel">'
+    + srcLine(T("The Start tab &mdash; why beginning is the hard part:","تبِ شروع — چرا شروع‌کردن سخت‌تر از ادامه دادن است:"),
+        "Steel, P. (2007). The nature of procrastination. Psychological Bulletin, 133(1), 65–94. doi:10.1037/0033-2909.133.1.65")
+    + srcLine(T("Implementation intentions &mdash; the &ldquo;when and where&rdquo; sentence:","نیتِ اجرایی — جملهٔ «کی و کجا»:"),
+        "Gollwitzer, P. M. (1999). Implementation intentions. American Psychologist, 54(7), 493–503. doi:10.1037/0003-066X.54.7.493")
+    + srcLine(T("Self-forgiveness after a missed day:","بخششِ خود پس از یک روزِ از‌دست‌رفته:"),
+        "Wohl, M. J. A., Pychyl, T. A., & Bennett, S. H. (2010). I forgive myself, now I can study. Personality and Individual Differences, 48(7), 803–808. doi:10.1016/j.paid.2010.01.029")
+    + srcLine(T("The Jalali calendar conversion:","تبدیلِ تقویمِ جلالی:"),
+        "Borkowski, K. M. (1996). The Persian calendar for 3000 years. Earth, Moon, and Planets, 68, 421–428.")
+    + "</div>";
+
+  /* ── the nine habits ── */
+  h+='<div class="sec"><h2>'+T("The nine habits","نُه عادت")+"</h2></div>"
+    + '<p class="law-d" style="font-size:13px;line-height:1.75;margin-bottom:14px">'
+    + T("The Nine tab follows a framework by Sandeep Swadia, read from two documents supplied by the user. The framework is his; the wording, the tools and every number the app computes are ours, and the claims it leans on are listed below so they can be checked rather than believed.",
+        "تبِ نُه عادت از چارچوبی از ساندیپ سوادیا می‌آید که از دو سندِ بارگذاری‌شده خوانده شده. چارچوب از اوست؛ نگارش، ابزارها و هر عددی که اپ حساب می‌کند از ماست، و ادعاهایی که رویشان ایستاده پایین آمده تا بشود وارسی‌شان کرد، نه فقط باورشان.")+"</p>"
+    + '<div class="panel">'
+    + srcLine(T("Unfinished things stay open &mdash; the Zeigarnik effect:","کارِ ناتمام باز می‌ماند — اثرِ زیگارنیک:"),
+        "Zeigarnik, B. (1927). Über das Behalten von erledigten und unerledigten Handlungen. Psychologische Forschung, 9, 1–85.")
+    + srcLine(T("Writing by hand changes what you understand:","نوشتنِ دستی آنچه را می‌فهمی عوض می‌کند:"),
+        "Mueller, P. A., & Oppenheimer, D. M. (2014). The pen is mightier than the keyboard. Psychological Science, 25(6), 1159–1168. doi:10.1177/0956797614524581")
+    + srcLine(T("Caffeine six hours before bed still disrupts sleep:","کافئینِ شش ساعت پیش از خواب هنوز خواب را به هم می‌زند:"),
+        "Drake, C., Roehrs, T., Shambroom, J., & Roth, T. (2013). Caffeine effects on sleep taken 0, 3, or 6 hours before going to bed. Journal of Clinical Sleep Medicine, 9(11), 1195–1200. doi:10.5664/jcsm.3170")
+    + srcLine(T("The half-life the curve is drawn with &mdash; and how much it varies between people:","نیمه‌عمری که منحنی با آن کشیده شده — و اینکه بین آدم‌ها چقدر فرق می‌کند:"),
+        "Nehlig, A. (2018). Interindividual differences in caffeine metabolism and factors driving caffeine consumption. Pharmacological Reviews, 70(2), 384–411. doi:10.1124/pr.117.014407")
+    + srcLine(T("Cycles of alertness through the waking day:","چرخه‌های هوشیاری در طولِ روز:"),
+        "Kleitman, N. (1963). Sleep and Wakefulness (rev. ed.). University of Chicago Press. — basic rest-activity cycle.")
+    + srcLine(T("Energy moves in packets, which is where the metaphor comes from:","انرژی در بسته‌ها جابه‌جا می‌شود — ریشهٔ آن استعاره:"),
+        "Planck, M. (1901). Ueber das Gesetz der Energieverteilung im Normalspectrum. Annalen der Physik, 309(3), 553–563. doi:10.1002/andp.19013090310")
+    + '<p class="stcount" style="margin:13px 0 2px">'
+    + T("Two things in that tab are reported practice rather than findings, and are written as such: the memo-before-the-meeting habit attributed to Amazon, and the climbers&rsquo; rule above 8,000 metres.",
+        "دو چیز در آن تب روایتِ عمل‌اند نه یافتهٔ پژوهشی، و همان‌طور هم نوشته شده‌اند: عادتِ خواندنِ یادداشت پیش از جلسه که به آمازون نسبت داده می‌شود، و قاعدهٔ کوهنوردان بالای هشت هزار متر.")+"</p>"
+    + "</div>";
+
+  h+='<div class="panel"><h3>'+T("Built with","ساخته شده با")+"</h3>"
+    + '<p class="law-d" style="margin:0 0 4px">'
+    + T("One HTML file, no build step and no third-party code at run time. The fonts are embedded so the app renders the same with the network off; the icon set is drawn from Lucide.",
+        "یک فایلِ HTML، بدونِ مرحلهٔ بیلد و بدونِ کدِ جانبی در زمانِ اجرا. قلم‌ها درونِ فایل جا خوش کرده‌اند تا بی اینترنت هم همین‌طور دیده شود؛ آیکون‌ها از Lucide است.")+"</p>"
+    + srcLine(T("Icons:","آیکون‌ها:"), "Lucide — ISC License. lucide.dev")
+    + srcLine(T("Persian typeface:","قلمِ فارسی:"), "Vazirmatn by Saber Rastikerdar — SIL Open Font License 1.1")
+    + "</div>";
+  return h+"</section>";
+}
+
+
+/* ═══════════ the nine habits ═══════════
+   A separate framework from the four laws, so it lives on its own tab. Three
+   pillars — where the mind goes, how the body moves, where the spirit lands —
+   and nine repetitions small enough to be boring, which is the point: a habit
+   you have to be impressed by is one you will stop doing.
+
+   Six of the nine carry a tool. The other three do not, because awe, gratitude
+   and forgiving yourself are not improved by a form with fields in it. */
+
+var FOURD={ do:1, deleg:1, date:1, del:1 };
+var CAFF_HALF=5;            /* hours; the published range is 5 to 6 */
+var nWaveT=null;
+
+/* ── small helpers ── */
+function nine(){ return S.nine; }
+function nToday(list){ var d=today(); return list.filter(function(z){ return z.date===d; }); }
+function hm(mins){
+  mins=Math.max(0,Math.round(mins));
+  return (mins<60) ? T(mins+" min",mins+" دقیقه")
+    : T(Math.floor(mins/60)+"h "+(mins%60)+"m", Math.floor(mins/60)+" ساعت و "+(mins%60)+" دقیقه");
+}
+function clockOf(ts){
+  var d=new Date(ts);
+  return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2);
+}
+function addMins(t,mins){
+  var m=clockMins(t)+mins; m=((m%1440)+1440)%1440;
+  return ("0"+Math.floor(m/60)).slice(-2)+":"+("0"+(m%60)).slice(-2);
+}
+
+/* ── the shell ── */
+function nCard(key,icon,n,title,q,body,pal){
+  var open=!!(S.settings.nineOpen&&S.settings.nineOpen[key]);
+  return '<section class="guide-law" style="'+lawVars(pal||"easy")+'">'
+    + '<button class="gl-head" data-nacc="'+key+'" aria-expanded="'+open+'"'
+      + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
+    + '<span class="gl-ic">'+ic(icon)+"</span>"
+    + '<span class="gl-tt"><span class="n">'+n+"</span><h3>"+title+"</h3>"
+    + '<p class="q">'+q+"</p></span>"
+    + '<span class="chev" style="margin-left:auto;flex:none;color:var(--muted);'
+      + (open?"transform:rotate(180deg);":"")+'">'+CHEV+"</span></button>"
+    + (open? body : "")
+    + "</section>";
+}
+function nWhy(text){ return '<p class="law-d" style="margin:0 0 12px">'+text+"</p>"; }
+function nEvid(text){
+  return '<div class="nevid">'+ic("brain")+"<p>"+text+"</p></div>";
+}
+
+function renderNine(){
+  var h='<div class="mast"><p class="eyebrow">'+T("Nine boring habits","نُه عادتِ خسته‌کننده")+"</p>"
+    + T('<h1>Don&rsquo;t look at <span class="g">the peak</span></h1>',
+        '<h1>به <span class="g">قله</span> نگاه نکن</h1>')
+    + tip(2,'<p class="sub">'
+      + T("Above 8,000 metres a climber keeps their eyes down, takes one step, pauses, and only then decides on the next one. Looking at the summit from there breaks people. These nine are the steps — small enough to be dull, which is what makes them survivable.",
+          "بالای هشت هزار متر، کوهنورد چشمش را پایین نگه می‌دارد، یک گام برمی‌دارد، مکث می‌کند، و تازه بعد تصمیم می‌گیرد گامِ بعدی را بردارد. نگاه‌کردن به قله از آنجا آدم را می‌شکند. این نُه تا همان گام‌هاست — آن‌قدر کوچک که خسته‌کننده باشند، و همین است که از پسشان برمی‌آیی.")+"</p>")
+    + "</div>";
+
+  h+='<div class="npill">'+["attention","energy","happy"].map(function(k){
+      var P=NPILL[k];
+      return '<div class="npill-i" style="'+lawVars(P.pal)+'"><span>'+ic(P.ic)+"</span>"
+        + "<b>"+T(P.t,P.tf)+"</b><i>"+T(P.d,P.df)+"</i></div>";
+    }).join("")+"</div>";
+
+  h+='<div class="sec"><h2>'+T("Attention &mdash; where your mind goes","توجه — ذهن کجا می‌رود")+"</h2></div>"
+    + nClick()+nInput()+nWrite()
+    + '<hr class="rule"><div class="sec" style="margin-top:0"><h2>'
+    + T("Energy &mdash; how your body moves","انرژی — بدن چطور کار می‌کند")+"</h2></div>"
+    + nQuant()+nCaff()+nWave()
+    + '<hr class="rule"><div class="sec" style="margin-top:0"><h2>'
+    + T("Happiness &mdash; where the spirit lands","خوشبختی — دل کجا بند می‌شود")+"</h2></div>"
+    + nNight()
+    + '<p class="foot" style="margin-top:24px">'
+    + T("Framework after Sandeep Swadia&rsquo;s nine habits. The sources for each claim are at the end of the Guide.",
+        "چارچوب بر پایهٔ نُه عادتِ ساندیپ سوادیا. منبعِ هر ادعا در انتهای راهنما آمده است.")+"</p>";
+  setHTML($("#sc-nine"),h);
+  if(S.nine.wave) waveTick(); else clearInterval(nWaveT);
+}
+var NPILL={
+  attention:{ ic:"eye", pal:"obvious", t:"Attention", tf:"توجه", d:"Where your mind goes", df:"ذهن کجا می‌رود" },
+  energy:   { ic:"bolt", pal:"easy", t:"Energy", tf:"انرژی", d:"How your body moves", df:"بدن چطور کار می‌کند" },
+  happy:    { ic:"sun", pal:"satisfying", t:"Happiness", tf:"خوشبختی", d:"Where the spirit lands", df:"دل کجا بند می‌شود" }
+};
+
+/* ─────────── 1 · correct after the click ─────────── */
+/* The count that matters is not how few slips there were. It is whether any
+   slip went uncorrected — which is why the two numbers are always printed as
+   a pair and never as a percentage of a target. */
+function nClick(){
+  var d=today(), sl=nToday(S.nine.slips);
+  var fixed=sl.filter(function(z){ return z.fix; }).length;
+  var body='<div class="acc-b">'
+    + nWhy(T("An airliner is almost never on its exact course. The wind pushes it off, the autopilot nudges it back, and the flight is the sum of those corrections &mdash; not a straight line. Attention works the same way, so trying to never click is the wrong target.",
+             "هواپیمای مسافربری تقریباً هیچ‌وقت دقیقاً روی مسیرش نیست. باد کنارش می‌زند، خلبانِ خودکار برش می‌گرداند، و کلِ پرواز جمعِ همین اصلاح‌هاست — نه یک خطِ مستقیم. توجه هم همین‌طور کار می‌کند، پس «دیگر هرگز کلیک نمی‌کنم» هدفِ غلطی است."))
+    + nEvid(T("Opening an app mid-task is a conditioned reflex, and willpower arrives after the reflex has already fired. The move that works is the one taken immediately after: stand up, drink water, three slow breaths. Small enough that the brain does not read it as another climb.",
+              "بازکردنِ یک برنامه وسطِ کار یک بازتابِ شرطی است، و اراده وقتی می‌رسد که بازتاب قبلاً شلیک کرده. کاری که جواب می‌دهد همان است که بلافاصله بعدش می‌کنی: بلند شو، آب بخور، سه نفسِ آرام. آن‌قدر کوچک که مغز آن را صعودی تازه حساب نکند."))
+    + '<div class="nbig"><div><b>'+N(sl.length)+"</b><span>"+T("slips today","لغزشِ امروز")+"</span></div>"
+    + '<div><b>'+N(fixed)+"</b><span>"+T("brought back","برگشتِ همان‌جا")+"</span></div></div>"
+    + '<button class="btn primary wide" data-nslip="1">'+ic("plane")
+    + T("I slipped &mdash; correct it now","لغزیدم — همین حالا اصلاحش کن")+"</button>";
+  if(sl.length) body+='<div class="nlist">'+sl.slice(0,8).map(function(z){
+      return '<div class="nrow"><span class="t">'+esc(z.what||T("a slip","یک لغزش"))+"</span>"
+        + '<span class="d">'+esc(z.fix||T("not corrected","بی‌اصلاح"))+" · "+clockOf(z.t)+"</span>"
+        + '<button class="iconbtn sm danger" data-nslipdel="'+z.id+'" aria-label="'+esc(T("Delete","حذف"))+'">'+ic("trash")+"</button></div>";
+    }).join("")+"</div>";
+  body+="</div>";
+  return nCard("click","plane",T("Attention 1","توجه ۱"),
+    T("Correct after the click","تصحیح پس از کلیک"),
+    T("Don&rsquo;t fight the reflex. Intercept what comes after it.","با بازتاب نجنگ. چیزی را که بعدش می‌آید بگیر."),
+    body,"obvious");
+}
+var NFIX=[
+  ["water","A glass of water","یک لیوان آب"],
+  ["run","Stood up and stretched","بلند شدم و کش آمدم"],
+  ["lotus","Three slow breaths","سه نفسِ آرام"],
+  ["sunrise","One minute of walking","یک دقیقه راه رفتن"]
+];
+function openSlip(){
+  var h=tip(1,'<p class="law-d">'
+    + T("Name what caught you, then take one of these before anything else. The correction has to be small &mdash; if it feels like a second climb, you will skip it and the slip stands.",
+        "بنویس چه چیزی گرفتت، و بعد قبل از هر کاری یکی از این‌ها را بردار. اصلاح باید کوچک باشد — اگر شبیهِ یک صعودِ تازه شود، ردش می‌کنی و لغزش سرِ جایش می‌ماند.")+"</p>")
+    + '<label class="fl">'+T("What caught you?","چه چیزی گرفتت؟")+"</label>"
+    + '<input class="in" id="slipwhat" maxlength="80" placeholder="'
+      + esc(T("opened the feed mid-paragraph","وسطِ پاراگراف رفتم سراغِ فید"))+'">'
+    + '<p class="fl" style="margin-top:15px">'+T("And straight after it:","و بلافاصله بعدش:")+"</p>"
+    + '<div class="nfix">'+NFIX.map(function(f){
+        return '<button type="button" class="btn line" data-nfix="'+esc(f[2])+'">'+ic(f[0])+T(f[1],f[2])+"</button>";
+      }).join("")+"</div>"
+    + '<button class="btn ghost wide" data-nfix="" style="margin-top:11px">'
+    + T("Log it with no correction","بدونِ اصلاح ثبتش کن")+"</button>";
+  openSheet(T("Intercept the slip","لغزش را بگیر"),h);
+}
+function saveSlip(fix){
+  var w=$("#slipwhat");
+  S.nine.slips.unshift({ id:uid(), date:today(), t:Date.now(),
+    what:(w?w.value:"").trim().slice(0,80), fix:String(fix||"").slice(0,40) });
+  if(S.nine.slips.length>600) S.nine.slips.length=600;
+  touch(); closeSheet(); renderAll();
+  toast(fix ? T("Back on course","برگشتی سرِ مسیر") : T("Logged","ثبت شد"));
+}
+
+/* ─────────── 2 · control the input ─────────── */
+/* Zeigarnik: an unfinished thing keeps a thread open. The four exits exist so
+   that every item gets closed on the first touch, including the ones that are
+   closed by being thrown away. */
+function nInput(){
+  var open=S.nine.inbox.filter(function(z){ return !z.d; });
+  var nxt=nextBatch();
+  var body='<div class="acc-b">'
+    + nWhy(T("Bluma Zeigarnik noticed that waiters could recall a complicated unpaid order perfectly, and forgot it the moment the bill was settled. An unanswered message is an unpaid order: it stays open in the background and keeps drawing on you until it is closed.",
+             "بلوما زیگارنیک دید که گارسون‌ها یک سفارشِ پیچیده و پرداخت‌نشده را مو به مو به یاد دارند، و همان لحظه که صورت‌حساب تسویه می‌شود همه‌اش را فراموش می‌کنند. یک پیامِ بی‌جواب همان سفارشِ پرداخت‌نشده است: باز می‌ماند و تا بسته نشود از تو برق می‌کشد."))
+    + nEvid(T("So the inbox is not read continuously; it is read in two or three fixed windows, and inside a window each item is touched exactly once and forced out through one of four doors.",
+              "پس صندوق را مدام چک نمی‌کنی؛ دو سه بازهٔ ثابت در روز بازش می‌کنی، و داخلِ بازه به هر مورد فقط و فقط یک بار دست می‌زنی و از یکی از چهار در بیرونش می‌فرستی."))
+    + '<div class="nbatch">'+ic("clock")+"<div><b>"
+    + (nxt.now ? T("You are inside a window now","الان داخلِ بازه‌ای")
+               : T("Next window ","بازهٔ بعدی ")+hhmm(nxt.at))+"</b>"
+    + "<span>"+S.settings.batch.map(hhmm).join(" · ")+"</span></div>"
+    + '<button class="iconbtn sm" data-nbatch="1" aria-label="'+esc(T("Edit windows","ویرایشِ بازه‌ها"))+'">'+ic("edit")+"</button></div>"
+    + '<div class="nadd"><input class="in" id="nin" maxlength="120" placeholder="'
+      + esc(T("what came in","چه چیزی آمد"))+'">'
+    + '<button class="btn primary sm" data-nadd="1">'+ic("plus")+"</button></div>";
+  if(!open.length) body+='<p class="foot left" style="margin-top:12px">'
+    + T("Nothing open. That is the state to get back to.","هیچ موردی باز نیست. همین حالتی است که باید به آن برگردی.")+"</p>";
+  else body+='<p class="foot left" style="margin:12px 0 6px">'
+    + T(open.length+" still open", N(open.length)+" موردِ باز")+"</p>";
+  body+=open.slice(0,20).map(function(z){
+      return '<div class="n4d"><p>'+esc(z.text)+"</p><div class=\"r\">"
+        + [["do","check","Do it","انجامش بده"],["deleg","users","Delegate","بسپارش"],
+           ["date","calin","Schedule","زمان‌بندی"],["del","trash","Delete","حذفش کن"]]
+          .map(function(x){
+            return '<button class="btn line sm '+x[0]+'" data-n4d="'+z.id+"|"+x[0]+'">'+ic(x[1])+T(x[2],x[3])+"</button>";
+          }).join("")+"</div></div>";
+    }).join("");
+  body+="</div>";
+  return nCard("input","layers",T("Attention 2","توجه ۲"),
+    T("Control the input","کنترلِ ورودی‌ها"),
+    T("Touch each thing once, and give it a door to leave by","به هر چیزی یک بار دست بزن، و دری بده که از آن برود"),
+    body,"obvious");
+}
+function nextBatch(){
+  var now=minsNow(), b=S.settings.batch.map(clockMins).sort(function(a,c){ return a-c; });
+  /* a window is thirty minutes wide: long enough to clear an inbox, short
+     enough that "I am in a window" is not true all afternoon */
+  for(var i=0;i<b.length;i++) if(now>=b[i]&&now<b[i]+30) return { now:true, at:S.settings.batch[i] };
+  for(i=0;i<b.length;i++) if(b[i]>now) return { now:false, at:("0"+Math.floor(b[i]/60)).slice(-2)+":"+("0"+(b[i]%60)).slice(-2) };
+  return { now:false, at:("0"+Math.floor(b[0]/60)).slice(-2)+":"+("0"+(b[0]%60)).slice(-2) };
+}
+function decide4D(id,d){
+  var it=null;
+  S.nine.inbox.forEach(function(z){ if(z.id===id) it=z; });
+  if(!it||!FOURD[d]) return;
+  it.d=d; it.dt=Date.now();
+  if(d==="date"){
+    /* "schedule it" means it leaves this list and joins the one that already
+       exists for things with a later on them */
+    S.laterList.unshift({ id:uid(), t:Date.now(), date:today(), text:it.text,
+      type:"other", done:false, doneAt:null });
+    if(S.laterList.length>400) S.laterList.length=400;
+  }
+  touch(); renderAll();
+  toast({ do:T("Done","انجام شد"), deleg:T("Handed over","سپرده شد"),
+          date:T("On the Later list","رفت در فهرستِ بعداً"), del:T("Gone","رفت") }[d]);
+}
+
+/* ─────────── 3 · write to think ─────────── */
+function nWrite(){
+  var list=S.nine.thinks;
+  var body='<div class="acc-b">'
+    + nWhy(T("Amazon&rsquo;s senior meetings open with fifteen minutes of silence while everyone reads a written memo. Slides can hide sloppy thinking behind a bullet; a paragraph has to connect one idea to the next or the gap shows.",
+             "جلسه‌های ارشدِ آمازون با پانزده دقیقه سکوت شروع می‌شود که همه یک یادداشتِ مکتوب را می‌خوانند. اسلاید می‌تواند فکرِ شلخته را پشتِ یک بولت قایم کند؛ پاراگراف مجبور است فکرها را به هم وصل کند وگرنه شکاف پیداست."))
+    + nEvid(T("Writing is not a record of the thought. It is the instrument that makes the thought, which is why answering these three on paper before a hard conversation changes what you say in it.",
+              "نوشتن ثبتِ فکر نیست؛ ابزارِ ساختنِ فکر است. برای همین جوابِ این سه تا را که قبل از یک گفتگوی سخت روی کاغذ بیاوری، خودِ حرفی که می‌زنی عوض می‌شود."))
+    + '<button class="btn primary wide" data-nthink="new">'+ic("pen")
+    + T("Answer the three questions","به سه سؤال جواب بده")+"</button>";
+  if(list.length) body+='<div class="nlist">'+list.slice(0,6).map(function(z){
+      return '<div class="nnote"><p class="h">'+esc(z.next||T("(no next step written)","(گامِ بعدی نوشته نشده)"))+"</p>"
+        + '<p class="d">'+esc(shortDate(z.date))+"</p>"
+        + '<div class="r">'
+        + (z.next? '<button class="btn line sm" data-nthinklater="'+z.id+'">'+ic("bookmark")+T("To Later","به فهرستِ بعداً")+"</button>" : "")
+        + '<button class="btn ghost sm" data-nthinkopen="'+z.id+'">'+T("Read","بخوان")+"</button>"
+        + '<button class="iconbtn sm danger" data-nthinkdel="'+z.id+'" aria-label="'+esc(T("Delete","حذف"))+'">'+ic("trash")+"</button>"
+        + "</div></div>";
+    }).join("")+"</div>";
+  body+="</div>";
+  return nCard("write","pen",T("Attention 3","توجه ۳"),
+    T("Write to think","نوشتن برای اندیشیدن"),
+    T("Three questions, before the decision and not after","سه سؤال، قبل از تصمیم نه بعدش"),
+    body,"obvious");
+}
+function openThink(id){
+  var z=null;
+  if(id) S.nine.thinks.forEach(function(x){ if(x.id===id) z=x; });
+  var h=tip(1,'<p class="law-d">'
+    + T("Before a hard conversation, a big decision, or anything that feels foggy. The third one is the only one with a verb in it.",
+        "قبل از یک گفتگوی سخت، یک تصمیمِ بزرگ، یا هر چیزی که مه‌آلود است. فقط سومی فعل دارد.")+"</p>")
+    + '<label class="fl">'+T("1 · What do I actually know?","۱ · دقیقاً چه چیزی را می‌دانم؟")+"</label>"
+    + '<textarea class="in ta" id="thknow" rows="3" maxlength="600">'+esc(z?z.know:"")+"</textarea>"
+    + '<label class="fl" style="margin-top:13px">'+T("2 · What am I assuming?","۲ · چه چیزی را فرض گرفته‌ام؟")+"</label>"
+    + '<textarea class="in ta" id="thassume" rows="3" maxlength="600">'+esc(z?z.assume:"")+"</textarea>"
+    + '<label class="fl" style="margin-top:13px">'+T("3 · What is the next honest action?","۳ · صادقانه‌ترین گامِ بعدی چیست؟")+"</label>"
+    + '<textarea class="in ta" id="thnext" rows="2" maxlength="300">'+esc(z?z.next:"")+"</textarea>"
+    + '<button class="btn primary wide" data-nthinksave="'+(z?z.id:"")+'" style="margin-top:15px">'
+    + T("Keep it","نگهش دار")+"</button>";
+  openSheet(T("Write to think","نوشتن برای اندیشیدن"),h);
+}
+function saveThink(id){
+  var k=($("#thknow")||{}).value||"", a=($("#thassume")||{}).value||"", nx=($("#thnext")||{}).value||"";
+  k=k.trim(); a=a.trim(); nx=nx.trim();
+  if(!k&&!a&&!nx){ closeSheet(); return; }
+  var z=null;
+  if(id) S.nine.thinks.forEach(function(x){ if(x.id===id) z=x; });
+  if(z){ z.know=k; z.assume=a; z.next=nx; z.t=Date.now(); }
+  else {
+    S.nine.thinks.unshift({ id:uid(), date:today(), t:Date.now(), know:k, assume:a, next:nx });
+    if(S.nine.thinks.length>300) S.nine.thinks.length=300;
+  }
+  touch(); closeSheet(); renderAll(); toast(T("Kept","نگه داشته شد"));
+}
+
+/* ─────────── 4 · quantize the action ─────────── */
+/* No record to keep: the output of this one is a sentence on the Start tab,
+   and the Start tab already knows how to hold it. */
+function nQuant(){
+  var f=focusLive();
+  var body='<div class="acc-b">'
+    + nWhy(T("Planck found that energy does not flow; it moves in indivisible packets. The hardest part of any task is not the middle, it is the start &mdash; the first sentence, the first dish &mdash; so the unit you commit to has to be small enough that starting costs nothing.",
+             "پلانک فهمید انرژی جاری نمی‌شود؛ در بسته‌های تقسیم‌ناپذیر جابه‌جا می‌شود. سخت‌ترین بخشِ هر کار وسطش نیست، شروعش است — جملهٔ اول، ظرفِ اول — پس واحدی که به آن قول می‌دهی باید آن‌قدر کوچک باشد که شروع‌کردنش هزینه‌ای نداشته باشد."))
+    + nEvid(T("One line. Half a push-up. One minute of walking. Not a trick to get you to do more &mdash; the small unit is the whole promise, and you are allowed to stop there.",
+              "یک خط. نصفِ یک شنا. یک دقیقه راه رفتن. این حقه‌ای برای کشاندنت به بیشتر نیست — همان واحدِ کوچک کلِ قول است، و حق داری همان‌جا تمام کنی."))
+    + '<div class="nquant">'+NQ.map(function(q){
+        return '<button class="btn line sm" data-nq="'+esc(T(q[1],q[2]))+'">'+ic(q[0])+T(q[1],q[2])+"</button>";
+      }).join("")+"</div>";
+  if(f) body+='<p class="foot left" style="margin-top:13px">'
+    + T("Tapping one writes it onto the Start tab as today&rsquo;s action, over: ","هر کدام را بزنی، روی تبِ شروع می‌نشیند به‌جای: ")
+    + "<strong>"+esc(f.action||T("nothing yet","هنوز هیچی"))+"</strong></p>";
+  else body+='<p class="foot left" style="margin-top:13px">'
+    + T("Choose the one thing on the Start tab first, and these can be written onto it.",
+        "اول در تبِ شروع «آن یک کار» را انتخاب کن، تا این‌ها بتوانند رویش بنشینند.")+"</p>";
+  body+="</div>";
+  return nCard("quant","pulse",T("Energy 1","انرژی ۱"),
+    T("Quantize the action","کوانتومی‌اش کن"),
+    T("Shrink the unit until starting is free","واحد را آن‌قدر کوچک کن که شروع مجانی شود"),
+    body,"easy");
+}
+var NQ=[
+  ["pen","Write one line","یک خط بنویس"],
+  ["dumbbell","Half a push-up","نصفِ یک شنا"],
+  ["run","One minute of walking","یک دقیقه راه برو"],
+  ["book","One page","یک صفحه"],
+  ["broom","One dish","یک ظرف"],
+  ["timer","Two minutes, then stop","دو دقیقه، بعد بس"]
+];
+
+/* ─────────── 5 · the caffeine line ─────────── */
+/* Caffeine has a half-life around five hours, so the afternoon cup is still
+   a quarter present at midnight. The cutoff is arithmetic, not willpower:
+   bedtime minus six hours, drawn as a curve you can argue with. */
+function nCaff(){
+  var bed=S.settings.bedtime, cut=addMins(bed,-S.settings.cutH*60);
+  /* measured against tonight's bedtime rather than against the clock face, so
+     a bedtime after midnight does not read as a cutoff that already passed */
+  var past=Date.now() > bedAtMs()-S.settings.cutH*3600000;
+  var mgNow=caffAt(Date.now()), mgBed=caffAt(bedAtMs());
+  var today_=nToday(S.nine.caff);
+  var body='<div class="acc-b">'
+    + nWhy(T("In a controlled trial, caffeine taken six hours before bed still measurably disrupted sleep &mdash; and the people in it did not notice. The damage does not feel like anything at the time, which is exactly why a clock has to decide instead of a feeling.",
+             "در یک آزمایشِ کنترل‌شده، کافئینی که شش ساعت پیش از خواب خورده شده بود همچنان به‌طور معنادار خواب را به هم زد — و خودِ آدم‌ها متوجهش نشدند. این آسیب در لحظه هیچ حسی ندارد، و دقیقاً برای همین باید ساعت تصمیم بگیرد نه حس."))
+    + nEvid(T("Half-life is about five hours. A cup at four in the afternoon is still half there at nine and a quarter there after midnight &mdash; and that quarter is enough to shallow the deep sleep that would have paid for the next morning.",
+              "نیمه‌عمرش حدودِ پنج ساعت است. فنجانِ ساعتِ چهارِ بعدازظهر، نُهِ شب هنوز نصفش هست و بعد از نیمه‌شب یک‌چهارمش — و همان یک‌چهارم کافی است که خوابِ عمیقی را کم‌عمق کند که قرار بود صبحِ فردا را بخرد."))
+    + '<div class="ncut'+(past?" past":"")+'">'+ic(past?"moon":"cup")+"<div><b>"
+    + (past ? T("Past the line &mdash; nothing more today","از مرز گذشتی — دیگر امروز نه")
+            : T("Free until "+hhmm(cut), "تا "+hhmm(cut)+" آزادی"))+"</b>"
+    + "<span>"+T("Bed ","خواب ")+hhmm(bed)+" · "+T("cut-off ","مرز ")+hhmm(cut)
+    + " · "+T("minus "+S.settings.cutH+"h","منهای "+S.settings.cutH+" ساعت")+"</span></div>"
+    + '<button class="iconbtn sm" data-ncset="1" aria-label="'+esc(T("Edit","ویرایش"))+'">'+ic("edit")+"</button></div>"
+    + '<div class="nbig"><div><b>'+N(Math.round(mgNow))+'<i>mg</i></b><span>'+T("in you now","الان در بدنت")+"</span></div>"
+    + '<div><b>'+N(Math.round(mgBed))+'<i>mg</i></b><span>'+T("at bedtime","سرِ خواب")+"</span></div></div>"
+    + caffCurve()
+    + '<p class="fl" style="margin-top:14px">'+T("Log a drink","یک نوشیدنی ثبت کن")+"</p>"
+    + '<div class="nquant">'+NCAFF.map(function(c){
+        return '<button class="btn line sm" data-ncaff="'+c[0]+"|"+esc(T(c[2],c[3]))+'">'+ic(c[1])
+          + T(c[2],c[3])+' <i class="mg">'+N(c[0])+"</i></button>";
+      }).join("")+"</div>";
+  if(today_.length) body+='<div class="nlist">'+today_.slice(0,8).map(function(z){
+      return '<div class="nrow"><span class="t">'+esc(z.label||T("caffeine","کافئین"))+"</span>"
+        + '<span class="d">'+N(z.mg)+" mg · "+clockOf(z.t)+"</span>"
+        + '<button class="iconbtn sm danger" data-ncaffdel="'+z.id+'" aria-label="'+esc(T("Delete","حذف"))+'">'+ic("trash")+"</button></div>";
+    }).join("")+"</div>";
+  body+="</div>";
+  return nCard("caff","cup",T("Energy 2","انرژی ۲"),
+    T("Draw the caffeine line","مرزِ کافئین را بکش"),
+    T("Six hours before bed, by the clock and not by feel","شش ساعت پیش از خواب، با ساعت نه با حس"),
+    body,"easy");
+}
+var NCAFF=[
+  [63,"cup","Espresso","اسپرسو"],[95,"cup","Filter coffee","قهوهٔ فیلتر"],
+  [47,"cup","Black tea","چای سیاه"],[28,"cup","Green tea","چای سبز"],
+  [34,"drop","Cola","نوشابه"],[80,"bolt","Energy drink","نوشیدنیِ انرژی‌زا"]
+];
+function bedAtMs(){
+  var d=new Date(), b=clockMins(S.settings.bedtime);
+  d.setHours(Math.floor(b/60),b%60,0,0);
+  /* a bedtime earlier in the clock than now belongs to tonight, not this morning */
+  if(d.getTime()<Date.now()) d=new Date(d.getTime()+86400000);
+  return d.getTime();
+}
+function caffAt(ms){
+  var sum=0;
+  S.nine.caff.forEach(function(z){
+    if(!z.t||z.t>ms) return;
+    var hrs=(ms-z.t)/3600000;
+    if(hrs>48) return;
+    sum+=z.mg*Math.pow(0.5,hrs/CAFF_HALF);
+  });
+  return sum;
+}
+/* An SVG rather than a canvas: it has to restyle itself with the palette, and
+   there is nothing here a path cannot draw. */
+function caffCurve(){
+  var bed=bedAtMs(), start=bed-16*3600000, W=300, H=78, n=60;
+  var peak=0, pts=[], i, ms, v;
+  for(i=0;i<=n;i++){ ms=start+(bed-start)*i/n; v=caffAt(ms); pts.push(v); if(v>peak) peak=v; }
+  if(peak<10) peak=10;
+  var d="", x, y;
+  for(i=0;i<=n;i++){
+    x=(W*i/n).toFixed(1); y=(H-2-(H-10)*pts[i]/peak).toFixed(1);
+    d+=(i?"L":"M")+x+" "+y;
+  }
+  var nowX=(W*Math.max(0,Math.min(1,(Date.now()-start)/(bed-start)))).toFixed(1);
+  return '<div class="ncurve"><svg viewBox="0 0 '+W+" "+H+'" preserveAspectRatio="none" aria-hidden="true">'
+    + '<path class="fill" d="'+d+"L"+W+" "+H+"L0 "+H+'Z"/>'
+    + '<path class="line" d="'+d+'"/>'
+    + '<line class="now" x1="'+nowX+'" y1="0" x2="'+nowX+'" y2="'+H+'"/>'
+    + '<line class="bed" x1="'+W+'" y1="0" x2="'+W+'" y2="'+H+'"/></svg>'
+    + '<div class="ax"><span>'+T("16h back","۱۶ ساعت پیش")+"</span><span>"+T("bedtime","وقتِ خواب")+"</span></div></div>";
+}
+function openCaffSet(){
+  var h='<label class="fl">'+T("Bedtime","ساعتِ خواب")+"</label>"
+    + '<input class="in" id="nbed" type="time" value="'+esc(S.settings.bedtime)+'">'
+    + '<label class="fl" style="margin-top:14px">'+T("Stop this many hours before","این‌قدر ساعت قبلش قطع")+"</label>"
+    + '<input class="in" id="ncuth" type="number" min="0" max="12" step="1" value="'+S.settings.cutH+'">'
+    + '<p class="foot left" style="margin-top:9px">'
+    + T("Six is the figure the trial used. Lower it if you want, but the curve above will tell you what it costs.",
+        "عدد شش همانی است که در آن آزمایش به کار رفته. پایین‌ترش بیاور اگر خواستی، ولی منحنیِ بالا هزینه‌اش را نشانت می‌دهد.")+"</p>"
+    + '<button class="btn primary wide" data-ncsave="1" style="margin-top:15px">'+T("Save","ذخیره")+"</button>";
+  openSheet(T("The caffeine line","مرزِ کافئین"),h);
+}
+
+/* ─────────── 6 · ride the ultradian waves ─────────── */
+/* Kleitman's cycles run through the day as well as the night, so the mid
+   afternoon drop is a trough and not a character flaw. The recovery block is
+   the part people get wrong: it has to be empty of new input, or it is not
+   recovery, it is a different kind of work. */
+function nWave(){
+  var w=S.nine.wave, tw=nToday(S.nine.waves);
+  var mins=0; tw.forEach(function(z){ if(z.kind==="focus") mins+=z.mins; });
+  var body='<div class="acc-b">'
+    + nWhy(T("Nathaniel Kleitman found that the brain does not run flat through the day. It rides cycles of eighty to a hundred and twenty minutes, rising into alertness and falling out of it. The crash at half past three is the bottom of a wave, not a failure of discipline.",
+             "ناتانیل کلایتمن فهمید که مغز در طولِ روز یکنواخت کار نمی‌کند. روی چرخه‌هایی هشتاد تا صد و بیست دقیقه‌ای سوار است؛ بالا می‌آید و پایین می‌رود. افتِ ساعتِ سه و نیم کفِ یک موج است، نه ضعفِ اراده."))
+    + nEvid(T("So the block is sixty to ninety minutes of one thing, and then ten to twenty minutes with no new input at all. Checking a feed in the gap is not a break &mdash; it refills the same channel you were trying to empty. Walking, breathing, or sitting there counts; reading does not.",
+              "پس بازه می‌شود شصت تا نود دقیقه روی یک چیز، و بعد ده تا بیست دقیقه بدونِ هیچ ورودیِ تازه. فید را که در فاصله چک کنی استراحت نکرده‌ای — همان کانالی را دوباره پر می‌کنی که می‌خواستی خالی‌اش کنی. راه رفتن، نفس کشیدن یا همان‌طور نشستن حساب است؛ خواندن نه."));
+  if(w){
+    var left=Math.max(0,w.mins*60000-(Date.now()-w.startedAt));
+    var pct=Math.min(100,100*(1-left/(w.mins*60000)));
+    body+='<div class="nwave '+w.phase+'" id="nwavebox">'
+      + '<p class="ph">'+(w.phase==="focus"?T("Focus block","بازهٔ تمرکز"):T("Real recovery","بازیابیِ واقعی"))+"</p>"
+      + '<p class="cd" id="nwavecd">'+wvClock(left)+"</p>"
+      + '<div class="bar"><i id="nwavebar" style="width:'+pct.toFixed(1)+'%"></i></div>'
+      + (w.phase==="recover" ? '<p class="rule">'+T("No feeds. No inbox. No news. Walk, breathe, or do nothing.",
+            "نه فید، نه صندوق، نه خبر. راه برو، نفس بکش، یا هیچ کاری نکن.")+"</p>" : "")
+      + '<div class="r"><button class="btn primary sm" data-nwdone="1">'
+      + (w.phase==="focus"?T("End and recover","تمام — برو به بازیابی"):T("Recovery done","بازیابی تمام"))+"</button>"
+      + '<button class="btn ghost sm" data-nwstop="1">'+T("Drop it","بی‌خیالش")+"</button></div></div>";
+  } else {
+    body+='<div class="nwrow">'
+      + '<button class="btn primary wide" data-nwgo="focus">'+ic("timer")
+      + T("Start a "+S.settings.blockMin+"-minute block", "بازهٔ "+S.settings.blockMin+" دقیقه‌ای را شروع کن")+"</button>"
+      + '<button class="iconbtn" data-nwset="1" aria-label="'+esc(T("Edit lengths","ویرایشِ طول‌ها"))+'">'+ic("gear")+"</button></div>"
+      + '<button class="btn line wide" data-nwgo="recover" style="margin-top:9px">'+ic("lotus")
+      + T("Just the "+S.settings.recovMin+"-minute recovery", "فقط بازیابیِ "+S.settings.recovMin+" دقیقه‌ای")+"</button>";
+  }
+  body+='<p class="foot left" style="margin-top:13px">'
+    + T("Today: ","امروز: ")+N(tw.filter(function(z){ return z.kind==="focus"; }).length)
+    + T(" blocks"," بازه")+" · "+hm(mins)+T(" of focus"," تمرکز")+"</p></div>";
+  return nCard("wave","chart",T("Energy 3","انرژی ۳"),
+    T("Ride the ultradian waves","سوار بر موج‌های اولترادین"),
+    T("Honour the trough instead of fighting it","کفِ موج را به رسمیت بشناس، با آن نجنگ"),
+    body,"easy");
+}
+function wvClock(ms){
+  var s=Math.max(0,Math.round(ms/1000));
+  return ("0"+Math.floor(s/60)).slice(-2)+":"+("0"+(s%60)).slice(-2);
+}
+function waveGo(phase){
+  S.nine.wave={ phase:(phase==="recover"?"recover":"focus"), startedAt:Date.now(),
+    mins:(phase==="recover"?S.settings.recovMin:S.settings.blockMin) };
+  touch(); renderAll();
+}
+function waveDone(){
+  var w=S.nine.wave; if(!w) return;
+  var mins=Math.max(1,Math.round((Date.now()-w.startedAt)/60000));
+  S.nine.waves.unshift({ id:uid(), date:today(), t:Date.now(), kind:w.phase, mins:mins });
+  if(S.nine.waves.length>900) S.nine.waves.length=900;
+  if(w.phase==="focus"){ waveGo("recover"); toast(T("Now empty it","حالا خالی‌اش کن")); return; }
+  S.nine.wave=null; touch(); renderAll(); toast(T("Wave complete","موج تمام شد"));
+}
+function waveTick(){
+  clearInterval(nWaveT);
+  nWaveT=setInterval(function(){
+    var w=S.nine.wave, cd=$("#nwavecd"), bar=$("#nwavebar");
+    if(!w||!cd){ clearInterval(nWaveT); return; }
+    var total=w.mins*60000, left=Math.max(0,total-(Date.now()-w.startedAt));
+    cd.textContent=wvClock(left);
+    if(bar) bar.style.width=(100*(1-left/total)).toFixed(1)+"%";
+    if(left<=0){ clearInterval(nWaveT); waveDone(); }
+  },1000);
+}
+function openBatchSet(){
+  var h=tip(1,'<p class="law-d">'
+    + T("Two or three a day is the usual shape. Each window is half an hour wide; outside them the inbox is closed and the day belongs to one thing at a time.",
+        "دو سه تا در روز شکلِ معمولش است. هر بازه نیم‌ساعت است؛ بیرونِ آن‌ها صندوق بسته است و روز مالِ یک کار در یک زمان.")+"</p>")
+    + S.settings.batch.map(function(b,i){
+        return '<label class="fl" style="margin-top:'+(i?12:0)+'px">'+T("Window ","بازهٔ ")+N(i+1)+"</label>"
+          + '<input class="in" type="time" data-bt="'+i+'" value="'+esc(b)+'">';
+      }).join("")
+    + '<button class="btn primary wide" data-nbsave="1" style="margin-top:15px">'+T("Save","ذخیره")+"</button>";
+  openSheet(T("Batch windows","بازه‌های دسته‌بندی"),h);
+}
+function openWaveSet(){
+  var h='<label class="fl">'+T("Focus block (minutes)","بازهٔ تمرکز (دقیقه)")+"</label>"
+    + '<input class="in" id="nwb" type="number" min="20" max="180" step="5" value="'+S.settings.blockMin+'">'
+    + '<label class="fl" style="margin-top:14px">'+T("Real recovery (minutes)","بازیابیِ واقعی (دقیقه)")+"</label>"
+    + '<input class="in" id="nwr" type="number" min="5" max="60" step="5" value="'+S.settings.recovMin+'">'
+    + '<p class="foot left" style="margin-top:9px">'
+    + T("Sixty to ninety, then ten to twenty. Longer blocks do not buy more; they borrow from the next one.",
+        "شصت تا نود، بعد ده تا بیست. بازهٔ طولانی‌تر چیزی اضافه نمی‌خرد؛ از بازهٔ بعدی قرض می‌گیرد.")+"</p>"
+    + '<button class="btn primary wide" data-nwsave="1" style="margin-top:15px">'+T("Save","ذخیره")+"</button>";
+  openSheet(T("Block lengths","طولِ بازه‌ها"),h);
+}
+
+/* ─────────── 7, 8, 9 · the night log ─────────── */
+/* These three do not get a form each. Awe, gratitude and forgiving yourself
+   are one movement — stop treating the size of today's problem as the size of
+   you — and one entry a day holds all three. */
+function nNight(){
+  var d=today(), cur=null;
+  S.nine.nights.forEach(function(z){ if(z.date===d) cur=z; });
+  var body='<div class="acc-b">'
+    + nWhy(T("The universe is about 13.8 billion years old, the light you see at night left its star centuries ago, and about thirty million of your cells will be replaced while you read this sentence. Those facts are not here to shrink your problems. They are here to remind you that you are much larger than them.",
+             "کیهان حدودِ ۱۳٫۸ میلیارد سال عمر دارد، نوری که شب می‌بینی قرن‌ها پیش از ستاره‌اش جدا شده، و تا همین جمله را بخوانی نزدیکِ سی میلیون از سلول‌هایت عوض می‌شوند. این حقایق اینجا نیستند که مشکلت را کوچک کنند. اینجا‌اند که یادت بیاورند تو خیلی بزرگ‌تر از آنی."))
+    + nEvid(T("And the ninth habit is the one that keeps the other eight alive: systems break, plans collapse, streaks end. Blaming yourself for it costs far more energy than the missed repetition did. You do not have to be your best self on your worst day.",
+              "و عادتِ نهم همانی است که هشت‌تای دیگر را زنده نگه می‌دارد: سیستم‌ها می‌شکنند، برنامه‌ها می‌ریزند، زنجیره‌ها پاره می‌شوند. محاکمهٔ خودت بابتش خیلی بیشتر از آن تکرارِ از‌دست‌رفته انرژی می‌برد. لازم نیست در بدترین روزت بهترین نسخهٔ خودت باشی."))
+    + '<div class="nnight">'
+    + nNightRow("awe","star",T("Look up","نگاه به بالا"),T("One thing that was bigger than me today","یک چیزِ امروز که از من بزرگ‌تر بود"),cur?cur.awe:"")
+    + nNightRow("grat","heart",T("Look in","نگاه به خود"),T("One thing about me I am glad of","یک چیزِ خودم که بابتش خوشحالم"),cur?cur.grat:"")
+    + nNightRow("forgive","feather",T("Let it go","بگذر"),T("One thing I will stop prosecuting myself for","یک چیز که دیگر بابتش خودم را محاکمه نمی‌کنم"),cur?cur.forgive:"")
+    + "</div>"
+    + '<button class="btn primary wide" data-nnsave="1" style="margin-top:13px">'+ic("moon")
+    + T("Close the day","روز را ببند")+"</button>";
+  var past=S.nine.nights.filter(function(z){ return z.date!==d; });
+  if(past.length) body+='<div class="nlist">'+past.slice(0,5).map(function(z){
+      return '<div class="nnote"><p class="h">'+esc(z.awe||z.grat||z.forgive)+"</p>"
+        + '<p class="d">'+esc(shortDate(z.date))+"</p></div>";
+    }).join("")+"</div>";
+  body+="</div>";
+  return nCard("night","moon",T("Happiness 7 &middot; 8 &middot; 9","خوشبختی ۷ · ۸ · ۹"),
+    T("Awe, gratitude, and forgiving yourself","شگفتی، قدردانی، و بخششِ خود"),
+    T("One entry a night, three lines long","شبی یک یادداشت، سه خط"),
+    body,"satisfying");
+}
+function nNightRow(k,icn,label,ph,val){
+  return '<div class="nnrow"><span class="ic">'+ic(icn)+"</span>"
+    + '<div><label class="fl" for="nn-'+k+'">'+label+"</label>"
+    + '<input class="in" id="nn-'+k+'" maxlength="140" value="'+esc(val||"")+'" placeholder="'+esc(ph)+'"></div></div>';
+}
+function saveNight(){
+  var d=today();
+  var a=(($("#nn-awe")||{}).value||"").trim(), g=(($("#nn-grat")||{}).value||"").trim(),
+      f=(($("#nn-forgive")||{}).value||"").trim();
+  S.nine.nights=S.nine.nights.filter(function(z){ return z.date!==d; });
+  if(a||g||f){
+    S.nine.nights.unshift({ date:d, t:Date.now(), awe:a, grat:g, forgive:f });
+    if(S.nine.nights.length>400) S.nine.nights.length=400;
+  }
+  touch(); renderAll();
+  toast(a||g||f ? T("The day is closed","روز بسته شد") : T("Cleared","پاک شد"));
 }
 
 /* ─────────── chrome ─────────── */
@@ -2858,6 +3648,7 @@ var TABS=[{id:"today",label:"Today",fa:"امروز",icon:"today"},
   {id:"card",label:"Scorecard",fa:"کارنامه",icon:"card"},{id:"progress",label:"Progress",fa:"پیشرفت",icon:"progress"},
   {id:"guide",label:"Guide",fa:"راهنما",icon:"guide"},
   {id:"selftest",label:"Self-tests",fa:"خودسنجی",icon:"ruler"},
+  {id:"nine",label:"Nine",fa:"نُه عادت",icon:"mountain"},
   {id:"settings",label:"Settings",fa:"تنظیمات",icon:"gear"}];
 var view="today";
 function renderTabs(){
@@ -2912,6 +3703,19 @@ function startBtnHTML(f,x){
   if(S.timer&&S.timer.habitId===x.id)
     return '<button class="btn primary wide big-go" data-timer="'+x.id+'">'+ic("timer")
       + T("Open the timer","زمان‌سنج را ببین")+"</button>";
+  /* already ticked today: say so, and say whether it landed in the window.
+     The timer stays available underneath — a tick is not a reason to stop. */
+  if(kept(x.id,today())){
+    var s0=tickStartOf(x.id), lbl;
+    if(s0&&s0.planned) lbl=(s0.onTime?T("on time","سرِ وقت")
+                                     :T("late","با تأخیر"))
+      + " · "+T("planned ","قرار: ")+hhmm(s0.planned);
+    else lbl=T("no hour was set","ساعتی تعیین نشده بود");
+    return '<div class="donebar'+(s0&&s0.planned&&!s0.onTime?" late":"")+'">'+ic("check")
+      + "<div><b>"+T("Done today","امروز انجام شد")+"</b><span>"+lbl+"</span></div></div>"
+      + '<button class="btn line wide" data-stgo="1" style="margin-top:10px">'+ic("timer")
+      + T("Start a session anyway","با این حال یک جلسه شروع کن")+"</button>";
+  }
   var m=f.mins||startMins();
   return '<button class="btn primary wide big-go" data-stgo="1">'+ic("sunrise")
     + T("Start "+m+" minutes", m+" دقیقه شروع کن")+"</button>";
@@ -2936,11 +3740,15 @@ function focusCardHTML(f,x){
     + '<button class="btn ghost sm" data-stint="1">'+ic("edit")+T("Edit","ویرایش")+"</button>"
     + "</div>";
   if(st.length){
-    var mn=minsStartedToday(), ok=st.some(function(s){ return s.onTime; });
-    h+='<p class="foot left" style="margin-top:11px">'
-      + T(st.length+" start"+(st.length===1?"":"s")+" today", "امروز: "+st.length+" بار شروع")
-      + " &middot; "+T(mn+" min", "روی هم "+mn+" دقیقه")
-      + " &middot; "+(ok?T("on time","سرِ وقت"):T("late &mdash; but started","دیر شد، ولی شروع شد"))+"</p>";
+    /* a start written by a tick has no stopwatch behind it, so the minutes
+       line is left out rather than printed as zero */
+    var mn=minsStartedToday(), ok=st.some(function(s){ return s.onTime; }), bits=[];
+    bits.push(T(st.length+" start"+(st.length===1?"":"s")+" today", "امروز: "+st.length+" بار شروع"));
+    if(mn) bits.push(T(mn+" min", "روی هم "+mn+" دقیقه"));
+    if(st.every(function(s){ return s.via==="check"; }))
+      bits.push(T("ticked from the card","از روی کارتِ عادت"));
+    bits.push(ok?T("on time","سرِ وقت"):T("late &mdash; but started","دیر شد، ولی شروع شد"));
+    h+='<p class="foot left" style="margin-top:11px">'+bits.join(" &middot; ")+"</p>";
   }
   return h+"</article>";
 }
@@ -4996,7 +5804,7 @@ var IDEA_PAL_FA=[["#2B3A8F","#A7AEDD"],["#1B6499","#8CC8E8"],["#0E5B63","#54C6C0
   ["#12553F","#4FB58C"],["#8C5A12","#E5BE73"],["#4B2A73","#C3A8DE"]];
 function IDEAS_PAL(){ return SKIN==="fa"?IDEA_PAL_FA:IDEA_PAL; }
 function ideasBlock(){
-  var closed=!!(S.settings.guideClosed&&S.settings.guideClosed.__ideas);
+  var closed=!(S.settings.guideOpen&&S.settings.guideOpen.__ideas);
   return '<section class="guide-law" style="'+lawVars("easy")+'">'
     + '<button class="gl-head" data-tguide="__ideas" aria-expanded="'+(!closed)+'"'
       + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
@@ -5054,7 +5862,7 @@ var DELAY_WHY=[
    "ده دقیقه، نه دو ساعت. عدد عمداً کوچک است."]
 ];
 function delayBlock(){
-  var closed = !!(S.settings.guideClosed&&S.settings.guideClosed.__delay);
+  var closed = !(S.settings.guideOpen&&S.settings.guideOpen.__delay);
   var h='<section class="guide-law" style="'+lawVars("easy")+'">'
     + '<button class="gl-head" data-tguide="__delay" aria-expanded="'+(!closed)+'"'
       + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
@@ -5109,7 +5917,7 @@ function delayBlock(){
   return h+"</section>";
 }
 function guideLaw(L,inv){
-  var closed = !!(S.settings.guideClosed&&S.settings.guideClosed[L.k]);
+  var closed = !(S.settings.guideOpen&&S.settings.guideOpen[L.k]);
   return '<section class="guide-law'+(inv?" inv":"")+'" style="'+lawVars(L.k)+'">'
     + '<button class="gl-head" data-tguide="'+L.k+'" aria-expanded="'+(!closed)+'"'
       + ' style="width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left;font-family:inherit">'
@@ -5372,8 +6180,10 @@ function renderAll(){
   else if(view==="progress") renderProgress();
   else if(view==="guide") renderGuide();
   else if(view==="selftest") renderSelfTest();
+  else if(view==="nine") renderNine();
   else if(view==="settings") renderSettings();
   if(S.timer) startTick(); else clearInterval(tmrTick);
+  if(S.nine.wave && view==="nine") waveTick(); else clearInterval(nWaveT);
 }
 
 /* ─────────── events ─────────── */
@@ -5541,9 +6351,89 @@ document.addEventListener("click",function(e){
   }
   if(d.tchart){ var hc1=habit(d.tchart); if(hc1){ hc1.showChart=(hc1.showChart===false); touch(); renderAll(); } return; }
   if(d.tchain){ var hc2=habit(d.tchain); if(hc2){ hc2.showChain=(hc2.showChain===false); touch(); renderAll(); } return; }
+  /* ── the nine habits ── */
+  if(d.nacc){
+    if(!S.settings.nineOpen) S.settings.nineOpen={};
+    S.settings.nineOpen[d.nacc]=!S.settings.nineOpen[d.nacc];
+    touch(); renderAll(); return;
+  }
+  if(d.nslip){ openSlip(); return; }
+  if(t.hasAttribute("data-nfix")){ saveSlip(d.nfix); return; }
+  if(d.nslipdel){
+    S.nine.slips=S.nine.slips.filter(function(z){ return z.id!==d.nslipdel; });
+    touch(); renderAll(); return;
+  }
+  if(d.nadd){
+    var ni=$("#nin"), tx=ni?ni.value.trim():"";
+    if(!tx) return;
+    S.nine.inbox.unshift({ id:uid(), date:today(), t:Date.now(), text:tx.slice(0,120), d:null, dt:0 });
+    if(S.nine.inbox.length>400) S.nine.inbox.length=400;
+    ni.value=""; touch(); renderAll(); return;
+  }
+  if(d.n4d){ var p4=d.n4d.split("|"); decide4D(p4[0],p4[1]); return; }
+  if(d.nbatch){ openBatchSet(); return; }
+  if(d.nbsave){
+    var bt=$$("#sheet [data-bt]").map(function(x){ return x.value; })
+      .filter(function(x){ return /^\d{2}:\d{2}$/.test(x); });
+    if(bt.length){ S.settings.batch=bt.slice(0,4); touch(); }
+    closeSheet(); renderAll(); return;
+  }
+  if(d.nthink){ openThink(null); return; }
+  if(d.nthinkopen){ openThink(d.nthinkopen); return; }
+  if(t.hasAttribute("data-nthinksave")){ saveThink(d.nthinksave); return; }
+  if(d.nthinkdel){
+    S.nine.thinks=S.nine.thinks.filter(function(z){ return z.id!==d.nthinkdel; });
+    touch(); renderAll(); return;
+  }
+  if(d.nthinklater){
+    var th=null;
+    S.nine.thinks.forEach(function(z){ if(z.id===d.nthinklater) th=z; });
+    if(th&&th.next){
+      S.laterList.unshift({ id:uid(), t:Date.now(), date:today(), text:th.next,
+        type:"other", done:false, doneAt:null });
+      touch(); renderAll(); toast(T("On the Later list","رفت در فهرستِ بعداً"));
+    }
+    return;
+  }
+  if(d.nq){
+    var fq=focusLive();
+    if(!fq){ toast(T("Choose the one thing first","اول آن یک کار را انتخاب کن")); return; }
+    fq.action=d.nq; touch(); renderAll();
+    toast(T("Written onto the Start tab","روی تبِ شروع نشست"));
+    return;
+  }
+  if(d.ncaff){
+    var pc=d.ncaff.split("|");
+    S.nine.caff.unshift({ id:uid(), date:today(), t:Date.now(),
+      mg:Math.min(900,Math.round(+pc[0]||0)), label:pc[1]||"" });
+    if(S.nine.caff.length>900) S.nine.caff.length=900;
+    touch(); renderAll(); return;
+  }
+  if(d.ncaffdel){
+    S.nine.caff=S.nine.caff.filter(function(z){ return z.id!==d.ncaffdel; });
+    touch(); renderAll(); return;
+  }
+  if(d.ncset){ openCaffSet(); return; }
+  if(d.ncsave){
+    var bd=$("#nbed"), ch=$("#ncuth");
+    if(bd&&/^\d{2}:\d{2}$/.test(bd.value)) S.settings.bedtime=bd.value;
+    if(ch){ var cv=Math.round(+ch.value); if(cv>=0&&cv<=12) S.settings.cutH=cv; }
+    touch(); closeSheet(); renderAll(); return;
+  }
+  if(d.nwgo){ waveGo(d.nwgo); return; }
+  if(d.nwdone){ waveDone(); return; }
+  if(d.nwstop){ S.nine.wave=null; touch(); renderAll(); return; }
+  if(d.nwset){ openWaveSet(); return; }
+  if(d.nwsave){
+    var wb=$("#nwb"), wr=$("#nwr");
+    if(wb){ var bv=Math.round(+wb.value); if(bv>=20&&bv<=180) S.settings.blockMin=bv; }
+    if(wr){ var rv=Math.round(+wr.value); if(rv>=5&&rv<=60) S.settings.recovMin=rv; }
+    touch(); closeSheet(); renderAll(); return;
+  }
+  if(d.nnsave){ saveNight(); return; }
   if(d.tguide){
-    if(!S.settings.guideClosed) S.settings.guideClosed={};
-    S.settings.guideClosed[d.tguide]=!S.settings.guideClosed[d.tguide];
+    if(!S.settings.guideOpen) S.settings.guideOpen={};
+    S.settings.guideOpen[d.tguide]=!S.settings.guideOpen[d.tguide];
     touch(); renderAll(); return;
   }
   if(d.acc){
@@ -5860,8 +6750,8 @@ setInterval(function(){ if(pruneIdentities()){ persist(); renderAll(); } }, 3600
 window.addEventListener("resize",function(){ if(view==="progress") drawCurve(totalVotes()); });
 
 var FAVICON={
-  modern:"data:image/png;base64,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",
-  persian:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAMx0lEQVR42o2XaXDc9XmAn9//2Fu7OnZ1rCTrtiRbMpZlbHwQY2yDDYQ4JrKBgAlXIYW0FNpJ0qFR3ZK4pkNLYSAzJCRgKBAUg8thbDA2xrHxLdmW15LWlnVLq92VtIf23v+/HyDTDgOd/r6+M+/zzLxffo/gW58uaNss0dGRBVi746L78GdnbiyRx9aJTGRhNBItvarOZRNCcNbrj9odtlFZNnXJMfHJgnUr973105VjALS9LdPRpoHQv4kivpHd3i6xbZsGsPiJg00z/V0/iQbHNt7XOlDYcdKALySRSqX47vXNSJLgvw5cwGxQMBY4qFrXwujHPZO5rsLdNTVVz7+7/bbur+/8vwXa3pbp2Jy95T3dcu6FZ/4pGR3+q2QkoOqaxvL5Ju3iTKluyS2WFNWIUY8KgU5atukiHScRj2mKSxLDp3okIStYc3LTxtw5z/3dvZt+8dCtpbG2trfljo7N2W8X+Are+vjBhsnzh94oXVve0v/enzCozoy5sEZ255vFuvkSvz2UIhxLsmOzDYC/7whRZDdjLPGS9TuwSrn6uG80K0cHlK0r07ze3dxZN7f6zg/+7Yc9X5eQvw5f+sS+1rGuA5+Ghs/V6Bkpbc+vkEz2Cnk6kyMabVd48Dojxqk/cV3ZJIuLBnEpw8wx+mhwDJMomSUdEITTc4QjxygVFeToV8ZmM30D06WJeHzLspvvP7D79z8cpa1NxuPR/0egvV3ixUe16oc+rhs6sfdgcqLblVNclTEbG1Rjg18U5l6hIT7BAwsu4pZ7WV6bxYdgWVEYlznBqC5xe0uKdfY0i51xekcC3LGqmIbaSrG/1yib1XRmcmI8ZzIY2dS08p7do394OkB7u8ShQ7oEusDjEbQNmfPDZ3f9/AcVTim3OmMoW6pEVQfVQT9bKsZ58XvddEkuIhkFz4jGP4ib2DlSxCtDLn6evh7PcJZQSnA4buWl2ye4uniQS57jaMKA212r5Dqcmb/ZPN+p6JO7uOYZMx6PAF3ItM2X6diWnVPl3jE90LXRF9bSDfMb1Pr8GNlQH3/ZNMBtZdNEohr/KtZwQKrnRCoPU30FXeEczoliCqryOTUBuxPVeFIO7soZpdgcJJOZpX9cZ1qewmBTJd9wJO0dCZQU2dLmqfdf2tvWNl+W8XTQ9OjBhhnv56/Gpkb0oG2R3OxGPLxa5fuuffhNdtpDK/FHYchZxXRVJWUfdjIbj9Pc2UfJ4DgzqRSFF3xcXrEQc2KWKV+Up4crWOxMsGXeBB8m4uhhIz6/SQoFxzV0sbR+ycaO/bt+HJABzM6526NjFxZbixq1ospmubM/zHWGXays1AjNJNntXo+n9mrqdx3E7B1k7aURbum+QnM0QXMoxnd6RshPJJgKTlPmHee9xasIZVV+ZOyjpdJA2WyGjhMl2BxWkU2ntEQyoWh61jQzcOw9maaJou+Uv/3CTfV+c2emVajSlLixsIeFFVHejtbTqzuZDqvokTDzz17iwbOXCcsK+zNZ3p2e5XAsRUCRqRUSW4YmGVJlhvNM5M2EiGo6hyeM1NnTJGIJQmkzclYXBWsbhRB6VaxPekWuWFG7eaCv+/a+qWLNVm6XXC3DbC3qpdqa4Xl5LT2L15Hj8XLHyx/QoMGHisIvpiJEKopZsHYR+U2VHIkmeGXYj8FmYXU6y1VnvJwtdXKgrpXBsTT3lU3QPMfALes30N0/Kc4eu6wl/SGLvbzUI+eUt/ws7BuYrzjn6ppaJzXO9NDW4MeVCTMcgskZMxbfJMtGAxzVdV5Iafym/W5e3PYg5bMRFrsL2PbkA9SU5fPkwbMUS9CgyJx22sgmM9xgGOQ2dwSDWWbHmxf51GvAlE1pidlZIStSUjbkNTyVCAw77dWt+GYV0WiZoDxvhr/VtzBc34rjtIe73z9CwmqmPRRjxyO30Go14b00yPmn/8jYEQ+xQgulmk5zUyVPHTzPepuRay+N051j5HRFHTs9JpqUAOf6Vbw+G0ajhn86LqFLqpJbV+QuaMlH8cWlrWtNLJFGKTPFqc5O0qtVE6wqYabAwclglNrGcn502yp2PvwM0nEvhhY7QgguPvo8+pK5bH3pZ7y07yQHL46wLN/MWHEe2axEvTVGfT5c3xLh81SW8KBFuntJmP4ps1tKzszY4v4QyBJV+VnMJgNlxlnWRY8T6R9l9c6PqIon6REai2rcWAsc5Ja7keoN3PDXBm54zIhUb8BRXorJ4aC1towLeoa6tMaW/Z0kRvxsto9SYddIS2CypkHPMh6SmY7pNlmole3Ry/1CLV/MG8cSXGXq5qJwsr34AVy1TrwFdprOXeJUJEnpskYMfQN4n92NrcJKzTUSQsDgGYF/r4e408TlrM7EiV6aTDLPrWpCrinm1eF8ciMBjCGNPx5wYTPJnB9KE47LSJLJGE2iIbJJ8o0qQodFOUE2Te4lMTRG877j5CVSVNiMfHHKy4IVTcz75VZSPgMfbY/w0fYwyXGVhqfuoXnFAo6e7KXSZsCZznLtSS9ZX5CHrF5WuNPMJJKEElFSmTSynkCVs1FJVU1j82uLycamtMJmL/35JiqUKN8TpzHE41zY+B321rhZk9Xo8Q5zoLOfmx7YSMgso1sq0c2VhMwy6+/bxKGufrp7BlmPYFeRncMr5mFKJbm31E+pMcby5Sv4zU9Xk03GtXk1xciSGJML561bef/NDfO7vAE9ouVJebMhWu1+/jG5nvE5zaBq1H18gvpMBoOk8M+neihVBNesX8zNj2+i5QfXYiov5NMvznHvf+ziLk1nidAYTaQ5vbCagJzD6YEsqx3T7Dya5fDFFKFwRLt/0xJx6sLYp8K94V/u9Z396Hc2h1PLr1stjQVjPLWwg6UN0Ddj5S15JQndTHlnH/ecu8Q7qoHXdZ2FLXNZUFWEEIJzg5N0nvGyVZK5nQy/ri6mr7YUo5Tg4cIrNJUIPN4sW18rwGrVUDIJLZHMSCab5T4lv27VnsTI6elYcDgvMjut1xdporK2kVK1E4wp/DluotVzKOns5TObhUWSYFkixd5jF+g67gGgEsFDViMpk8R+zUBG17lcX4VjaJzmvBRFRsHLcYWiwgyZmKynMynJYlSnVZO+R548/vKspWZdrSE5vggtnd2wvFJyFZXgu9TFqFpAMKFy1cgpLlY0cnrNIvLO9JEAWk0qq9BZrsrMsRoZkiUGFYmdd1xHzGpiQ/QCxmwSl5wiEojz7CUbmqahx5UsiiRlM9p/TnV1vCl0EGLu7+tvnvfe+Xr7sHjx4hrJajEIkU2w87o9XF0aoytg5dH8H4NBJa+7l8mGcpa8f5TpXBtCCBzBMEduaKWod4SJ6nK0RJKO3E9ocWvs78ty91sVGGWVWDisz92yXAtfmdQvv/NxM8nuXnlbW5vM4V/5wwUbco+dC6yQEoFMTmmjLOkprlhTFJqT2M0y5wMWHonuYSDfTSC3Ap9ZJtRQwXSZk9EcM9k8J1Wqnyf0owyFZFYXBkkqLgbkFew/E0CTZPR0LDPdM6bEJkPPJn2fv4GnTZbxXAA8cvNjvz007T10a2pmoCQRnMoY8m1SyKly4byNdELwRMkRFhXE6Z2xEAym+HfjHj6LujHEYvza9jHHJi1cLY3zSK2PWwsmef2khdeOm1m4+BqOdY8zOhTImIyaqiPOO/Kq7wyPlOt4OjTxv6Oh+o7f1U18sftoydJCp6bZM5F+TYlbnFjTwzx3e4ZCzUs0HKTMIahxZHjXV4gkJDa4JhiImginjExmFfaMWfjkcC6+uAk9HmVNYzzjsiSVd07ZAq4Sdfno8Xe80C7BNu3LX/GhQzptbfL0H7YH1OJbDtjcju9HLp3LmZ0YTlvsdklRVPHdta3seH+WN7qKUC1xjkSsWEJpIjNJMs4FeHwqj+/K48iwhW6DiegY2BVd11PRjFFKq7ps9F8esmyIend1Q5sML2rfECZtMh0dWQr+osFWMPVGNjbWoqUT1DW1ZIIxSY5odqFoAtnlw+6M4TtTQCw2yytPLuXg2SCvfngJu82AQY/oTrsxOzw0qkiKgZhm6MyO5txJ6s2eL+Ed3xAmwJex0CYTf83f/KtPXgv3XjApaFc/ftc16uHPj4lE2KcpsqZlorpI+I0YjYowmiQOnhjQvf3jSCS1THQSm6JJj92zRjp0qj+dkYzPNjeW3D1x8dXxr8O/PU6/ug9A0bpfNkVGzv9ESk1t1FOzhfFoisdulTjaJ3PyskDVk+Q21VG4qJ6eVz7AkJODJuTJjGTcrVrznp8993r313f+PwT+PGuT/mxcfuvz7lnf+RtTM1Pral3xhb7pZOlMRLMJNAyOnKjFVTA6M+jrUs05nyh2177g0RfGvrqrDB0a8I15/t/v5POtATVk1AAAAABJRU5ErkJggg=="
+  modern:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAMHUlEQVR4nHWXeXCc5X3HP++1972rW1rJlmVJtiXfB9iYYHMU4hrjYM4QzEAnhAxuILRpJyFtxgmpw4QyJS2BNhOKyTiUmhylGGOMTxkfMdj4knVZkq2Vdeyu9t599z06u7JL+aM785udeffZ5/v9He/zfL/CbTcfME1TxzQ1oPRtYKJD6Rkapd8kSUIQIJaNImoJtGKMVCJK/dwKBBGunBnD4/djsbgxBR+hgFj+n26ogAGmgWFoGIaOrhfRDQ1dnw55GvxalIGnCZhGEVkWMZHJZEaYjJ3jkRk17LhwnKvZDKgCYY8XURSJTg4QTShUB1UeXpdl+65Oqqtq8Xi8YEJRKyKIJoJpIAgmQokUBkJp91Lmhnk942kimBqSpDAZnyQeO0QyeRFRsnHG78XinEd7uBJFsiKNZcqbzV/y5+h6nqx6lbODQ8SiV5iYGCQQrKaqLkzQ7aGg5kCYBp4OsxzilypgTJdclBSujp/mgbUvYrf2EgqtYFbz1yiEm3nwyRUYWZGJSJxNm9vZ9NgcJkZiGBrcW2OjEF3EvIWrqa2fgTWfY53FQuTqFWRZugZcSnQa3MRALmV/PetSBUqZRyL7uBI5wMcnZlFXtYyMXo82VcRiT7Lk9rmcyQxitVSQagFJELnxyTq0YoHF8RSnz0+hTQapqqjFXlfBobExevovUshnqK2tQdPMcpunw/zyDAhIDPTuIpY6Ql3NMi4lVvHc7AFynl525Hw0PVjHcWuKJU8s4cLxy9hmBhEFAXk8zbIbm+nPqcwfmCT66jHuuXMxFlPhX365n6aGBi4PD5FLZalvrMMoDWVp1kzjOoEipi6hWfpZ+a0QB/55ET7PavRCgQMOWH5HA3esmsXZj8awZ3XiVyL8octFJjeCYJp8cFSm0j+CO+Th3FCa+19Zj328yIG3jmJTwVLXQKpQ5IbNC+j/aBhTN8vgJRJyqe+CIJJXxxkc/B1Zs5OVX7kJp1fjTN8o8vqZTNxcjzyRpDvioz9uw8gl8LbP4FjvEBgG3vYa3t1/DkOEYhbWrilgNLqpXNmA9cIYzalJqqucdB8cJNIzRHVVTXkmSq+laJR6b5qMju9HzeXIDYexuQU2PN7E8hdmoDtt7PpVlBOfpDDtNsZdAToyHtwDF1krKKwRFHyX+5mX9zJqdWPYLHzwwSAv/fRPFJwuvrb1VtaFDKyKSXokT7GgMjkZxTAMTMNAFgWZTHaYxNQ5gpWrCNXM4sSebrJr0rTd1kY+M0rC1sK44WJNLMLkxCB3hRfwl95qJLu1fEChqfRORUj2HKdCsfHHiAOrnsbvgoZ5jRx/7GaOfWcXfq8X1esjkYiTyzuQZRlhwaI3zdniRVpsGd6Luam0W8kvEKnbWMXEmBW9qJOeCJE0NDaZAR6bs4qz4xG6ej7hfP95EGHurDmsbr+BhY21vH7iAP8e7ccrSISbNCwWhY42L6d2HCfVHWNs0mTT6i7ODFTy6cV6hGULXzMvD23Hbm9iSVMzW9pibL+zmUxTFSffd5BpaCN8qYenlJlUVs9kX/ceXtn5j4SbAtyweC6CIHD05HkGB2N85/4t3LHgdqLRy7zQ18VZm5fg1AhPb2lHSRW40VrPP2z9DaePnUTVRByuALKqjpHOT+L0L2JgqprvZ/M0z6zAqRTxe0awRjwoahF/qIGDFw/y8s4f8erPf8gjG9dz8OgFSp/XXmznt3/4b/7imR8jyza+0nYjNgNqMklamgWCQSsFj4Of/P1bdJ+4hC75ySTiWG0qYnTqKqmsjMMSIj4RJ2XYGRtJcPAdK+NKJ4GpON91ryRjqPzTOy/w4x88Q32wjV37T7Ljt1F2vB1j94FPqQ208LO/e4aX3voZSTXP1s67qdM1Ph1zsPUHRxnovkJK1YnpBooikNbzJLNZxM5ZYzx+TwHBIvHw02Ha76vAGrTjCGgo2LhiMxgnz/7jH9LYGuKx+zfwx/e7eePfCvjMs/g5w5tvFPmvD3r5xqZ1NLdXsbdrL5F8igEtg2goVNXaCTSFWH1rC4/6DIRCmkfnLKYzUIkYS+SIjFuRRZPKRic2pw1LyEqoeoL8YA/3x0O0eMKcn7jA/LbZeF1OKmoC1Do+49nV23n2preodZykotqP0+FgYftszl69QHtFmKeCnRRHh1m80IWvzodVM6h1yOVbcSSTZCqfRe4ZEkmmbcydLbNtyyHC3/MijPq40tuKtbWa/+i9QGcsBhkTh9fK2787Qte+HPMaBMo3kChgUQSOHFJ5t/EoDo8FsnlGJuK8evUkcriJX2+/zD0JFUXT2HkpRchlZ9+VPqyShGi3KihmEgMVxWujIJi4ZzqpqB4mP9LHTVE3AcVLY3g2x7pOsXRFKw88amdcncMLu7/OT3c/zJg6l/seUli6vJVPjpymqbGFSoePu2xNaNERbljuJNxZRy6ZQUomMTQVS9GcJmCxeKhpqyVXmOCvZsfYWFoQslDRmsdqmHTVGuwcO8zahtvovRzl4KEuHtm4Cr04ih7oQPN3oqmjPLRhJYePHKV7cJw7W27jzbN72KVfxS6ILL2lBnvQyldvWsG2155FLeapaa8pqynZ4Qqx4MEwJ7aPcCjiIDqooo0nuPSxiOapIm/EcU3pBJsreajjSZ56/kcUcgU2P97BDatay6/hsa4efrX9Xbb8ZBubF22hMlCJNyKRooim2nj39TNs/GYH7719CrUngdVpZcV9y/noF7sROtp+aPb2vo3bW4+v+maykQje57xUrWwmP5gg3h3AqruZNaXwVHgDOz9/h+2nX6ZzTpj21tnlg6j7Yi+nzl1m85Kn+frKTbz42Q7OCTE0Mc3Cm91UtdUxfGqAD5/YgcNrKx/fhWwBp8eGLEkWAsGZxJO9eDJj1M92sbS1hUs+EbPGitrjJhry0xiNs2fgMAtmrOHGmbez6/N36D48AAI0edfw7QfvJY/G++cOo2lF+p0CvrRIcGYQv0fB/+kwfbVuxlSRYi6LzWUpKyTZMIrYHQ0Usv2oiUEW3buOOXqIo3/6FEn2osjjVBVHuBAIcVDp5pGRPEFrgFvnb8IrOhAkSJlZ+ib7ieYn+aV0kkrZxvxKjZSiMj44RXJkkkV7LrBQEPjYnsaKSUETMEoCtaP1b8ykWmCRK0GrS+H1/jhOyYEg5HG/PJ/ajkrU7kkGuuoRZAv+8TjDHpW1k1VExXS5BQHNxm7XEI1pK+NOBb2Q466HPVTOq6P/0EUOf+tdDKtMOmbwvUfHONNnY/cnLjxODbmk0Z2yxNmUxId9e7EoftzVy8irGut2XKDPhMsVPmzGCKE2kzHFisuYQVeiBwLBaT050Y/DFibnjbC406TvYJK8rQJxTGW5XsUxWULUBbAVeGWHB1mRcNo1NN1ALAlR3SggyQ68njkUCqP0DJ3FrZm0DmXp+cXnpHf1ErxHxrsihMutIsUvMu9ukHNxLLkpljzgxJodJBgQqLuliSV/3cHIe6fZ+/2dhBU/3koPkehEWYiKkjitiK9pQqGteUvZGZWUkSQJDF+5yIZbzpPMhtl3toWQYFK0Zrj3pbsZ8qpEEnEcNT7sYT+prtGyMQkuDqGNplEzGtUTGSr29vLm3j708TxxMvxZcxshi4O3ez/DZ3eUndG0AzOmRel1aa5rOgH/DKbSBYYiQ5DRMYKN2GQbqzzNdG17g0uXJlj6QDNhSeJE0IGYV1noCzLcH+fwtj3McCp8O6WW7398Fhy5PKPJGKpTwyLLZR14HbwkBYWWGd80p8sxbUoEwSCdlSgUIhTVPkxTJNzWQSamYWYk0pLABiVLp1fm+UgBIzHFyzue58S+z/jNv76PK+BGkou4gw6uDo0iIlAUSiYMnLKCXpqZay0otUSY1fTENXP6BTOx5GCEEokUOTXC+r9dx3s//z3FDFhsPiRMpNIq2Yapa0gyFA0DvZBBK+aweW189bsb+P3W/wRTRBJLHtNAN74MXnomNDc+do3AtF/7ojwlo1JiblLITaFqcXQtTTqf4rkV6zk80s+Jq/2gO1g2L8/qxQW2/dqF21HKWQFkZEX+3/2mAb8MXh7CmeFvlFvwf8G/WDztlsu3hmliGCqFYppGl5uJbJxYLlXOMOAVCPlEBkYsKHJpykvES7K75AP/f/AS5v8AzBpFQPXxhO0AAAAASUVORK5CYII=",
+  persian:"data:image/png;base64,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"
 };
 
 /* ─────────── installable ───────────
